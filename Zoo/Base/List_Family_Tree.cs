@@ -18,9 +18,11 @@ namespace Zoo.Base
         public Nullable<int> id_history { get; set; }
         public Nullable<int> id_animal_father { get; set; }
         public Nullable<int> id_animal_mother { get; set; }
+        public Nullable<int> id_animal_child { get; set; }
     
         public virtual Animal Animal { get; set; }
         public virtual Animal Animal1 { get; set; }
+        public virtual Animal Animal2 { get; set; }
         public virtual History_Family_Tree History_Family_Tree { get; set; }
     }
 }

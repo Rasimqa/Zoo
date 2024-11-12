@@ -13,10 +13,10 @@ namespace Zoo.Base
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Zoopark322Entities : DbContext
+    public partial class Zoo_322Entities : DbContext
     {
-        public Zoopark322Entities()
-            : base("name=Zoopark322Entities")
+        public Zoo_322Entities()
+            : base("name=Zoo_322Entities")
         {
         }
     

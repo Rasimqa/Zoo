@@ -4,47 +4,48 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6b7a4b3619074ff3934776c7f1a4aa1d" Name="Diagram1">
-        <EntityTypeShape EntityType="Zoopark322Model.Animal" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Cell" Width="1.5" PointX="3" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Custom_Services" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Employee" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Event" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Feedback" Width="1.5" PointX="7.5" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.History_Family_Tree" Width="1.5" PointX="3.75" PointY="18" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.History_Traffic" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.List_Family_Tree" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Login" Width="1.5" PointX="8.75" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Loyalty_Program" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Med_History" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Med_Procedure" Width="1.5" PointX="3" PointY="24.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.MedCard" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Report_Finance" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.role" Width="1.5" PointX="8.75" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Service" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.sysdiagrams" Width="1.5" PointX="11.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Ticket" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.User" Width="1.5" PointX="11" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Zoopark322Model.Visitor" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
-        <AssociationConnector Association="Zoopark322Model.FK_Cell_Animal" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_List_Family_Tree_Animal" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_List_Family_Tree_Animal1" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_MedCard_Animal" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Event_Cell" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Custom_Services_Service" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Custom_Services_Ticket" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Med_History_Employee" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_History_Traffic_Event" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Ticket_Event" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Feedback_Visitor" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_List_Family_Tree_History_Family_Tree" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Report_Finance_History_Traffic" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_User_Login" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Visitor_Loyalty_Program" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Med_History_Med_Procedure" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Med_History_MedCard" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_User_role" ManuallyRouted="false" />
-        <AssociationConnector Association="Zoopark322Model.FK_Ticket_Visitor" ManuallyRouted="false" />
+      <Diagram DiagramId="00726de5bb054543b51793fec507bf35" Name="Diagram1">
+        <EntityTypeShape EntityType="Zoo_322Model.Animal" Width="1.5" PointX="0.75" PointY="6.25" />
+        <EntityTypeShape EntityType="Zoo_322Model.Cell" Width="1.5" PointX="3" PointY="8.875" />
+        <EntityTypeShape EntityType="Zoo_322Model.Custom_Services" Width="1.5" PointX="9.75" PointY="9" />
+        <EntityTypeShape EntityType="Zoo_322Model.Employee" Width="1.5" PointX="3" PointY="15.625" />
+        <EntityTypeShape EntityType="Zoo_322Model.Event" Width="1.5" PointX="5.25" PointY="8.875" />
+        <EntityTypeShape EntityType="Zoo_322Model.Feedback" Width="1.5" PointX="7.5" PointY="18" />
+        <EntityTypeShape EntityType="Zoo_322Model.History_Family_Tree" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="Zoo_322Model.History_Traffic" Width="1.5" PointX="7.5" PointY="12.125" />
+        <EntityTypeShape EntityType="Zoo_322Model.List_Family_Tree" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="Zoo_322Model.Login" Width="1.5" PointX="7.75" PointY="15.25" />
+        <EntityTypeShape EntityType="Zoo_322Model.Loyalty_Program" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="Zoo_322Model.Med_History" Width="1.5" PointX="5.25" PointY="12.25" />
+        <EntityTypeShape EntityType="Zoo_322Model.Med_Procedure" Width="1.5" PointX="3" PointY="18.5" />
+        <EntityTypeShape EntityType="Zoo_322Model.MedCard" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="Zoo_322Model.Report_Finance" Width="1.5" PointX="9.75" PointY="12.25" />
+        <EntityTypeShape EntityType="Zoo_322Model.role" Width="1.5" PointX="7.75" PointY="1.25" />
+        <EntityTypeShape EntityType="Zoo_322Model.Service" Width="1.5" PointX="7.5" PointY="6.125" />
+        <EntityTypeShape EntityType="Zoo_322Model.sysdiagrams" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Zoo_322Model.Ticket" Width="1.5" PointX="7.5" PointY="8.875" />
+        <EntityTypeShape EntityType="Zoo_322Model.User" Width="1.5" PointX="10" PointY="0.875" />
+        <EntityTypeShape EntityType="Zoo_322Model.Visitor" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="Zoo_322Model.FK_Cell_Animal" />
+        <AssociationConnector Association="Zoo_322Model.FK_List_Family_Tree_Animal" />
+        <AssociationConnector Association="Zoo_322Model.FK_List_Family_Tree_Animal1" />
+        <AssociationConnector Association="Zoo_322Model.FK_List_Family_Tree_Animal2" />
+        <AssociationConnector Association="Zoo_322Model.FK_MedCard_Animal" />
+        <AssociationConnector Association="Zoo_322Model.FK_Event_Cell" />
+        <AssociationConnector Association="Zoo_322Model.FK_Custom_Services_Service" />
+        <AssociationConnector Association="Zoo_322Model.FK_Custom_Services_Ticket" />
+        <AssociationConnector Association="Zoo_322Model.FK_Med_History_Employee" />
+        <AssociationConnector Association="Zoo_322Model.FK_History_Traffic_Event" />
+        <AssociationConnector Association="Zoo_322Model.FK_Ticket_Event" />
+        <AssociationConnector Association="Zoo_322Model.FK_Feedback_Visitor" />
+        <AssociationConnector Association="Zoo_322Model.FK_List_Family_Tree_History_Family_Tree" />
+        <AssociationConnector Association="Zoo_322Model.FK_Report_Finance_History_Traffic" />
+        <AssociationConnector Association="Zoo_322Model.FK_User_Login" />
+        <AssociationConnector Association="Zoo_322Model.FK_Visitor_Loyalty_Program" />
+        <AssociationConnector Association="Zoo_322Model.FK_Med_History_Med_Procedure" />
+        <AssociationConnector Association="Zoo_322Model.FK_Med_History_MedCard" />
+        <AssociationConnector Association="Zoo_322Model.FK_User_role" />
+        <AssociationConnector Association="Zoo_322Model.FK_Ticket_Visitor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

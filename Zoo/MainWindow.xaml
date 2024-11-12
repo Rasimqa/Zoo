@@ -202,6 +202,16 @@
                 </ui:Button.BorderBrush>
             </ui:Button>
         </StackPanel>
+        <Button Content="⟳" Height="35" Margin="1119,11,0,0" VerticalAlignment="Top" Width="35" Background="White" BorderBrush="#FF008D13" Click="Button_Click_Restart" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.008"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
     </Grid>
 

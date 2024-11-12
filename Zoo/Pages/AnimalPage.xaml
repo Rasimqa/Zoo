@@ -10,8 +10,8 @@
       Title="AnimalPage">
 
     <Grid>
-
-        <ui:ListView x:Name="ListAnimal" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,350,310" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F">
+        <Frame x:Name="AnimalFrame" Visibility="Hidden"></Frame>
+        <ui:ListView x:Name="ListAnimal" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="0,0,0,154">
             <ui:ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=id_animal}" Width="100">ID Животного</GridViewColumn>
@@ -33,8 +33,8 @@
                 </GridView>
             </ui:ListView.View>
         </ui:ListView>
-        <Rectangle HorizontalAlignment="Left" Height="253" Margin="598,0,0,0" VerticalAlignment="Center" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect"/>
-        <StackPanel HorizontalAlignment="Left" Height="253" Margin="748,0,0,0" VerticalAlignment="Center" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel" >
+        <Rectangle HorizontalAlignment="Left" Height="253" Margin="598,0,0,0" VerticalAlignment="Center" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect" Visibility="Hidden"/>
+        <StackPanel HorizontalAlignment="Left" Height="253" Margin="748,0,0,0" VerticalAlignment="Center" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel" Visibility="Hidden" >
             <TextBox TextWrapping="Wrap" Text="ID Животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idanimal" />
             <TextBox TextWrapping="Wrap" Text="Имя животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_name"/>
             <TextBox TextWrapping="Wrap" Text="Возвраст" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_age"/>
@@ -43,10 +43,10 @@
             <TextBox TextWrapping="Wrap" Text="Тип" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_type"/>
             <TextBox TextWrapping="Wrap" Text="Номер вольера" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idcell"/>
         </StackPanel>
-        <ui:Button Content="Добавить" Height="41" Margin="615,324,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonAdd" Click="Button_Add" />
-        <ui:Button Content="Изменить" Height="40" Margin="615,390,0,0" Width="112" BorderBrush="#FF479E3B" VerticalAlignment="Top" x:Name="ButtonEdit" Click="Button_Edit"/>
-        <ui:Button Content="Удалить" Height="40" Margin="615,450,0,0" Width="112" VerticalAlignment="Top" BorderBrush="#FF479E3B" x:Name="ButtonDelete" Click="Button_Delete"/>
-        <Button Content="✕" Margin="615,287,0,0" VerticalAlignment="Top" Width="36" Height="32" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose" Click="Button_Click_Close" FontSize="7">
+        <ui:Button Content="Добавить" Height="41" Margin="615,324,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonAdd" Click="Button_Add" Visibility="Hidden" />
+        <ui:Button Content="Изменить" Height="40" Margin="615,390,0,0" Width="112" BorderBrush="#FF479E3B" VerticalAlignment="Top" x:Name="ButtonEdit" Click="Button_Edit" Visibility="Hidden"/>
+        <ui:Button Content="Удалить" Height="40" Margin="615,450,0,0" Width="112" VerticalAlignment="Top" BorderBrush="#FF479E3B" x:Name="ButtonDelete" Click="Button_Delete" Visibility="Hidden"/>
+        <Button Content="✕" Margin="615,287,0,0" VerticalAlignment="Top" Width="36" Height="32" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose" Visibility="Hidden" Click="Button_Click_Close" FontSize="7">
             <Button.BorderBrush>
                 <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                     <LinearGradientBrush.RelativeTransform>
@@ -57,7 +57,50 @@
                 </LinearGradientBrush>
             </Button.BorderBrush>
         </Button>
-        <ui:Button Content="Изменения" Height="40" Margin="25,750,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" Click="Button_Editions" />
+        <ui:Button Content="Изменения" Height="40" Margin="10,687,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" Click="Button_Editions" />
+        <ui:Button Content="История размножения" Height="40" Margin="160,687,0,0" VerticalAlignment="Top" Width="174" BorderBrush="#FF479E3B" Click="Button_History" />
+        <Rectangle HorizontalAlignment="Left" Height="500" Margin="150,160,0,0" Stroke="#FF479E3B" VerticalAlignment="Top" Width="868" Fill="White" x:Name="Rect_His" Visibility="Hidden"/>
+        <ui:ListView x:Name="ListHistory" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
+            <ui:ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_history}" Width="100" Header="ID истории"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding name_family_tree}" Width="120" Header="Имя рода"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding count_animal}" Width="150" Header="Количество особей"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding date_start_family}" Width="150" Header="Дата возникновения"/>
+                    <GridViewColumn>
+                        <d:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </d:GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ui:ListView.View>
+        </ui:ListView>
+        <ui:ListView x:Name="ListFamily" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
+            <ui:ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_list_family}" Width="90" Header="ID семьи"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_history}" Width="90" Header="ID истории"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_animal_father}" Width="90" Header="ID Отца"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_animal_mother}" Width="90" Header="ID Матери"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_animal_child}" Width="90" Header="ID ребенка"/>
+                    <GridViewColumn>
+                        <d:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </d:GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ui:ListView.View>
+        </ui:ListView>
+        <ui:Button Content="История семьи" Height="40" Margin="828,606,0,0" VerticalAlignment="Top" Width="174" BorderBrush="#FF479E3B" Click="Button_Family" x:Name="ButtonFamily" Visibility="Hidden"/>
+        <ui:Button Content="&lt;" Height="40" Margin="766,606,0,0" VerticalAlignment="Top" Width="40" BorderBrush="#FF479E3B" Click="Button_Back" x:Name="ButtonBack" Visibility="Hidden"/>
 
     </Grid>
 </Page>

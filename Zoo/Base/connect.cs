@@ -10,7 +10,7 @@ namespace Zoo.Base
 {
     public class connect
     {
-        public static Zoopark322Entities db = new Zoopark322Entities();
+        public static Zoo_322Entities db = new Zoo_322Entities();
         public static RegPage user;
     }
 }

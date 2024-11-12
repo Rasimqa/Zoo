@@ -19,6 +19,7 @@ namespace Zoo.Base
         {
             this.List_Family_Tree = new HashSet<List_Family_Tree>();
             this.List_Family_Tree1 = new HashSet<List_Family_Tree>();
+            this.List_Family_Tree2 = new HashSet<List_Family_Tree>();
             this.MedCard = new HashSet<MedCard>();
         }
     
@@ -35,6 +36,8 @@ namespace Zoo.Base
         public virtual ICollection<List_Family_Tree> List_Family_Tree { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<List_Family_Tree> List_Family_Tree1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<List_Family_Tree> List_Family_Tree2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedCard> MedCard { get; set; }
     }

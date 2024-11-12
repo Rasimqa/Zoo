@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Zoo
             InitializeComponent();
             MainFrame.NavigationService.Navigate(new RegPage(this));
         }
-
+        int a = 0;
         private void HamButton(object sender, RoutedEventArgs e)
         {
             if (Hamburger.Visibility == Visibility.Visible)
@@ -49,11 +50,32 @@ namespace Zoo
         private void Button_Profile(object sender, RoutedEventArgs e)
         {
             MainFrame.NavigationService.Navigate(new ProfilePage(this));
+            a = 2;
         }
 
         private void ButtonAnimal_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.NavigationService.Navigate(new AnimalPage(this));
+            a = 1;
         }
+
+        private void Button_Click_Restart(object sender, RoutedEventArgs e)
+        {
+            if (a == 1)
+            {
+                MainFrame.NavigationService.Navigate(new AnimalPage(this));
+            }
+            else if (a == 2)
+            {
+                MainFrame.NavigationService.Navigate(new ProfilePage(this));
+            }
+            else if (a == 3)
+            {
+                MainFrame.NavigationService.Navigate(new RegPage(this));
+            }
+            
+        }
+
+   
     }
 }
