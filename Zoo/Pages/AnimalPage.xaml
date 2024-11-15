@@ -59,7 +59,7 @@
         </Button>
         <ui:Button Content="Изменения" Height="40" Margin="10,687,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" Click="Button_Editions" />
         <ui:Button Content="История размножения" Height="40" Margin="160,687,0,0" VerticalAlignment="Top" Width="174" BorderBrush="#FF479E3B" Click="Button_History" />
-        <Rectangle HorizontalAlignment="Left" Height="500" Margin="150,160,0,0" Stroke="#FF479E3B" VerticalAlignment="Top" Width="868" Fill="White" x:Name="Rect_His" Visibility="Hidden"/>
+        <Rectangle HorizontalAlignment="Left" Height="500" Margin="150,160,0,0" Stroke="#FF479E3B" VerticalAlignment="Top" Width="868" Fill="White" x:Name="Rect_His" Visibility="Visible"/>
         <ui:ListView x:Name="ListHistory" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
             <ui:ListView.View>
                 <GridView>
@@ -99,8 +99,44 @@
                 </GridView>
             </ui:ListView.View>
         </ui:ListView>
-        <ui:Button Content="История семьи" Height="40" Margin="828,606,0,0" VerticalAlignment="Top" Width="174" BorderBrush="#FF479E3B" Click="Button_Family" x:Name="ButtonFamily" Visibility="Hidden"/>
-        <ui:Button Content="&lt;" Height="40" Margin="766,606,0,0" VerticalAlignment="Top" Width="40" BorderBrush="#FF479E3B" Click="Button_Back" x:Name="ButtonBack" Visibility="Hidden"/>
+        <ui:ListView x:Name="ListMedHis" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Visible">
+            <ui:ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_med_history}" Width="75" Header="ID Мед.Истории"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_medcard}" Width="75" Header="ID Мед.Карты"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding condition}" Width="75" Header="Тек.состояние"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding description}" Width="75" Header="Описание"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding date_start_heal}" Width="75" Header="Дата начала"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding date_end_heal}" Width="75" Header="Дата конца"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_med_procedure}" Width="75" Header="ID процедуры"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_employee}" Width="75" Header="ID сотрудника"/>
+                    <GridViewColumn>
+                        <d:GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </d:GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ui:ListView.View>
+        </ui:ListView>
+        <ui:Button Content="История семьи" Height="40" Margin="871,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_Family" x:Name="ButtonFamily" Visibility="Visible"/>
+        <Button Content="✕" Margin="968,173,0,0" VerticalAlignment="Top" Width="34" Height="34" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose_His" Visibility="Visible" Click="Button_Click_Close_His" FontSize="7">
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                    <LinearGradientBrush.RelativeTransform>
+                        <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#29000000" Offset="0"/>
+                    <GradientStop Color="#FF479E3B" Offset="0"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+        </Button>
+        <ui:Button Content="Мед.История" Height="40" Margin="736,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_Med_His" x:Name="ButtonMedHis" Visibility="Visible"/>
+        <ui:Button Content="Мед.Карта" Height="40" Margin="601,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedCard" x:Name="ButtonMedCard" Visibility="Visible"/>
+        <ui:Button Content="Мед.Процедуры" Height="40" Margin="466,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedProc" x:Name="ButtonMedProc" Visibility="Visible"/>
 
     </Grid>
 </Page>

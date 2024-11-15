@@ -36,6 +36,7 @@ namespace Zoo.Pages
             ListAnimal.ItemsSource = connect.db.Animal.ToList();
             ListHistory.ItemsSource = connect.db.History_Family_Tree.ToList();
             ListFamily.ItemsSource = connect.db.List_Family_Tree.ToList();
+            ListMedHis.ItemsSource = connect.db.Med_History.ToList();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -199,21 +200,66 @@ namespace Zoo.Pages
         {
             ListHistory.Visibility = Visibility.Visible;
             ListFamily.Visibility = Visibility.Hidden;
-            ButtonBack.Visibility = Visibility.Visible;
+            ButtonMedCard.Visibility = Visibility.Visible;
+            ButtonMedHis.Visibility = Visibility.Visible;
+            ButtonMedProc.Visibility = Visibility.Visible;
             ButtonFamily.Visibility = Visibility.Visible;
             Rect_His.Visibility = Visibility.Visible;
+            ButtonClose_His.Visibility = Visibility.Visible;
         }
 
         private void Button_Family(object sender, RoutedEventArgs e)
         {
             ListHistory.Visibility = Visibility.Hidden;
             ListFamily.Visibility = Visibility.Visible;
+            ButtonMedCard.Visibility = Visibility.Visible;
+            ButtonMedHis.Visibility = Visibility.Visible;
+            ButtonMedProc.Visibility = Visibility.Visible;
         }
 
-        private void Button_Back(object sender, RoutedEventArgs e)
+        //private void Button_Back(object sender, RoutedEventArgs e)
+        //{
+        //    if(ListHistory.Visibility == Visibility.Visible)
+        //    {
+        //        ListHistory.Visibility = Visibility.Hidden;
+        //        ListFamily.Visibility = Visibility.Hidden;
+        //        ButtonBack.Visibility = Visibility.Hidden;
+        //        ButtonFamily.Visibility = Visibility.Hidden;
+        //        Rect_His.Visibility = Visibility.Hidden;
+        //        ButtonClose_His.Visibility = Visibility.Hidden;
+        //    }
+        //    else
+        //    {
+        //        ListHistory.Visibility = Visibility.Visible;
+        //        ListFamily.Visibility = Visibility.Hidden;
+        //    }
+        //}
+
+        private void Button_Click_Close_His(object sender, RoutedEventArgs e)
         {
-            ListHistory.Visibility = Visibility.Visible;
+            ListHistory.Visibility = Visibility.Hidden;
             ListFamily.Visibility = Visibility.Hidden;
+            ButtonFamily.Visibility = Visibility.Hidden;
+            Rect_His.Visibility = Visibility.Hidden;
+            ButtonClose_His.Visibility = Visibility.Hidden;
+            ButtonMedCard.Visibility = Visibility.Hidden;
+            ButtonMedHis.Visibility = Visibility.Hidden;
+            ButtonMedProc.Visibility = Visibility.Hidden;
+        }
+
+        private void Button_Med_His(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_MedCard(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_MedProc(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
