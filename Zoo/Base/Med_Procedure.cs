@@ -21,7 +21,7 @@ namespace Zoo.Base
         }
     
         public int id_med_procedure { get; set; }
-        public Nullable<int> name_procedure { get; set; }
+        public string name_procedure { get; set; }
         public string type_procedure { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

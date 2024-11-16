@@ -17,16 +17,18 @@ namespace Zoo.Base
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Cell()
         {
+            this.Animal = new HashSet<Animal>();
             this.Event = new HashSet<Event>();
         }
     
         public int id_cell { get; set; }
-        public Nullable<int> name_cell { get; set; }
+        public string name_cell { get; set; }
         public string type_cell { get; set; }
         public Nullable<int> square_m { get; set; }
         public Nullable<int> max_count_animal { get; set; }
     
-        public virtual Animal Animal { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Animal> Animal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Event { get; set; }
     }

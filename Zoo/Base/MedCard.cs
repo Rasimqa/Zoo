@@ -22,7 +22,7 @@ namespace Zoo.Base
     
         public int id_medcard { get; set; }
         public Nullable<int> id_animal { get; set; }
-        public Nullable<int> date_start_account { get; set; }
+        public Nullable<System.DateTime> date_start_account { get; set; }
     
         public virtual Animal Animal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

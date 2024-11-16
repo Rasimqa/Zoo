@@ -37,6 +37,8 @@ namespace Zoo.Pages
             ListHistory.ItemsSource = connect.db.History_Family_Tree.ToList();
             ListFamily.ItemsSource = connect.db.List_Family_Tree.ToList();
             ListMedHis.ItemsSource = connect.db.Med_History.ToList();
+            ListMedCard.ItemsSource = connect.db.MedCard.ToList();
+            ListMedProc.ItemsSource = connect.db.Med_Procedure.ToList();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
@@ -198,7 +200,10 @@ namespace Zoo.Pages
 
         private void Button_History(object sender, RoutedEventArgs e)
         {
+            ListMedProc.Visibility = Visibility.Hidden;
             ListHistory.Visibility = Visibility.Visible;
+            ListMedCard.Visibility = Visibility.Hidden;
+            ListMedHis.Visibility = Visibility.Hidden;
             ListFamily.Visibility = Visibility.Hidden;
             ButtonMedCard.Visibility = Visibility.Visible;
             ButtonMedHis.Visibility = Visibility.Visible;
@@ -210,6 +215,9 @@ namespace Zoo.Pages
 
         private void Button_Family(object sender, RoutedEventArgs e)
         {
+            ListMedProc.Visibility = Visibility.Hidden;
+            ListMedCard.Visibility = Visibility.Hidden;
+            ListMedHis.Visibility = Visibility.Hidden;
             ListHistory.Visibility = Visibility.Hidden;
             ListFamily.Visibility = Visibility.Visible;
             ButtonMedCard.Visibility = Visibility.Visible;
@@ -237,6 +245,9 @@ namespace Zoo.Pages
 
         private void Button_Click_Close_His(object sender, RoutedEventArgs e)
         {
+            ListMedProc.Visibility = Visibility.Hidden;
+            ListMedCard.Visibility = Visibility.Hidden;
+            ListMedHis.Visibility = Visibility.Hidden;
             ListHistory.Visibility = Visibility.Hidden;
             ListFamily.Visibility = Visibility.Hidden;
             ButtonFamily.Visibility = Visibility.Hidden;
@@ -249,17 +260,49 @@ namespace Zoo.Pages
 
         private void Button_Med_His(object sender, RoutedEventArgs e)
         {
-
+            ListMedHis.Visibility = Visibility.Visible;
+            ListMedProc.Visibility = Visibility.Hidden;
+            ListMedCard.Visibility = Visibility.Hidden;
+            ListHistory.Visibility = Visibility.Hidden;
+            ListFamily.Visibility = Visibility.Hidden;
+            ButtonMedCard.Visibility = Visibility.Visible;
+            ButtonMedHis.Visibility = Visibility.Visible;
+            ButtonMedProc.Visibility = Visibility.Visible;
+            ButtonFamily.Visibility = Visibility.Visible;
+            Rect_His.Visibility = Visibility.Visible;
+            ButtonClose_His.Visibility = Visibility.Visible;
+            
         }
 
         private void Button_MedCard(object sender, RoutedEventArgs e)
         {
+            ListMedCard.Visibility = Visibility.Visible;
+            ListMedProc.Visibility = Visibility.Hidden;
+            ListMedHis.Visibility = Visibility.Hidden;
+            ListHistory.Visibility = Visibility.Hidden;
+            ListFamily.Visibility = Visibility.Hidden;
+            ButtonMedCard.Visibility = Visibility.Visible;
+            ButtonMedHis.Visibility = Visibility.Visible;
+            ButtonMedProc.Visibility = Visibility.Visible;
+            ButtonFamily.Visibility = Visibility.Visible;
+            Rect_His.Visibility = Visibility.Visible;
+            ButtonClose_His.Visibility = Visibility.Visible;
 
         }
 
         private void Button_MedProc(object sender, RoutedEventArgs e)
         {
-
+            ListMedProc.Visibility = Visibility.Visible;
+            ListMedCard.Visibility = Visibility.Hidden;
+            ListMedHis.Visibility = Visibility.Hidden;
+            ListHistory.Visibility = Visibility.Hidden;
+            ListFamily.Visibility = Visibility.Hidden;
+            ButtonMedCard.Visibility = Visibility.Visible;
+            ButtonMedHis.Visibility = Visibility.Visible;
+            ButtonMedProc.Visibility = Visibility.Visible;
+            ButtonFamily.Visibility = Visibility.Visible;
+            Rect_His.Visibility = Visibility.Visible;
+            ButtonClose_His.Visibility = Visibility.Visible;
         }
     }
 }

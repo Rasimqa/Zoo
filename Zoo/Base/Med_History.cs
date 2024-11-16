@@ -22,7 +22,6 @@ namespace Zoo.Base
         public Nullable<System.DateTime> date_end_heal { get; set; }
         public Nullable<int> id_med_procedure { get; set; }
         public Nullable<int> id_employee { get; set; }
-        public Nullable<int> id_report_health { get; set; }
     
         public virtual Employee Employee { get; set; }
         public virtual Med_Procedure Med_Procedure { get; set; }

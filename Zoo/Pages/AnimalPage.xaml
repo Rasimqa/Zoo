@@ -63,18 +63,18 @@
         <ui:ListView x:Name="ListHistory" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
             <ui:ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding id_history}" Width="100" Header="ID истории"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_history}" Width="90" Header="ID истории"/>
                     <GridViewColumn DisplayMemberBinding="{Binding name_family_tree}" Width="120" Header="Имя рода"/>
                     <GridViewColumn DisplayMemberBinding="{Binding count_animal}" Width="150" Header="Количество особей"/>
                     <GridViewColumn DisplayMemberBinding="{Binding date_start_family}" Width="150" Header="Дата возникновения"/>
                     <GridViewColumn>
-                        <d:GridViewColumn.CellTemplate>
+                        <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                    <Button x:Name="btnDelete" Width="90" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
                                 </StackPanel>
                             </DataTemplate>
-                        </d:GridViewColumn.CellTemplate>
+                        </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ui:ListView.View>
@@ -88,18 +88,18 @@
                     <GridViewColumn DisplayMemberBinding="{Binding id_animal_mother}" Width="90" Header="ID Матери"/>
                     <GridViewColumn DisplayMemberBinding="{Binding id_animal_child}" Width="90" Header="ID ребенка"/>
                     <GridViewColumn>
-                        <d:GridViewColumn.CellTemplate>
+                        <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
                                 </StackPanel>
                             </DataTemplate>
-                        </d:GridViewColumn.CellTemplate>
+                        </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ui:ListView.View>
         </ui:ListView>
-        <ui:ListView x:Name="ListMedHis" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Visible">
+        <ui:ListView x:Name="ListMedHis" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
             <ui:ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id_med_history}" Width="75" Header="ID Мед.Истории"/>
@@ -111,13 +111,13 @@
                     <GridViewColumn DisplayMemberBinding="{Binding id_med_procedure}" Width="75" Header="ID процедуры"/>
                     <GridViewColumn DisplayMemberBinding="{Binding id_employee}" Width="75" Header="ID сотрудника"/>
                     <GridViewColumn>
-                        <d:GridViewColumn.CellTemplate>
+                        <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
                                 </StackPanel>
                             </DataTemplate>
-                        </d:GridViewColumn.CellTemplate>
+                        </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ui:ListView.View>
@@ -137,6 +137,44 @@
         <ui:Button Content="Мед.История" Height="40" Margin="736,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_Med_His" x:Name="ButtonMedHis" Visibility="Visible"/>
         <ui:Button Content="Мед.Карта" Height="40" Margin="601,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedCard" x:Name="ButtonMedCard" Visibility="Visible"/>
         <ui:Button Content="Мед.Процедуры" Height="40" Margin="466,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedProc" x:Name="ButtonMedProc" Visibility="Visible"/>
+        <ui:ListView x:Name="ListMedCard" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
+            <ui:ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_medcard}" Width="100" Header="ID Мед.Карты"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_animal}" Width="100" Header="ID Животного"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding date_start_account}" Width="150" Header="Дата начала"/>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel x:Name="ButContainer" Orientation="Horizontal">
+                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ui:ListView.View>
+        </ui:ListView>
+        
+        <ui:ListView x:Name="ListMedProc" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Visible">
+            <ui:ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_med_procedure}" Width="100" Header="ID Мед.Процедуры"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding name_procedure}" Width="100" Header="Название процедурыо"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding type_procedure}" Width="150" Header="Тип процедуры"/>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel x:Name="ButContainer" Orientation="Horizontal">
+                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ui:ListView.View>
+        </ui:ListView>
+
 
     </Grid>
 </Page>

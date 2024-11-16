@@ -26,6 +26,8 @@ namespace Zoo.Base
         public string number_phone { get; set; }
         public Nullable<bool> Regular_Customer { get; set; }
         public Nullable<int> id_loyalty_program { get; set; }
+        public Nullable<int> kod_friend { get; set; }
+        public Nullable<int> card_zoo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedback { get; set; }

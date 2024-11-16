@@ -149,9 +149,6 @@
     <Compile Include="Base\Service.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Base\sysdiagrams.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Base\Ticket.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

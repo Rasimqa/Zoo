@@ -22,7 +22,7 @@
             <PropertyRef Name="id_cell" />
           </Key>
           <Property Name="id_cell" Type="int" Nullable="false" />
-          <Property Name="name_cell" Type="int" />
+          <Property Name="name_cell" Type="nvarchar" MaxLength="50" />
           <Property Name="type_cell" Type="nvarchar" MaxLength="50" />
           <Property Name="square_m" Type="int" />
           <Property Name="max_count_animal" Type="int" />
@@ -118,14 +118,13 @@
           <Property Name="date_end_heal" Type="date" />
           <Property Name="id_med_procedure" Type="int" />
           <Property Name="id_employee" Type="int" />
-          <Property Name="id_report_health" Type="int" />
         </EntityType>
         <EntityType Name="Med_Procedure">
           <Key>
             <PropertyRef Name="id_med_procedure" />
           </Key>
           <Property Name="id_med_procedure" Type="int" Nullable="false" />
-          <Property Name="name_procedure" Type="int" />
+          <Property Name="name_procedure" Type="nvarchar" MaxLength="50" />
           <Property Name="type_procedure" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MedCard">
@@ -134,7 +133,7 @@
           </Key>
           <Property Name="id_medcard" Type="int" Nullable="false" />
           <Property Name="id_animal" Type="int" />
-          <Property Name="date_start_account" Type="int" />
+          <Property Name="date_start_account" Type="date" />
         </EntityType>
         <EntityType Name="Report_Finance">
           <Key>
@@ -158,16 +157,6 @@
           <Property Name="id_service" Type="int" Nullable="false" />
           <Property Name="description_service" Type="nvarchar" MaxLength="50" />
           <Property Name="price" Type="int" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -196,15 +185,17 @@
           <Property Name="number_phone" Type="nvarchar" MaxLength="12" />
           <Property Name="Regular_Customer" Type="bit" />
           <Property Name="id_loyalty_program" Type="int" />
+          <Property Name="kod_friend" Type="int" />
+          <Property Name="card_zoo" Type="int" />
         </EntityType>
-        <Association Name="FK_Cell_Animal">
-          <End Role="Animal" Type="Self.Animal" Multiplicity="1" />
+        <Association Name="FK_Animal_Cell">
           <End Role="Cell" Type="Self.Cell" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Animal">
-              <PropertyRef Name="id_animal" />
+            <Principal Role="Cell">
+              <PropertyRef Name="id_cell" />
             </Principal>
-            <Dependent Role="Cell">
+            <Dependent Role="Animal">
               <PropertyRef Name="id_cell" />
             </Dependent>
           </ReferentialConstraint>
@@ -455,13 +446,12 @@
           <EntitySet Name="Report_Finance" EntityType="Self.Report_Finance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Visitor" EntityType="Self.Visitor" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Cell_Animal" Association="Self.FK_Cell_Animal">
-            <End Role="Animal" EntitySet="Animal" />
+          <AssociationSet Name="FK_Animal_Cell" Association="Self.FK_Animal_Cell">
             <End Role="Cell" EntitySet="Cell" />
+            <End Role="Animal" EntitySet="Animal" />
           </AssociationSet>
           <AssociationSet Name="FK_Custom_Services_Service" Association="Self.FK_Custom_Services_Service">
             <End Role="Service" EntitySet="Service" />
@@ -562,13 +552,12 @@
           <EntitySet Name="Report_Finance" EntityType="Zoo_322Model.Report_Finance" />
           <EntitySet Name="role" EntityType="Zoo_322Model.role" />
           <EntitySet Name="Service" EntityType="Zoo_322Model.Service" />
-          <EntitySet Name="sysdiagrams" EntityType="Zoo_322Model.sysdiagrams" />
           <EntitySet Name="Ticket" EntityType="Zoo_322Model.Ticket" />
           <EntitySet Name="User" EntityType="Zoo_322Model.User" />
           <EntitySet Name="Visitor" EntityType="Zoo_322Model.Visitor" />
-          <AssociationSet Name="FK_Cell_Animal" Association="Zoo_322Model.FK_Cell_Animal">
-            <End Role="Animal" EntitySet="Animal" />
+          <AssociationSet Name="FK_Animal_Cell" Association="Zoo_322Model.FK_Animal_Cell">
             <End Role="Cell" EntitySet="Cell" />
+            <End Role="Animal" EntitySet="Animal" />
           </AssociationSet>
           <AssociationSet Name="FK_List_Family_Tree_Animal" Association="Zoo_322Model.FK_List_Family_Tree_Animal">
             <End Role="Animal" EntitySet="Animal" />
@@ -658,7 +647,7 @@
           <Property Name="id_medcard" Type="Int32" />
           <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="id_cell" Type="Int32" />
-          <NavigationProperty Name="Cell" Relationship="Zoo_322Model.FK_Cell_Animal" FromRole="Animal" ToRole="Cell" />
+          <NavigationProperty Name="Cell" Relationship="Zoo_322Model.FK_Animal_Cell" FromRole="Animal" ToRole="Cell" />
           <NavigationProperty Name="List_Family_Tree" Relationship="Zoo_322Model.FK_List_Family_Tree_Animal" FromRole="Animal" ToRole="List_Family_Tree" />
           <NavigationProperty Name="List_Family_Tree1" Relationship="Zoo_322Model.FK_List_Family_Tree_Animal1" FromRole="Animal" ToRole="List_Family_Tree" />
           <NavigationProperty Name="List_Family_Tree2" Relationship="Zoo_322Model.FK_List_Family_Tree_Animal2" FromRole="Animal" ToRole="List_Family_Tree" />
@@ -669,11 +658,11 @@
             <PropertyRef Name="id_cell" />
           </Key>
           <Property Name="id_cell" Type="Int32" Nullable="false" />
-          <Property Name="name_cell" Type="Int32" />
+          <Property Name="name_cell" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="type_cell" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="square_m" Type="Int32" />
           <Property Name="max_count_animal" Type="Int32" />
-          <NavigationProperty Name="Animal" Relationship="Zoo_322Model.FK_Cell_Animal" FromRole="Cell" ToRole="Animal" />
+          <NavigationProperty Name="Animal" Relationship="Zoo_322Model.FK_Animal_Cell" FromRole="Cell" ToRole="Animal" />
           <NavigationProperty Name="Event" Relationship="Zoo_322Model.FK_Event_Cell" FromRole="Cell" ToRole="Event" />
         </EntityType>
         <EntityType Name="Custom_Services">
@@ -783,7 +772,6 @@
           <Property Name="date_end_heal" Type="DateTime" Precision="0" />
           <Property Name="id_med_procedure" Type="Int32" />
           <Property Name="id_employee" Type="Int32" />
-          <Property Name="id_report_health" Type="Int32" />
           <NavigationProperty Name="Employee" Relationship="Zoo_322Model.FK_Med_History_Employee" FromRole="Med_History" ToRole="Employee" />
           <NavigationProperty Name="Med_Procedure" Relationship="Zoo_322Model.FK_Med_History_Med_Procedure" FromRole="Med_History" ToRole="Med_Procedure" />
           <NavigationProperty Name="MedCard" Relationship="Zoo_322Model.FK_Med_History_MedCard" FromRole="Med_History" ToRole="MedCard" />
@@ -793,7 +781,7 @@
             <PropertyRef Name="id_med_procedure" />
           </Key>
           <Property Name="id_med_procedure" Type="Int32" Nullable="false" />
-          <Property Name="name_procedure" Type="Int32" />
+          <Property Name="name_procedure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="type_procedure" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Med_History" Relationship="Zoo_322Model.FK_Med_History_Med_Procedure" FromRole="Med_Procedure" ToRole="Med_History" />
         </EntityType>
@@ -803,7 +791,7 @@
           </Key>
           <Property Name="id_medcard" Type="Int32" Nullable="false" />
           <Property Name="id_animal" Type="Int32" />
-          <Property Name="date_start_account" Type="Int32" />
+          <Property Name="date_start_account" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Animal" Relationship="Zoo_322Model.FK_MedCard_Animal" FromRole="MedCard" ToRole="Animal" />
           <NavigationProperty Name="Med_History" Relationship="Zoo_322Model.FK_Med_History_MedCard" FromRole="MedCard" ToRole="Med_History" />
         </EntityType>
@@ -832,16 +820,6 @@
           <Property Name="description_service" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Int32" />
           <NavigationProperty Name="Custom_Services" Relationship="Zoo_322Model.FK_Custom_Services_Service" FromRole="Service" ToRole="Custom_Services" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -875,18 +853,20 @@
           <Property Name="number_phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="Regular_Customer" Type="Boolean" />
           <Property Name="id_loyalty_program" Type="Int32" />
+          <Property Name="kod_friend" Type="Int32" />
+          <Property Name="card_zoo" Type="Int32" />
           <NavigationProperty Name="Feedback" Relationship="Zoo_322Model.FK_Feedback_Visitor" FromRole="Visitor" ToRole="Feedback" />
           <NavigationProperty Name="Loyalty_Program" Relationship="Zoo_322Model.FK_Visitor_Loyalty_Program" FromRole="Visitor" ToRole="Loyalty_Program" />
           <NavigationProperty Name="Ticket" Relationship="Zoo_322Model.FK_Ticket_Visitor" FromRole="Visitor" ToRole="Ticket" />
         </EntityType>
-        <Association Name="FK_Cell_Animal">
-          <End Type="Zoo_322Model.Animal" Role="Animal" Multiplicity="1" />
+        <Association Name="FK_Animal_Cell">
           <End Type="Zoo_322Model.Cell" Role="Cell" Multiplicity="0..1" />
+          <End Type="Zoo_322Model.Animal" Role="Animal" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Animal">
-              <PropertyRef Name="id_animal" />
+            <Principal Role="Cell">
+              <PropertyRef Name="id_cell" />
             </Principal>
-            <Dependent Role="Cell">
+            <Dependent Role="Animal">
               <PropertyRef Name="id_cell" />
             </Dependent>
           </ReferentialConstraint>
@@ -1240,7 +1220,6 @@
           <EntitySetMapping Name="Med_History">
             <EntityTypeMapping TypeName="Zoo_322Model.Med_History">
               <MappingFragment StoreEntitySet="Med_History">
-                <ScalarProperty Name="id_report_health" ColumnName="id_report_health" />
                 <ScalarProperty Name="id_employee" ColumnName="id_employee" />
                 <ScalarProperty Name="id_med_procedure" ColumnName="id_med_procedure" />
                 <ScalarProperty Name="date_end_heal" ColumnName="date_end_heal" />
@@ -1296,17 +1275,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Zoo_322Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Ticket">
             <EntityTypeMapping TypeName="Zoo_322Model.Ticket">
               <MappingFragment StoreEntitySet="Ticket">
@@ -1330,6 +1298,8 @@
           <EntitySetMapping Name="Visitor">
             <EntityTypeMapping TypeName="Zoo_322Model.Visitor">
               <MappingFragment StoreEntitySet="Visitor">
+                <ScalarProperty Name="card_zoo" ColumnName="card_zoo" />
+                <ScalarProperty Name="kod_friend" ColumnName="kod_friend" />
                 <ScalarProperty Name="id_loyalty_program" ColumnName="id_loyalty_program" />
                 <ScalarProperty Name="Regular_Customer" ColumnName="Regular_Customer" />
                 <ScalarProperty Name="number_phone" ColumnName="number_phone" />
