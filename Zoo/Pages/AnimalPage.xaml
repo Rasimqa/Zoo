@@ -17,7 +17,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Path=id_animal}" Width="100">ID Животного</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Width="120">Имя животного</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=age}" Width="70">Возвраст</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=gender}" Width="110">Происхождение</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=gender}" Width="125">Происхождение</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=id_medcard}" Width="120">Номер мед.карты</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=type}" Width="100">Тип</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=id_cell}" Width="120">Номер вольера</GridViewColumn>
@@ -67,11 +67,11 @@
                     <GridViewColumn DisplayMemberBinding="{Binding name_family_tree}" Width="120" Header="Имя рода"/>
                     <GridViewColumn DisplayMemberBinding="{Binding count_animal}" Width="150" Header="Количество особей"/>
                     <GridViewColumn DisplayMemberBinding="{Binding date_start_family}" Width="150" Header="Дата возникновения"/>
-                    <GridViewColumn>
+                    <GridViewColumn Width="125">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Width="90" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                    <Button x:Name="btnDeleteHis" Width="90" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -87,11 +87,11 @@
                     <GridViewColumn DisplayMemberBinding="{Binding id_animal_father}" Width="90" Header="ID Отца"/>
                     <GridViewColumn DisplayMemberBinding="{Binding id_animal_mother}" Width="90" Header="ID Матери"/>
                     <GridViewColumn DisplayMemberBinding="{Binding id_animal_child}" Width="90" Header="ID ребенка"/>
-                    <GridViewColumn>
+                    <GridViewColumn Width="125">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                    <Button x:Name="btnDeleteFam" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -110,11 +110,11 @@
                     <GridViewColumn DisplayMemberBinding="{Binding date_end_heal}" Width="75" Header="Дата конца"/>
                     <GridViewColumn DisplayMemberBinding="{Binding id_med_procedure}" Width="75" Header="ID процедуры"/>
                     <GridViewColumn DisplayMemberBinding="{Binding id_employee}" Width="75" Header="ID сотрудника"/>
-                    <GridViewColumn>
+                    <GridViewColumn Width="125">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                    <Button x:Name="btnDeleteMedHis" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -142,12 +142,12 @@
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id_medcard}" Width="100" Header="ID Мед.Карты"/>
                     <GridViewColumn DisplayMemberBinding="{Binding id_animal}" Width="100" Header="ID Животного"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding date_start_account}" Width="150" Header="Дата начала"/>
-                    <GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding date_start_account}" Width="160" Header="Дата начала"/>
+                    <GridViewColumn Width="125">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel x:Name="ButContainer" Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                    <Button x:Name="btnDeleteMedCard" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
@@ -162,11 +162,11 @@
                     <GridViewColumn DisplayMemberBinding="{Binding id_med_procedure}" Width="100" Header="ID Мед.Процедуры"/>
                     <GridViewColumn DisplayMemberBinding="{Binding name_procedure}" Width="100" Header="Название процедурыо"/>
                     <GridViewColumn DisplayMemberBinding="{Binding type_procedure}" Width="150" Header="Тип процедуры"/>
-                    <GridViewColumn>
+                    <GridViewColumn Width="125">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel x:Name="ButContainer" Orientation="Horizontal">
-                                    <Button x:Name="btnDelete" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
+                                    <Button x:Name="btnDeleteMedProc" Width="100" Content="Delete" Click="btnDelete_Click" DataContext="this" Background="White" BorderBrush="Red"/>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

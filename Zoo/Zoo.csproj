@@ -149,6 +149,9 @@
     <Compile Include="Base\Service.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Base\sysdiagrams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Base\Ticket.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\FeedPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -178,6 +185,9 @@
   <ItemGroup>
     <Compile Include="Pages\AnimalPage.xaml.cs">
       <DependentUpon>AnimalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FeedPage.xaml.cs">
+      <DependentUpon>FeedPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>

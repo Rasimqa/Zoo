@@ -8,9 +8,9 @@ using Zoo.Pages;
 
 namespace Zoo.Base
 {
-    public class connect
+    public static class connect
     {
         public static Zoo_322Entities db = new Zoo_322Entities();
-        public static RegPage user;
+        public static User user;
     }
 }

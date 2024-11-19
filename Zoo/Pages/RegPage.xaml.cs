@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Zoo.Base;
 using Zoo;
+using System.Runtime.ConstrainedExecution;
+using Zoo.Pages;
 
 namespace Zoo.Pages
 {
@@ -21,18 +23,19 @@ namespace Zoo.Pages
     /// Логика взаимодействия для RegPage.xaml
     /// </summary>
     public partial class RegPage : Page
-    {
+    {        
         public static User user;  
         static MainWindow _mainWindow;
+        
         public RegPage(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
             InitializeComponent();
         }
 
-        private void Button_Registration(object sender, RoutedEventArgs e)
+        private async void Button_Registration(object sender, RoutedEventArgs e)
         {
-
+            User newUser;
             string login_user = txtLogin.Text;
             string password = txtPass.Text;
             // Проверяем, есть ли уже пользователь с таким логином в базе данных
@@ -42,7 +45,10 @@ namespace Zoo.Pages
                 if (login_sql.password == password)
                 {
                     // Пароль верный - переходим в профиль
-                    _mainWindow.MainFrame.NavigationService.Navigate(new ProfilePage(_mainWindow));
+                    _mainWindow.MainFrame.NavigationService.Navigate(new FeedPage(_mainWindow));
+                    login_user = connect.user.Login1.login1;
+                    newUser = connect.user
+                    connect.user = newUser;
                 }
                 else
                 {
@@ -57,22 +63,22 @@ namespace Zoo.Pages
                 {
                     login1 = login_user,
                     password = password
-                };          
+                };
+
                 connect.db.Login.Add(newLogin);
-                connect.db.SaveChanges();
-                var newUser = new User()
+                await connect.db.SaveChangesAsync();
+                newUser = new User()
                 {
                     name = txtName.Text,
                     login = login_user,
                     id_role = 2
                 };
                 connect.db.User.Add(newUser);
-                connect.db.SaveChanges();
+                await connect.db.SaveChangesAsync();
                 MessageBox.Show("Пользователь зарегистрирован");
+                connect.user = newUser;
                 _mainWindow.MainFrame.NavigationService.Navigate(new ProfilePage(_mainWindow));
             }
-
-
         }
     }
 }

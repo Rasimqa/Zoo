@@ -73,9 +73,18 @@ namespace Zoo
             {
                 MainFrame.NavigationService.Navigate(new RegPage(this));
             }
-            
+            else if (a == 4)
+            {
+                MainFrame.NavigationService.Navigate(new FeedPage(this));
+            }
         }
 
-   
+        private void Button_Feedback(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new FeedPage(this));
+            a = 4;
+        }
+
+
     }
 }

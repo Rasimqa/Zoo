@@ -25,7 +25,7 @@
             </Button.BorderBrush>
         </Button>
         <StackPanel HorizontalAlignment="Left" Height="726" Margin="1050,58,0,0" VerticalAlignment="Top" Width="180" Background="#FF3D6338" x:Name="Hamburger">
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile" Click="Button_Profile">
+            <ui:Button Content="Профиль" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile" Click="Button_Profile">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <LinearGradientBrush.RelativeTransform>
@@ -36,7 +36,7 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Animal" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonPet" Click="ButtonAnimal_Click">
+            <ui:Button Content="Животные" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonPet" Click="ButtonAnimal_Click">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>
@@ -47,7 +47,7 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать1">
+            <ui:Button Content="Отзыв" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonFeedback" Click="Button_Feedback">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>
@@ -58,7 +58,7 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать2">
+            <ui:Button Content="Заказ билетов" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать2">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>
@@ -69,7 +69,7 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать3">
+            <ui:Button Content="Мероприятия" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать3">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>
@@ -80,7 +80,7 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать4">
+            <ui:Button Content="Отчет" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать4">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>
@@ -91,29 +91,7 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать5">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать6">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать7">
+            <ui:Button Content="Админ панель" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать7">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>
@@ -135,62 +113,7 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать9">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать10">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать11">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать12">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать13">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать14">
+            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать5" Visibility="Hidden">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>
