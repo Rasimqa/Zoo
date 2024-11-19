@@ -16,6 +16,7 @@ using Zoo.Base;
 using Zoo;
 using System.Runtime.ConstrainedExecution;
 using Zoo.Pages;
+using System.Xml.Linq;
 
 namespace Zoo.Pages
 {
@@ -26,7 +27,6 @@ namespace Zoo.Pages
     {        
         public static User user;  
         static MainWindow _mainWindow;
-        
         public RegPage(MainWindow mainWindow)
         {
             _mainWindow = mainWindow;
@@ -38,6 +38,7 @@ namespace Zoo.Pages
             User newUser;
             string login_user = txtLogin.Text;
             string password = txtPass.Text;
+            
             // Проверяем, есть ли уже пользователь с таким логином в базе данных
             var login_sql = connect.db.Login.FirstOrDefault(id => id.login1 == login_user);
             if (login_sql != null)
@@ -45,10 +46,14 @@ namespace Zoo.Pages
                 if (login_sql.password == password)
                 {
                     // Пароль верный - переходим в профиль
-                    _mainWindow.MainFrame.NavigationService.Navigate(new FeedPage(_mainWindow));
-                    login_user = connect.user.Login1.login1;
-                    newUser = connect.user
+                    _mainWindow.MainFrame.NavigationService.Navigate(new ProfilePage(_mainWindow));
+                    newUser = new User()
+                    {
+                        login = login_user,
+                    };
                     connect.user = newUser;
+                    connect.db.User.Add(newUser);
+                    //txtName.Text = connect.user.name;
                 }
                 else
                 {

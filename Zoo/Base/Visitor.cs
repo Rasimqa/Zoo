@@ -22,7 +22,7 @@ namespace Zoo.Base
         }
     
         public int id_visitor { get; set; }
-        public Nullable<int> full_name { get; set; }
+        public string full_name { get; set; }
         public string number_phone { get; set; }
         public Nullable<bool> Regular_Customer { get; set; }
         public Nullable<int> id_loyalty_program { get; set; }

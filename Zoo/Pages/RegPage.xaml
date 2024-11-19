@@ -8,13 +8,13 @@
       mc:Ignorable="d" Background="white"
       Title="RegPage" Width="1230" Height="800">
     <Grid>
-        <ui:TextBox HorizontalAlignment="Left" Height="46" Margin="367,220,0,0" TextWrapping="Wrap" Text="Введите логин" VerticalAlignment="Top" Width="500" FontSize="25" BorderBrush="Black" TextAlignment="Center" x:Name="txtLogin"/>
+        <ui:TextBox HorizontalAlignment="Left" Height="46" Margin="367,220,0,0" TextWrapping="Wrap" Text="Введите логин" VerticalAlignment="Top" Width="500" FontSize="25" BorderBrush="Black" TextAlignment="Center" x:Name="txtLogin" MinHeight="46" MinWidth="500" MaxWidth="500" MaxHeight="46" HorizontalContentAlignment="Left"/>
         <ui:TextBlock HorizontalAlignment="Left" Margin="367,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30" Width="158" Height="40">
             <Run Language="ru-ru" Text="Логин"/>
             <LineBreak/>
             <Run Language="ru-ru"/>
         </ui:TextBlock>
-        <ui:TextBox HorizontalAlignment="Left" Height="46" Margin="367,417,0,0" TextWrapping="Wrap" Text="Введите пароль" VerticalAlignment="Top" Width="500" FontSize="25" BorderBrush="Black" TextAlignment="Center" x:Name="txtPass"/>
+        <ui:TextBox HorizontalAlignment="Left" Height="46" Margin="367,417,0,0" TextWrapping="Wrap" Text="Введите пароль" VerticalAlignment="Top" Width="500" FontSize="25" BorderBrush="Black" TextAlignment="Center" x:Name="txtPass" MinHeight="46" MinWidth="500" MaxWidth="500" MaxHeight="46" HorizontalContentAlignment="Left"/>
         <ui:TextBlock HorizontalAlignment="Left" Margin="367,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30">
             <Run Language="ru-ru" Text="Пароль"/>
         </ui:TextBlock>
@@ -29,7 +29,7 @@
                 </LinearGradientBrush>
             </ui:Button.BorderBrush>
         </ui:Button>
-        <ui:TextBox HorizontalAlignment="Left" Height="46" Margin="367,316,0,0" TextWrapping="Wrap" Text="Введите имя" VerticalAlignment="Top" Width="500" FontSize="25" BorderBrush="Black" TextAlignment="Center" x:Name="txtName"/>
+        <ui:TextBox HorizontalAlignment="Left" Height="46" Margin="367,316,0,0" TextWrapping="Wrap" Text="Введите имя" VerticalAlignment="Top" Width="500" FontSize="25" BorderBrush="Black" TextAlignment="Center" x:Name="txtName" MinWidth="500" MinHeight="46" MaxWidth="500" MaxHeight="46" HorizontalContentAlignment="Left"/>
         <ui:TextBlock HorizontalAlignment="Left" Margin="367,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30" Width="158" Height="40">
             <Run Language="ru-ru" Text="Имя"/>
         </ui:TextBlock>

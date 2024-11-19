@@ -11,6 +11,9 @@
     <Grid>
         <ui:TextBlock HorizontalAlignment="Left" Margin="522,0,0,0" TextWrapping="Wrap" Text="Отзывы" VerticalAlignment="Top" FontSize="30"/>
         <ui:TextBlock HorizontalAlignment="Left" Margin="105,108,0,0" TextWrapping="Wrap" Text="Nick_Name" VerticalAlignment="Top" FontSize="18" x:Name="txtUserName"/>
+        <ui:TextBox x:Name="txtFend" HorizontalAlignment="Left" Height="256" Margin="105,144,0,0" TextWrapping="Wrap" Text="Введите ваш отзыв" VerticalAlignment="Top" Width="600" Grid.IsSharedSizeScope="True" MinWidth="600" MinHeight="256" MaxWidth="600" MaxHeight="256"/>
+        <ui:Button Content="Отправить" Height="40" Margin="565,410,0,0" VerticalAlignment="Top" Width="140" x:Name="ButtonSend" Click="Button_Send"/>
+        <ui:RatingControl x:Name="Score" Content="Оценка" Height="41" Margin="398,410,0,0" VerticalAlignment="Top" Width="162"/>
 
 
     </Grid>

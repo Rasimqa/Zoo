@@ -59,6 +59,11 @@ namespace Zoo
             a = 1;
         }
 
+        private void Button_Feedback(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new FeedPage(this));
+            a = 4;
+        }
         private void Button_Click_Restart(object sender, RoutedEventArgs e)
         {
             if (a == 1)
@@ -79,11 +84,7 @@ namespace Zoo
             }
         }
 
-        private void Button_Feedback(object sender, RoutedEventArgs e)
-        {
-            MainFrame.NavigationService.Navigate(new FeedPage(this));
-            a = 4;
-        }
+       
 
 
     }

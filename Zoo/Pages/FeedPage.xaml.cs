@@ -17,24 +17,38 @@ using QRCoder;
 using System.Drawing;
 using System.IO;
 using Zoo.Pages;
+using System.Xml.Linq;
+using Wpf.Ui.Controls;
 
 namespace Zoo.Pages
 {
     public partial class FeedPage : Page
     {
         string loginuser;
-        static RegPage _regpage;
         //public static User user;
         static MainWindow _mainWindow;
-        public FeedPage(MainWindow mainWindow, RegPage regpage)
+        public FeedPage(MainWindow mainWindow)
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            _regpage = regpage;
-            loginuser = regpage.txtLogin.Text;
-            txtUserName.Text = loginuser;
+            //loginuser = connect.user.Login1.login1;
+            txtUserName.Text = loginuser; 
         }
 
-
+        private void Button_Send(object sender, RoutedEventArgs e)
+        {
+            Feedback newFeed;
+            string description = txtFend.Text;
+            string fname = txtUserName.Text;
+            decimal score = Convert.ToDecimal(Score.Value);
+            newFeed = new Feedback()
+            {
+                description = description,
+                id_visitor = null,
+                score = score
+            };
+            connect.db.Feedback.Add(newFeed);
+            connect.db.SaveChangesAsync();
+        }
     }
 }

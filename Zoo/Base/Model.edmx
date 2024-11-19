@@ -61,7 +61,7 @@
           <Property Name="number_feedback" Type="int" Nullable="false" />
           <Property Name="id_visitor" Type="int" />
           <Property Name="description" Type="nvarchar" MaxLength="300" />
-          <Property Name="score" Type="int" />
+          <Property Name="score" Type="decimal" Precision="1" Scale="1" />
         </EntityType>
         <EntityType Name="History_Family_Tree">
           <Key>
@@ -191,7 +191,7 @@
             <PropertyRef Name="id_visitor" />
           </Key>
           <Property Name="id_visitor" Type="int" Nullable="false" />
-          <Property Name="full_name" Type="int" />
+          <Property Name="full_name" Type="nvarchar" MaxLength="50" />
           <Property Name="number_phone" Type="nvarchar" MaxLength="12" />
           <Property Name="Regular_Customer" Type="bit" />
           <Property Name="id_loyalty_program" Type="int" />
@@ -717,7 +717,7 @@
           <Property Name="number_feedback" Type="Int32" Nullable="false" />
           <Property Name="id_visitor" Type="Int32" />
           <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="score" Type="Int32" />
+          <Property Name="score" Type="Decimal" Precision="1" Scale="1" />
           <NavigationProperty Name="Visitor" Relationship="Zoo_322Model.FK_Feedback_Visitor" FromRole="Feedback" ToRole="Visitor" />
         </EntityType>
         <EntityType Name="History_Family_Tree">
@@ -871,7 +871,7 @@
             <PropertyRef Name="id_visitor" />
           </Key>
           <Property Name="id_visitor" Type="Int32" Nullable="false" />
-          <Property Name="full_name" Type="Int32" />
+          <Property Name="full_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="number_phone" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="Regular_Customer" Type="Boolean" />
           <Property Name="id_loyalty_program" Type="Int32" />
