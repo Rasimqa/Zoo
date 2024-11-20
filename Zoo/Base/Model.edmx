@@ -61,7 +61,7 @@
           <Property Name="number_feedback" Type="int" Nullable="false" />
           <Property Name="id_visitor" Type="int" />
           <Property Name="description" Type="nvarchar" MaxLength="300" />
-          <Property Name="score" Type="decimal" Precision="1" Scale="1" />
+          <Property Name="score" Type="int" />
         </EntityType>
         <EntityType Name="History_Family_Tree">
           <Key>
@@ -717,7 +717,7 @@
           <Property Name="number_feedback" Type="Int32" Nullable="false" />
           <Property Name="id_visitor" Type="Int32" />
           <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="score" Type="Decimal" Precision="1" Scale="1" />
+          <Property Name="score" Type="Int32" />
           <NavigationProperty Name="Visitor" Relationship="Zoo_322Model.FK_Feedback_Visitor" FromRole="Feedback" ToRole="Visitor" />
         </EntityType>
         <EntityType Name="History_Family_Tree">

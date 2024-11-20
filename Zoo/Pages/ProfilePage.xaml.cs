@@ -25,5 +25,10 @@ namespace Zoo.Pages
             _mainWindow = mainWindow;
             InitializeComponent();
         }
+
+        private void Button_Reg(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

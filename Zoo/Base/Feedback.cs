@@ -17,7 +17,7 @@ namespace Zoo.Base
         public int number_feedback { get; set; }
         public Nullable<int> id_visitor { get; set; }
         public string description { get; set; }
-        public Nullable<decimal> score { get; set; }
+        public Nullable<int> score { get; set; }
     
         public virtual Visitor Visitor { get; set; }
     }

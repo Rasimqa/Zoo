@@ -10,6 +10,8 @@
 
     <Grid>
         <ui:TextBlock HorizontalAlignment="Left" Margin="522,0,0,0" TextWrapping="Wrap" Text="Профиль" VerticalAlignment="Top" FontSize="30"/>
+        <ui:Button Content="Регистрация" Height="40" Margin="153,706,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonReg" Click="Button_Reg"/>
+        <ui:TextBlock HorizontalAlignment="Left" Margin="50,81,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="24" Width="94" FontSize="20"/>
 
     </Grid>
 </Page>

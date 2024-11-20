@@ -25,6 +25,7 @@ namespace Zoo.Pages
     public partial class FeedPage : Page
     {
         string loginuser;
+        int idvisit;
         //public static User user;
         static MainWindow _mainWindow;
         public FeedPage(MainWindow mainWindow)
@@ -32,7 +33,7 @@ namespace Zoo.Pages
             InitializeComponent();
             _mainWindow = mainWindow;
             //loginuser = connect.user.Login1.login1;
-            txtUserName.Text = loginuser; 
+            txtUserName.Text = loginuser;    
         }
 
         private void Button_Send(object sender, RoutedEventArgs e)
@@ -40,7 +41,7 @@ namespace Zoo.Pages
             Feedback newFeed;
             string description = txtFend.Text;
             string fname = txtUserName.Text;
-            decimal score = Convert.ToDecimal(Score.Value);
+            int score = Convert.ToInt16(Score.Value);
             newFeed = new Feedback()
             {
                 description = description,
@@ -48,7 +49,7 @@ namespace Zoo.Pages
                 score = score
             };
             connect.db.Feedback.Add(newFeed);
-            connect.db.SaveChangesAsync();
+            connect.db.SaveChanges();
         }
     }
 }
