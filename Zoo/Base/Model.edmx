@@ -58,7 +58,7 @@
           <Key>
             <PropertyRef Name="number_feedback" />
           </Key>
-          <Property Name="number_feedback" Type="int" Nullable="false" />
+          <Property Name="number_feedback" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="id_visitor" Type="int" />
           <Property Name="description" Type="nvarchar" MaxLength="300" />
           <Property Name="score" Type="int" />
@@ -714,7 +714,7 @@
           <Key>
             <PropertyRef Name="number_feedback" />
           </Key>
-          <Property Name="number_feedback" Type="Int32" Nullable="false" />
+          <Property Name="number_feedback" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="id_visitor" Type="Int32" />
           <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="score" Type="Int32" />

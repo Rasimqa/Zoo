@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Zoo.Base;
 using Zoo.Pages;
 
 
@@ -29,6 +30,7 @@ namespace Zoo
             MainFrame.NavigationService.Navigate(new RegPage(this));
         }
         int a = 0;
+        User newUser;
         private void HamButton(object sender, RoutedEventArgs e)
         {
             if (Hamburger.Visibility == Visibility.Visible)
@@ -49,7 +51,9 @@ namespace Zoo
 
         private void Button_Profile(object sender, RoutedEventArgs e)
         {
-            MainFrame.NavigationService.Navigate(new ProfilePage(this));
+            connect.user = newUser;
+          
+            MainFrame.NavigationService.Navigate(new ProfilePage(this, newUser));
             a = 2;
         }
 
@@ -72,7 +76,8 @@ namespace Zoo
             }
             else if (a == 2)
             {
-                MainFrame.NavigationService.Navigate(new ProfilePage(this));
+                connect.user = newUser;
+                MainFrame.NavigationService.Navigate(new ProfilePage(this, newUser));
             }
             else if (a == 3)
             {

@@ -10,8 +10,12 @@
 
     <Grid>
         <ui:TextBlock HorizontalAlignment="Left" Margin="522,0,0,0" TextWrapping="Wrap" Text="Профиль" VerticalAlignment="Top" FontSize="30"/>
-        <ui:Button Content="Регистрация" Height="40" Margin="153,706,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonReg" Click="Button_Reg"/>
-        <ui:TextBlock HorizontalAlignment="Left" Margin="50,81,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="24" Width="94" FontSize="20"/>
+        <ui:Button Content="Редактировать" Height="40" Margin="153,706,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonReg" Click="Button_Reg"/>
+        <ui:TextBlock HorizontalAlignment="Left" Margin="125,63,0,0" TextWrapping="Wrap" Text="Личные данные" VerticalAlignment="Top" Height="33" Width="179" FontSize="24"/>
+        <TextBox x:Name="txtFullName" HorizontalAlignment="Left" Margin="120,148,0,0" TextWrapping="Wrap" Text="ФИО" VerticalAlignment="Top" MaxHeight="42" MaxWidth="345" FontSize="18" MinWidth="345" MinHeight="42" Height="42" Width="345" />
+        <TextBox x:Name="txtPhone" HorizontalAlignment="Left" Margin="120,223,0,0" TextWrapping="Wrap" Text="Номер телефона" VerticalAlignment="Top" MaxHeight="42" MaxWidth="345" FontSize="18" MinWidth="345" MinHeight="42" Height="42" Width="345" />
+        <TextBox x:Name="txtPosition" HorizontalAlignment="Left" Margin="120,298,0,0" TextWrapping="Wrap" Text="Должность" VerticalAlignment="Top" MaxHeight="42" MaxWidth="345" FontSize="18" MinWidth="345" MinHeight="42" Height="42" Width="345"  />
+        <TextBlock x:Name="txtRole" HorizontalAlignment="Left" Height="28" Margin="122,102,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="116"/>
 
     </Grid>
 </Page>
