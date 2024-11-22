@@ -93,7 +93,15 @@ namespace Zoo.Pages
         {
             _mainWindow = mainWindow;
             InitializeComponent();
-            idrole = Convert.ToInt16(user.id_role);
+
+            if (user == null)
+            {
+                MessageBox.Show("Вы не зарегестрированы!");
+            }
+            else
+            {
+                idrole = Convert.ToInt16(user.id_role);
+            }
             QrCodeImage.Source = GenerateQrCodeBitmapImage($"Profile: {idrole}");
 
 
@@ -105,8 +113,9 @@ namespace Zoo.Pages
                 //    txtPhone.Text = newVisitor.number_phone;
                 //}
 
-                txtRole.Text = $"Роль: {user.id_role}"; // Используем user.id_role напрямую
 
+                txtRole.Text = $"Роль: {user.id_role}"; // Используем user.id_role напрямую
+                
 
                 if (user.id_role == 2)
                 {

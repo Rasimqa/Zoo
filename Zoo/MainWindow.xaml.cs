@@ -32,7 +32,7 @@ namespace Zoo
             MainFrame.NavigationService.Navigate(new RegPage(this));
         }
         int a = 0;
-        User newUser;
+        User newUser; 
         private void HamButton(object sender, RoutedEventArgs e)
         {
             if (Hamburger.Visibility == Visibility.Visible)
@@ -41,7 +41,9 @@ namespace Zoo
                 Hamburger.Visibility = Visibility.Hidden;
                 Rest.Visibility = Visibility.Hidden;
                 Button_Refresh.Visibility = Visibility.Hidden;
+                Button_Closes.Visibility = Visibility.Hidden;
                 HambButton.Margin = new Thickness(1861, 10, 0, 0);
+                Button_Closes.Margin = new Thickness(1758, 10, 0, 0);
             }
             else
             {
@@ -49,7 +51,9 @@ namespace Zoo
                 Hamburger.Visibility = Visibility.Visible;
                 Rest.Visibility = Visibility.Visible;
                 Button_Refresh.Visibility = Visibility.Visible;
+                Button_Closes.Visibility = Visibility.Visible;
                 HambButton.Margin = new Thickness(1758, 10, 0, 0);
+                Button_Closes.Margin = new Thickness(1861, 10, 0, 0);
             }
         }
 
@@ -93,8 +97,9 @@ namespace Zoo
             }
         }
 
-       
-
-
+        private void Button_Click_Closes(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }

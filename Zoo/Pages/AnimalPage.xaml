@@ -34,7 +34,7 @@
             </ui:ListView.View>
         </ui:ListView>
         <Rectangle HorizontalAlignment="Left" Height="252" Margin="598,0,0,0" VerticalAlignment="Center" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect" Visibility="Hidden"/>
-        <StackPanel HorizontalAlignment="Left" Height="253" Margin="748,0,0,0" VerticalAlignment="Center" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel" Visibility="Visible" >
+        <StackPanel HorizontalAlignment="Left" Height="253" Margin="748,0,0,0" VerticalAlignment="Center" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel" Visibility="Hidden" >
             <TextBox TextWrapping="Wrap" Text="ID Животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idanimal" Visibility="Visible" />
             <TextBox TextWrapping="Wrap" Text="Имя животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_name" Visibility="Visible"/>
             <TextBox TextWrapping="Wrap" Text="Возвраст" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_age" Visibility="Visible"/>
@@ -137,6 +137,7 @@
         <ui:Button Content="Мед.История" Height="40" Margin="1062,877,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_Med_His" x:Name="ButtonMedHis" Visibility="Hidden"/>
         <ui:Button Content="Мед.Карта" Height="40" Margin="926,877,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedCard" x:Name="ButtonMedCard" Visibility="Hidden"/>
         <ui:Button Content="Мед.Процедуры" Height="40" Margin="791,877,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedProc" x:Name="ButtonMedProc" Visibility="Hidden"/>
+        <ui:Button Content="История рода" Height="40" Margin="656,877,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_HisTree" x:Name="ButtonHisTree" Visibility="Hidden"/>
         <ui:ListView x:Name="ListMedCard" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="384,226,429,253" Visibility="Hidden">
             <ui:ListView.View>
                 <GridView>
@@ -174,7 +175,32 @@
                 </GridView>
             </ui:ListView.View>
         </ui:ListView>
-
+        <Rectangle HorizontalAlignment="Left" Height="292" Margin="912,454,0,0" VerticalAlignment="Top" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect_Edit_Oth" Visibility="Hidden"/>
+        <StackPanel HorizontalAlignment="Left" Height="292" Margin="1062,454,0,0" VerticalAlignment="Top" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel_Oth" Visibility="Hidden" >
+            <TextBox TextWrapping="Wrap" Text="ID Животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_1" Visibility="Visible" />
+            <TextBox TextWrapping="Wrap" Text="Имя животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_2" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Возвраст" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_3" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Пол" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_4" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Номер мед.карты" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_5" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Тип" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_6" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Номер вольера" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_7" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Номер вольера" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_8" Visibility="Visible"/>
+        </StackPanel>
+        <ui:Button Content="Добавить" Height="42" Margin="936,514,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonAdd_Oth" Click="Button_Add_Oth" Visibility="Hidden" />
+        <ui:Button Content="Изменить" Height="40" Margin="936,580,0,0" Width="112" BorderBrush="#FF479E3B" VerticalAlignment="Top" x:Name="ButtonEdit_Oth" Click="Button_Edit_Oth" Visibility="Hidden"/>
+        <ui:Button Content="Удалить" Height="40" Margin="936,640,0,0" Width="112" VerticalAlignment="Top" BorderBrush="#FF479E3B" x:Name="ButtonDelete_Oth" Click="Button_Delete_Oth" Visibility="Hidden"/>
+        <Button Content="✕" Margin="936,470,0,0" VerticalAlignment="Top" Width="36" Height="32" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose_Oth" Visibility="Hidden" Click="Button_Click_Close_Oth" FontSize="7" Background="#B3FFFFFF">
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                    <LinearGradientBrush.RelativeTransform>
+                        <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#29000000" Offset="0.33"/>
+                    <GradientStop Color="#0F3FED27" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+        </Button>
+        <ui:Button Content="Редактирование" Height="42" Margin="1510,580,0,0" VerticalAlignment="Top" Width="136" BorderBrush="#FF479E3B" x:Name="ButtonRedOth" Click="ButtonRed_Oth" Visibility="Hidden" />
 
     </Grid>
 </Page>

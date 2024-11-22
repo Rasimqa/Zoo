@@ -11,7 +11,7 @@
 
         <Frame x:Name="MainFrame" Margin="10,0,-1,0"/>
 
-        <Rectangle HorizontalAlignment="Left" Height="67" Margin="1741,0,0,0" VerticalAlignment="Top" Width="180" Fill="#FF3D6338" x:Name="Rest"/>
+        <Rectangle HorizontalAlignment="Left" Height="67" Margin="1741,0,0,0" VerticalAlignment="Top" Width="180" Fill="#FF3D6338" x:Name="Rest" Visibility="Hidden"/>
 
         <Button Content="☰" Margin="1861,10,0,0" VerticalAlignment="Top" Height="36" Foreground="#E4FF0000" Background="White" x:Name="HambButton" Click="HamButton" >
             <Button.BorderBrush>
@@ -24,7 +24,7 @@
                 </LinearGradientBrush>
             </Button.BorderBrush>
         </Button>
-        <StackPanel HorizontalAlignment="Left" Height="1018" Margin="1741,58,0,0" VerticalAlignment="Top" Width="180" Background="#FF3D6338" x:Name="Hamburger">
+        <StackPanel HorizontalAlignment="Left" Height="1018" Margin="1741,58,0,0" VerticalAlignment="Top" Width="180" Background="#FF3D6338" x:Name="Hamburger" Visibility="Hidden">
             <ui:Button Content="Профиль" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile" Click="Button_Profile">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
@@ -125,7 +125,17 @@
                 </ui:Button.BorderBrush>
             </ui:Button>
         </StackPanel>
-        <Button x:Name="Button_Refresh" Content="⟳" Height="35" Margin="1810,11,0,0" VerticalAlignment="Top" Width="35" Background="White" BorderBrush="#FF008D13" Click="Button_Click_Restart" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="Button_Refresh" Content="⟳" Height="35" Margin="1810,11,0,0" VerticalAlignment="Top" Width="35" Background="White" BorderBrush="#FF008D13" Click="Button_Click_Restart" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.008"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="Button_Closes" Content="✕" Height="35" Margin="1759,11,0,0" VerticalAlignment="Top" Width="35" Background="White" BorderBrush="#FF008D13" Click="Button_Click_Closes" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

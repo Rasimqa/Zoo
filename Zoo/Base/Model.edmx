@@ -552,7 +552,6 @@
           <EntitySet Name="Custom_Services" EntityType="Zoo_322Model.Custom_Services" />
           <EntitySet Name="Employee" EntityType="Zoo_322Model.Employee" />
           <EntitySet Name="Event" EntityType="Zoo_322Model.Event" />
-          <EntitySet Name="Feedback" EntityType="Zoo_322Model.Feedback" />
           <EntitySet Name="History_Family_Tree" EntityType="Zoo_322Model.History_Family_Tree" />
           <EntitySet Name="History_Traffic" EntityType="Zoo_322Model.History_Traffic" />
           <EntitySet Name="List_Family_Tree" EntityType="Zoo_322Model.List_Family_Tree" />
@@ -564,6 +563,7 @@
           <EntitySet Name="Report_Finance" EntityType="Zoo_322Model.Report_Finance" />
           <EntitySet Name="role" EntityType="Zoo_322Model.role" />
           <EntitySet Name="Service" EntityType="Zoo_322Model.Service" />
+          <EntitySet Name="sysdiagrams" EntityType="Zoo_322Model.sysdiagrams" />
           <EntitySet Name="Ticket" EntityType="Zoo_322Model.Ticket" />
           <EntitySet Name="User" EntityType="Zoo_322Model.User" />
           <EntitySet Name="Visitor" EntityType="Zoo_322Model.Visitor" />
@@ -611,10 +611,6 @@
             <End Role="Event" EntitySet="Event" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
-          <AssociationSet Name="FK_Feedback_Visitor" Association="Zoo_322Model.FK_Feedback_Visitor">
-            <End Role="Visitor" EntitySet="Visitor" />
-            <End Role="Feedback" EntitySet="Feedback" />
-          </AssociationSet>
           <AssociationSet Name="FK_List_Family_Tree_History_Family_Tree" Association="Zoo_322Model.FK_List_Family_Tree_History_Family_Tree">
             <End Role="History_Family_Tree" EntitySet="History_Family_Tree" />
             <End Role="List_Family_Tree" EntitySet="List_Family_Tree" />
@@ -647,7 +643,11 @@
             <End Role="Visitor" EntitySet="Visitor" />
             <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="Zoo_322Model.sysdiagrams" />
+          <EntitySet Name="Feedback" EntityType="Zoo_322Model.Feedback" />
+          <AssociationSet Name="FK_Feedback_Visitor" Association="Zoo_322Model.FK_Feedback_Visitor">
+            <End Role="Visitor" EntitySet="Visitor" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Animal">
           <Key>
@@ -710,17 +710,6 @@
           <NavigationProperty Name="Cell" Relationship="Zoo_322Model.FK_Event_Cell" FromRole="Event" ToRole="Cell" />
           <NavigationProperty Name="History_Traffic" Relationship="Zoo_322Model.FK_History_Traffic_Event" FromRole="Event" ToRole="History_Traffic" />
           <NavigationProperty Name="Ticket" Relationship="Zoo_322Model.FK_Ticket_Event" FromRole="Event" ToRole="Ticket" />
-        </EntityType>
-        <EntityType Name="Feedback">
-          <Key>
-            <PropertyRef Name="number_feedback" />
-          </Key>
-          <Property Name="number_feedback" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="id_visitor" Type="Int32" />
-          <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="score" Type="Int32" />
-          <NavigationProperty Name="Visitor" Relationship="Zoo_322Model.FK_Feedback_Visitor" FromRole="Feedback" ToRole="Visitor" />
-          <Property Name="date_feed" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="History_Family_Tree">
           <Key>
@@ -835,6 +824,16 @@
           <Property Name="price" Type="Int32" />
           <NavigationProperty Name="Custom_Services" Relationship="Zoo_322Model.FK_Custom_Services_Service" FromRole="Service" ToRole="Custom_Services" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <EntityType Name="Ticket">
           <Key>
             <PropertyRef Name="id_ticket" />
@@ -869,9 +868,9 @@
           <Property Name="id_loyalty_program" Type="Int32" />
           <Property Name="kod_friend" Type="Int32" />
           <Property Name="card_zoo" Type="Int32" />
-          <NavigationProperty Name="Feedback" Relationship="Zoo_322Model.FK_Feedback_Visitor" FromRole="Visitor" ToRole="Feedback" />
           <NavigationProperty Name="Loyalty_Program" Relationship="Zoo_322Model.FK_Visitor_Loyalty_Program" FromRole="Visitor" ToRole="Loyalty_Program" />
           <NavigationProperty Name="Ticket" Relationship="Zoo_322Model.FK_Ticket_Visitor" FromRole="Visitor" ToRole="Ticket" />
+          <NavigationProperty Name="Feedback" Relationship="Zoo_322Model.FK_Feedback_Visitor" FromRole="Visitor" ToRole="Feedback" />
         </EntityType>
         <Association Name="FK_Animal_Cell">
           <End Type="Zoo_322Model.Cell" Role="Cell" Multiplicity="0..1" />
@@ -1005,18 +1004,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Feedback_Visitor">
-          <End Type="Zoo_322Model.Visitor" Role="Visitor" Multiplicity="0..1" />
-          <End Type="Zoo_322Model.Feedback" Role="Feedback" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Visitor">
-              <PropertyRef Name="id_visitor" />
-            </Principal>
-            <Dependent Role="Feedback">
-              <PropertyRef Name="id_visitor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_List_Family_Tree_History_Family_Tree">
           <End Type="Zoo_322Model.History_Family_Tree" Role="History_Family_Tree" Multiplicity="0..1" />
           <End Type="Zoo_322Model.List_Family_Tree" Role="List_Family_Tree" Multiplicity="*" />
@@ -1113,16 +1100,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="sysdiagrams">
+        <EntityType Name="Feedback">
           <Key>
-            <PropertyRef Name="diagram_id" />
+            <PropertyRef Name="number_feedback" />
           </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="number_feedback" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_visitor" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="score" Type="Int32" />
+          <Property Name="date_feed" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Visitor" Relationship="Zoo_322Model.FK_Feedback_Visitor" FromRole="Feedback" ToRole="Visitor" />
         </EntityType>
+        <Association Name="FK_Feedback_Visitor">
+          <End Type="Zoo_322Model.Visitor" Role="Visitor" Multiplicity="0..1" />
+          <End Type="Zoo_322Model.Feedback" Role="Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visitor">
+              <PropertyRef Name="id_visitor" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="id_visitor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1180,17 +1180,6 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="name_event" ColumnName="name_event" />
                 <ScalarProperty Name="id_event" ColumnName="id_event" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Feedback">
-            <EntityTypeMapping TypeName="Zoo_322Model.Feedback">
-              <MappingFragment StoreEntitySet="Feedback">
-                <ScalarProperty Name="date_feed" ColumnName="date_feed" />
-                <ScalarProperty Name="score" ColumnName="score" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="id_visitor" ColumnName="id_visitor" />
-                <ScalarProperty Name="number_feedback" ColumnName="number_feedback" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1300,6 +1289,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Zoo_322Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Ticket">
             <EntityTypeMapping TypeName="Zoo_322Model.Ticket">
               <MappingFragment StoreEntitySet="Ticket">
@@ -1333,14 +1333,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Zoo_322Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
+          <EntitySetMapping Name="Feedback">
+            <EntityTypeMapping TypeName="Zoo_322Model.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="date_feed" ColumnName="date_feed" />
+                <ScalarProperty Name="score" ColumnName="score" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id_visitor" ColumnName="id_visitor" />
+                <ScalarProperty Name="number_feedback" ColumnName="number_feedback" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
