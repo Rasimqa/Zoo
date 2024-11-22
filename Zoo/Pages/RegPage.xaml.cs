@@ -85,6 +85,39 @@ namespace Zoo.Pages
                 MessageBox.Show($"Произошла ошибка: {ex.Message}");
             }
         }
+
+
+
+        private void Reg_Check_Click(object sender, RoutedEventArgs e)
+        {
+            bool status = (bool)Reg_Check.IsChecked;
+            int a;
+            if (status == true)
+            {
+                a = 1;
+            }
+            else
+            {
+                a = 0;
+            }
+
+            if (a == 1)
+            {
+                txtName.Visibility = Visibility.Visible;
+                label_name.Visibility = Visibility.Visible;
+                Label_Pass.Margin = new Thickness(733, 481, 0, 0);
+                txtPass.Margin = new Thickness(733, 519, 0, 0);
+                Button_Reg.Content = "Регистрация";
+            }
+            else if (a == 0)
+            {
+                txtName.Visibility = Visibility.Hidden;
+                label_name.Visibility = Visibility.Hidden;
+                Label_Pass.Margin = new Thickness(733, 396, 0, 0);
+                txtPass.Margin = new Thickness(733, 434, 0, 0);
+                Button_Reg.Content = "Войти";
+            }
+        }
     }
 }
 

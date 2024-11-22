@@ -18,6 +18,7 @@ namespace Zoo.Base
         public Nullable<int> id_visitor { get; set; }
         public string description { get; set; }
         public Nullable<int> score { get; set; }
+        public Nullable<System.DateTime> date_feed { get; set; }
     
         public virtual Visitor Visitor { get; set; }
     }

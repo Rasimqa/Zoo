@@ -6,21 +6,21 @@
       xmlns:local="clr-namespace:Zoo.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" x:Class="Zoo.Pages.AnimalPage"
       mc:Ignorable="d" Background="white"
-      Width="1230" Height="800"
+      Width="1920" Height="1080"
       Title="AnimalPage">
 
     <Grid>
-        <Frame x:Name="AnimalFrame" Visibility="Hidden"></Frame>
-        <ui:ListView x:Name="ListAnimal" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="0,0,0,154">
+        <Frame x:Name="AnimalFrame" Visibility="Hidden" ></Frame>
+        <ui:ListView x:Name="ListAnimal" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="0,0,429,82">
             <ui:ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=id_animal}" Width="100">ID Животного</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Width="120">Имя животного</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=age}" Width="70">Возвраст</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=gender}" Width="125">Происхождение</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=name}" Width="150">Имя животного</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=age}" Width="100">Возвраст</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=gender}" Width="150">Происхождение</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=id_medcard}" Width="120">Номер мед.карты</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=type}" Width="100">Тип</GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=id_cell}" Width="120">Номер вольера</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=type}" Width="150">Тип</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=id_cell}" Width="150">Номер вольера</GridViewColumn>
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -33,20 +33,20 @@
                 </GridView>
             </ui:ListView.View>
         </ui:ListView>
-        <Rectangle HorizontalAlignment="Left" Height="253" Margin="598,0,0,0" VerticalAlignment="Center" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect" Visibility="Hidden"/>
-        <StackPanel HorizontalAlignment="Left" Height="253" Margin="748,0,0,0" VerticalAlignment="Center" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel" Visibility="Hidden" >
-            <TextBox TextWrapping="Wrap" Text="ID Животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idanimal" />
-            <TextBox TextWrapping="Wrap" Text="Имя животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_name"/>
-            <TextBox TextWrapping="Wrap" Text="Возвраст" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_age"/>
-            <TextBox TextWrapping="Wrap" Text="Пол" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_gender"/>
-            <TextBox TextWrapping="Wrap" Text="Номер мед.карты" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idmedcard"/>
-            <TextBox TextWrapping="Wrap" Text="Тип" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_type"/>
-            <TextBox TextWrapping="Wrap" Text="Номер вольера" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idcell"/>
+        <Rectangle HorizontalAlignment="Left" Height="252" Margin="598,0,0,0" VerticalAlignment="Center" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect" Visibility="Hidden"/>
+        <StackPanel HorizontalAlignment="Left" Height="253" Margin="748,0,0,0" VerticalAlignment="Center" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel" Visibility="Visible" >
+            <TextBox TextWrapping="Wrap" Text="ID Животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idanimal" Visibility="Visible" />
+            <TextBox TextWrapping="Wrap" Text="Имя животного" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_name" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Возвраст" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_age" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Пол" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_gender" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Номер мед.карты" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idmedcard" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Тип" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_type" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Номер вольера" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idcell" Visibility="Visible"/>
         </StackPanel>
-        <ui:Button Content="Добавить" Height="41" Margin="615,324,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonAdd" Click="Button_Add" Visibility="Hidden" />
-        <ui:Button Content="Изменить" Height="40" Margin="615,390,0,0" Width="112" BorderBrush="#FF479E3B" VerticalAlignment="Top" x:Name="ButtonEdit" Click="Button_Edit" Visibility="Hidden"/>
-        <ui:Button Content="Удалить" Height="40" Margin="615,450,0,0" Width="112" VerticalAlignment="Top" BorderBrush="#FF479E3B" x:Name="ButtonDelete" Click="Button_Delete" Visibility="Hidden"/>
-        <Button Content="✕" Margin="615,287,0,0" VerticalAlignment="Top" Width="36" Height="32" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose" Visibility="Hidden" Click="Button_Click_Close" FontSize="7">
+        <ui:Button Content="Добавить" Height="42" Margin="622,473,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonAdd" Click="Button_Add" Visibility="Hidden" />
+        <ui:Button Content="Изменить" Height="40" Margin="622,539,0,0" Width="112" BorderBrush="#FF479E3B" VerticalAlignment="Top" x:Name="ButtonEdit" Click="Button_Edit" Visibility="Hidden"/>
+        <ui:Button Content="Удалить" Height="40" Margin="622,599,0,0" Width="112" VerticalAlignment="Top" BorderBrush="#FF479E3B" x:Name="ButtonDelete" Click="Button_Delete" Visibility="Hidden"/>
+        <Button Content="✕" Margin="622,430,0,0" VerticalAlignment="Top" Width="36" Height="32" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose" Visibility="Hidden" Click="Button_Click_Close" FontSize="7">
             <Button.BorderBrush>
                 <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                     <LinearGradientBrush.RelativeTransform>
@@ -57,10 +57,10 @@
                 </LinearGradientBrush>
             </Button.BorderBrush>
         </Button>
-        <ui:Button Content="Изменения" Height="40" Margin="10,687,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" Click="Button_Editions" />
-        <ui:Button Content="История размножения" Height="40" Margin="160,687,0,0" VerticalAlignment="Top" Width="174" BorderBrush="#FF479E3B" Click="Button_History" />
-        <Rectangle HorizontalAlignment="Left" Height="500" Margin="150,160,0,0" Stroke="#FF479E3B" VerticalAlignment="Top" Width="868" Fill="White" x:Name="Rect_His" Visibility="Visible"/>
-        <ui:ListView x:Name="ListHistory" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
+        <ui:Button Content="Изменения" Height="40" Margin="26,1017,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" Click="Button_Editions" />
+        <ui:Button Content="Прочая информация" Height="40" Margin="176,1017,0,0" VerticalAlignment="Top" Width="174" BorderBrush="#FF479E3B" Click="Button_History" />
+        <Rectangle HorizontalAlignment="Left" Height="708" Margin="384,226,0,0" Stroke="#FF479E3B" VerticalAlignment="Top" Width="1281" Fill="White" x:Name="Rect_His" Visibility="Hidden"/>
+        <ui:ListView x:Name="ListHistory" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="384,226,429,253" Visibility="Hidden">
             <ui:ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id_history}" Width="90" Header="ID истории"/>
@@ -79,7 +79,7 @@
                 </GridView>
             </ui:ListView.View>
         </ui:ListView>
-        <ui:ListView x:Name="ListFamily" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
+        <ui:ListView x:Name="ListFamily" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="384,226,429,248" Visibility="Hidden">
             <ui:ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding id_list_family}" Width="90" Header="ID семьи"/>
@@ -99,18 +99,18 @@
                 </GridView>
             </ui:ListView.View>
         </ui:ListView>
-        <ui:ListView x:Name="ListMedHis" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
+        <ui:ListView x:Name="ListMedHis" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="384,226,429,248" Visibility="Hidden">
             <ui:ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding id_med_history}" Width="75" Header="ID Мед.Истории"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding id_medcard}" Width="75" Header="ID Мед.Карты"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding condition}" Width="75" Header="Тек.состояние"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding description}" Width="75" Header="Описание"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding date_start_heal}" Width="75" Header="Дата начала"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding date_end_heal}" Width="75" Header="Дата конца"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding id_med_procedure}" Width="75" Header="ID процедуры"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding id_employee}" Width="75" Header="ID сотрудника"/>
-                    <GridViewColumn Width="125">
+                    <GridViewColumn DisplayMemberBinding="{Binding id_med_history}" Width="110" Header="ID Мед.Истории"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_medcard}" Width="100" Header="ID Мед.Карты"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding condition}" Width="100" Header="Тек.состояние"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding description}" Width="250" Header="Описание"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding date_start_heal}" Width="100" Header="Дата начала"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding date_end_heal}" Width="100" Header="Дата конца"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_med_procedure}" Width="100" Header="ID процедуры"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_employee}" Width="100" Header="ID сотрудника"/>
+                    <GridViewColumn Width="135">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -122,8 +122,8 @@
                 </GridView>
             </ui:ListView.View>
         </ui:ListView>
-        <ui:Button Content="История семьи" Height="40" Margin="871,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_Family" x:Name="ButtonFamily" Visibility="Visible"/>
-        <Button Content="✕" Margin="968,173,0,0" VerticalAlignment="Top" Width="34" Height="34" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose_His" Visibility="Visible" Click="Button_Click_Close_His" FontSize="7">
+        <ui:Button Content="История семьи" Height="40" Margin="1196,877,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_Family" x:Name="ButtonFamily" Visibility="Hidden"/>
+        <Button Content="✕" Margin="1612,242,0,0" VerticalAlignment="Top" Width="34" Height="34" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose_His" Visibility="Hidden" Click="Button_Click_Close_His" FontSize="7">
             <Button.BorderBrush>
                 <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                     <LinearGradientBrush.RelativeTransform>
@@ -134,15 +134,15 @@
                 </LinearGradientBrush>
             </Button.BorderBrush>
         </Button>
-        <ui:Button Content="Мед.История" Height="40" Margin="736,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_Med_His" x:Name="ButtonMedHis" Visibility="Visible"/>
-        <ui:Button Content="Мед.Карта" Height="40" Margin="601,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedCard" x:Name="ButtonMedCard" Visibility="Visible"/>
-        <ui:Button Content="Мед.Процедуры" Height="40" Margin="466,606,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedProc" x:Name="ButtonMedProc" Visibility="Visible"/>
-        <ui:ListView x:Name="ListMedCard" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Hidden">
+        <ui:Button Content="Мед.История" Height="40" Margin="1062,877,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_Med_His" x:Name="ButtonMedHis" Visibility="Hidden"/>
+        <ui:Button Content="Мед.Карта" Height="40" Margin="926,877,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedCard" x:Name="ButtonMedCard" Visibility="Hidden"/>
+        <ui:Button Content="Мед.Процедуры" Height="40" Margin="791,877,0,0" VerticalAlignment="Top" Width="130" BorderBrush="#FF479E3B" Click="Button_MedProc" x:Name="ButtonMedProc" Visibility="Hidden"/>
+        <ui:ListView x:Name="ListMedCard" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="384,226,429,253" Visibility="Hidden">
             <ui:ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding id_medcard}" Width="100" Header="ID Мед.Карты"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding id_animal}" Width="100" Header="ID Животного"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding date_start_account}" Width="160" Header="Дата начала"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_medcard}" Width="120" Header="ID Мед.Карты"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_animal}" Width="120" Header="ID Животного"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding date_start_account}" Width="160" Header="Дата регистрации мед.карты"/>
                     <GridViewColumn Width="125">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -155,13 +155,13 @@
                 </GridView>
             </ui:ListView.View>
         </ui:ListView>
-        
-        <ui:ListView x:Name="ListMedProc" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="150,160,429,218" Visibility="Visible">
+
+        <ui:ListView x:Name="ListMedProc" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="384,226,429,248" Visibility="Hidden">
             <ui:ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding id_med_procedure}" Width="100" Header="ID Мед.Процедуры"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding name_procedure}" Width="100" Header="Название процедурыо"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding type_procedure}" Width="150" Header="Тип процедуры"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_med_procedure}" Width="150" Header="ID Мед.Процедуры"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding name_procedure}" Width="200" Header="Название процедурыо"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding type_procedure}" Width="350" Header="Тип процедуры"/>
                     <GridViewColumn Width="125">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

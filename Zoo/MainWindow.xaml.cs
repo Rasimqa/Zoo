@@ -27,6 +27,8 @@ namespace Zoo
         public MainWindow()
         {
             InitializeComponent();
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.None;
             MainFrame.NavigationService.Navigate(new RegPage(this));
         }
         int a = 0;
@@ -38,14 +40,16 @@ namespace Zoo
                 HambButton.Content = "☰";
                 Hamburger.Visibility = Visibility.Hidden;
                 Rest.Visibility = Visibility.Hidden;
-                HambButton.Margin = new Thickness(1170, 10, 0, 0);
+                Button_Refresh.Visibility = Visibility.Hidden;
+                HambButton.Margin = new Thickness(1861, 10, 0, 0);
             }
             else
             {
                 HambButton.Content = ">";
                 Hamburger.Visibility = Visibility.Visible;
                 Rest.Visibility = Visibility.Visible;
-                HambButton.Margin = new Thickness(1060, 10, 0, 0);
+                Button_Refresh.Visibility = Visibility.Visible;
+                HambButton.Margin = new Thickness(1758, 10, 0, 0);
             }
         }
 

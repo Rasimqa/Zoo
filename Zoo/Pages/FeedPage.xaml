@@ -6,15 +6,25 @@
       xmlns:local="clr-namespace:Zoo.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" 
       mc:Ignorable="d" Background="white"
-      Width="1230" Height="800" Title="FeedPage">
+      Width="1920" Height="1080" Title="FeedPage">
 
     <Grid>
-        <ui:TextBlock HorizontalAlignment="Left" Margin="522,0,0,0" TextWrapping="Wrap" Text="Отзывы" VerticalAlignment="Top" FontSize="30"/>
-        <ui:TextBlock HorizontalAlignment="Left" Margin="95,115,0,0" TextWrapping="Wrap" Text="Nick_Name" VerticalAlignment="Top" FontSize="18" x:Name="txtUserName"/>
-        <ui:TextBox x:Name="txtFend" HorizontalAlignment="Left" Height="256" Margin="105,144,0,0" TextWrapping="Wrap" Text="Введите ваш отзыв" VerticalAlignment="Top" Width="600" Grid.IsSharedSizeScope="True" MinWidth="600" MinHeight="256" MaxWidth="600" MaxHeight="256"/>
-        <ui:Button Content="Отправить" Height="40" Margin="565,410,0,0" VerticalAlignment="Top" Width="140" x:Name="ButtonSend" Click="Button_Send"/>
-        <ui:RatingControl x:Name="Score" Content="Оценка" Height="41" Margin="398,410,0,0" VerticalAlignment="Top" Width="162" HalfStarEnabled="False"/>
-
+        <ui:TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Отзывы" VerticalAlignment="Top" FontSize="30"/>
+        <ui:TextBlock HorizontalAlignment="Left" Margin="38,714,0,0" TextWrapping="Wrap" Text="Nick_Name" VerticalAlignment="Top" FontSize="18" x:Name="txtUserName"/>
+        <ui:TextBox x:Name="txtFend" HorizontalAlignment="Left" Height="256" Margin="38,743,0,0" TextWrapping="Wrap" Text="Введите ваш отзыв" VerticalAlignment="Top" Width="600" Grid.IsSharedSizeScope="True" MinWidth="600" MinHeight="256" MaxWidth="600" MaxHeight="256"/>
+        <ui:Button Content="Отправить" Height="40" Margin="498,1009,0,0" VerticalAlignment="Top" Width="140" x:Name="ButtonSend" Click="Button_Send"/>
+        <ui:RatingControl x:Name="Score" Content="Оценка" Height="41" Margin="331,1009,0,0" VerticalAlignment="Top" Width="162" HalfStarEnabled="False" Foreground="#FFE2B310"/>
+        <ui:ListView x:Name="ListFeeds" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="38,55,480,391" Visibility="Visible">
+            <ui:ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding number_feedback}" Width="120" Header="Номер отзыва"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_visitor}" Width="150" Header="Номер отзывщика"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding description}" Width="750" Header="Отзыв о предприятии"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding date_feed}" Width="225" Header="Дата написания"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding score}" Width="150" Header="Оценка"/>
+                </GridView>
+            </ui:ListView.View>
+        </ui:ListView>
 
     </Grid>
 </Page>

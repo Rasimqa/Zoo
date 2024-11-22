@@ -68,28 +68,16 @@
 //}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+using QRCoder;
 using System;
 using System.Data.Entity.Migrations;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using Zoo.Base;
 using Zoo.Pages;
 
@@ -99,11 +87,15 @@ namespace Zoo.Pages
     {
         static MainWindow _mainWindow;
         Visitor newVisitor;
+        int idrole;
 
         public ProfilePage(MainWindow mainWindow, User user)
         {
             _mainWindow = mainWindow;
             InitializeComponent();
+            idrole = Convert.ToInt16(user.id_role);
+            QrCodeImage.Source = GenerateQrCodeBitmapImage($"Profile: {idrole}");
+
 
             if (user != null)
             {
@@ -118,7 +110,7 @@ namespace Zoo.Pages
 
                 if (user.id_role == 2)
                 {
-                 txtPosition.Visibility = Visibility.Hidden;      
+                    txtPosition.Visibility = Visibility.Hidden;      
                 }
             }
             else
@@ -127,7 +119,27 @@ namespace Zoo.Pages
             }
         }
 
-        
+        private BitmapImage GenerateQrCodeBitmapImage(string text)
+        {
+            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+            {
+                QRCodeData qrCodeData = qrGenerator.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q); using (QRCode qrCode = new QRCode(qrCodeData))
+                {
+                    using (Bitmap qrBitmap = qrCode.GetGraphic(20))
+                    {
+                        using (MemoryStream ms = new MemoryStream())
+                        {
+                            qrBitmap.Save(ms, ImageFormat.Png);
+                            ms.Position = 0;
+                            BitmapImage bitmapImage = new BitmapImage(); bitmapImage.BeginInit();
+                            bitmapImage.CacheOption = BitmapCacheOption.OnLoad; bitmapImage.StreamSource = ms;
+                            bitmapImage.EndInit();
+                            return bitmapImage;
+                        }
+                    }
+                }
+            }
+        }
 
 
         private void Button_Reg(object sender, RoutedEventArgs e)

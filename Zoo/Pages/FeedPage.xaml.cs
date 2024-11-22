@@ -33,7 +33,8 @@ namespace Zoo.Pages
             InitializeComponent();
             _mainWindow = mainWindow;
             //loginuser = connect.user.Login1.login1;
-            txtUserName.Text = loginuser;    
+            txtUserName.Text = loginuser;
+            ListFeeds.ItemsSource = connect.db.Feedback.ToList();
         }
 
         private void Button_Send(object sender, RoutedEventArgs e)
@@ -42,11 +43,13 @@ namespace Zoo.Pages
             string description = txtFend.Text;
             string fname = txtUserName.Text;
             int score = Convert.ToInt16(Score.Value);
+            var dates = DateTime.Today;
             newFeed = new Feedback()
             {
                 description = description,
                 id_visitor = null,
-                score = score
+                score = score,
+                date_feed = dates,
             };
             connect.db.Feedback.Add(newFeed);
             connect.db.SaveChanges();
