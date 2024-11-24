@@ -68,6 +68,9 @@
 //}
 
 
+using OxyPlot.Axes;
+using OxyPlot.Series;
+using OxyPlot;
 using QRCoder;
 using System;
 using System.Data.Entity.Migrations;
@@ -80,6 +83,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using Zoo.Base;
 using Zoo.Pages;
+using ImageFormat = System.Drawing.Imaging.ImageFormat;
 
 namespace Zoo.Pages
 {
@@ -115,18 +119,95 @@ namespace Zoo.Pages
 
 
                 txtRole.Text = $"Роль: {user.id_role}"; // Используем user.id_role напрямую
-                
+
 
                 if (user.id_role == 2)
                 {
-                    txtPosition.Visibility = Visibility.Hidden;      
+                    txtPosition.Visibility = Visibility.Hidden;
                 }
             }
             else
             {
                 MessageBox.Show("Ошибка: пользователь не найден.");
             }
-        }
+
+
+
+
+
+            // Создание модели графика для статистики посещений
+            var plotModel = new PlotModel { Title = "Статистика посещений пользователей" };
+
+            // Получаем статистику посещений для всех пользователей
+            var visitStats = connect.db.User
+                .Select(u => new
+                {
+                    Login = u.login,
+                    VisitCount = u.count_visit ?? 0
+                })
+                .OrderByDescending(u => u.VisitCount)
+                .Take(10) // Ограничиваем топ-10 пользователей
+                .ToList();
+
+            // Создание столбчатой диаграммы
+            var barSeries = new BarSeries
+            {
+                Title = "Количество посещений",
+                StrokeColor = OxyColors.Black,
+                StrokeThickness = 1,
+                FillColor = OxyColors.Green
+            };
+
+            // Создание осей
+            var categoryAxis = new CategoryAxis
+            {
+                Position = AxisPosition.Left,
+                Key = "LoginAxis",
+                Title = "Пользователи"
+            };
+
+            var valueAxis = new LinearAxis
+            {
+                Position = AxisPosition.Bottom,
+                Minimum = 0,
+                Title = "Количество посещений"
+            };
+
+            // Добавление данных в серию и ось категорий
+            for (int i = 0; i < visitStats.Count; i++)
+            {
+                barSeries.Items.Add(new BarItem
+                {
+                    Value = visitStats[i].VisitCount,
+                    Color = OxyColors.Green
+                });
+
+                categoryAxis.Labels.Add(visitStats[i].Login);
+            }
+
+            // Добавление осей и серии в модель
+            plotModel.Axes.Add(categoryAxis);
+            plotModel.Axes.Add(valueAxis);
+            plotModel.Series.Add(barSeries);
+
+            // Привязка модели к PlotView
+            PLV.Model = plotModel;
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
 
         private BitmapImage GenerateQrCodeBitmapImage(string text)
         {

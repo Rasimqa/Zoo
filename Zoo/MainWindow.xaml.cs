@@ -27,8 +27,8 @@ namespace Zoo
         public MainWindow()
         {
             InitializeComponent();
-            WindowState = WindowState.Maximized;
-            WindowStyle = WindowStyle.None;
+            //WindowState = WindowState.Maximized;
+            //WindowStyle = WindowStyle.None;
             MainFrame.NavigationService.Navigate(new RegPage(this));
         }
         int a = 0;

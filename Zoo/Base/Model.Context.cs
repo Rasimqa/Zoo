@@ -30,6 +30,7 @@ namespace Zoo.Base
         public virtual DbSet<Custom_Services> Custom_Services { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Event> Event { get; set; }
+        public virtual DbSet<Feedback> Feedback { get; set; }
         public virtual DbSet<History_Family_Tree> History_Family_Tree { get; set; }
         public virtual DbSet<History_Traffic> History_Traffic { get; set; }
         public virtual DbSet<List_Family_Tree> List_Family_Tree { get; set; }
@@ -45,6 +46,5 @@ namespace Zoo.Base
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Visitor> Visitor { get; set; }
-        public virtual DbSet<Feedback> Feedback { get; set; }
     }
 }

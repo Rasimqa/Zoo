@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,6 +18,32 @@ namespace Zoo.Pages
         {
             _mainWindow = mainWindow;
             InitializeComponent();
+        }
+
+        private async static void UpUser(User user)
+        {
+            if (user == null)
+            {
+                MessageBox.Show("Шок ты лошок!");
+            }
+            else 
+            { 
+               int usid = user.id_user;
+               int Count = Convert.ToInt32(user.count_visit);
+               Count = Count + 1;
+                var iuser = new User
+                {
+                    id_user = user.id_user,
+                    name = user.name,
+                    login = user.login, 
+                    id_role = user.id_role,
+                    count_visit = Count
+
+                };
+               connect.db.User.AddOrUpdate(iuser);
+               await connect.db.SaveChangesAsync();
+            }
+                       
         }
 
         private async void Button_Registration(object sender, RoutedEventArgs e)
@@ -43,7 +70,7 @@ namespace Zoo.Pages
                         var user = connect.db.User.FirstOrDefault(u => u.login == login_user);
                         if (user != null)
                         {
-                          
+                            RegPage.UpUser(user);
                             _mainWindow.MainFrame.NavigationService.Navigate(new ProfilePage(_mainWindow, user));
                         }
                         else
@@ -63,7 +90,10 @@ namespace Zoo.Pages
                     connect.db.Login.Add(newLogin);
                     await connect.db.SaveChangesAsync();
 
-                    var newUser = new User { name = userName, login = login_user, id_role = 2 };
+                    var counT = connect.user.count_visit;
+                    counT = counT + 1;
+
+                    var newUser = new User { name = userName, login = login_user, id_role = 2, count_visit = counT };
                     connect.db.User.Add(newUser);
                     await connect.db.SaveChangesAsync();
 
@@ -166,7 +196,7 @@ namespace Zoo.Pages
 //            string password = txtPass.Text;
 //            string userName = txtName.Text; // Получаем имя пользователя
 //            int IDUser = connect.user.id_user;
-            
+
 
 //            if (string.IsNullOrWhiteSpace(userName))
 //            {
@@ -176,7 +206,7 @@ namespace Zoo.Pages
 
 //            var login_sql = await Task.Run(() => connect.db.Login.FirstOrDefault(id => id.login1 == login_user));
 
-            
+
 //                if (login_sql != null)
 //                {
 //                    if (login_sql.password == password)
@@ -211,8 +241,8 @@ namespace Zoo.Pages
 //                    MessageBox.Show("Пользователь зарегистрирован");
 //                    _mainWindow.MainFrame.NavigationService.Navigate(new ProfilePage(_mainWindow, newUser, newVisitor));
 //               }
-            
-           
+
+
 //        }
 //    }
 //}

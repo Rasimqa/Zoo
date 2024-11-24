@@ -18,6 +18,7 @@ namespace Zoo.Base
         public string name { get; set; }
         public string login { get; set; }
         public Nullable<int> id_role { get; set; }
+        public Nullable<int> count_visit { get; set; }
     
         public virtual Login Login1 { get; set; }
         public virtual role role { get; set; }

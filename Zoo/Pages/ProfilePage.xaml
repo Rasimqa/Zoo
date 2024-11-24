@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Zoo.Pages"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" 
+      xmlns:oxy="http://oxyplot.org/wpf"
       mc:Ignorable="d" Background="white"
       Width="1920" Height="1080" Title="ProfilePage">
 
@@ -17,6 +18,6 @@
         <TextBlock x:Name="txtPhone" HorizontalAlignment="Left" Margin="122,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" MaxHeight="42" MaxWidth="345" FontSize="18" MinWidth="345" MinHeight="42" Height="42" Width="345" ><Run Language="ru-ru" Text="Логин"/></TextBlock>
         <TextBlock x:Name="txtPosition" HorizontalAlignment="Left" Margin="122,242,0,0" TextWrapping="Wrap" Text="Должность" VerticalAlignment="Top" MaxHeight="42" MaxWidth="345" FontSize="18" MinWidth="345" MinHeight="42" Height="42" Width="345"  />
         <TextBlock x:Name="txtRole" HorizontalAlignment="Left" Height="28" Margin="122,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"><Run Language="ru-ru" Text="Текущая роль"/></TextBlock>
-
+        <oxy:PlotView x:Name="PLV" Model="{Binding PlotModel}" Margin="74,420,1198,274" />
     </Grid>
 </Page>
