@@ -1,0 +1,52 @@
+﻿<Page x:Class="Zoo.Pages.EventPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Zoo.Pages"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" 
+      mc:Ignorable="d" 
+      Background="white"
+      Width="1920" Height="1080" 
+      Title="EventPage">
+
+    <Grid>
+        <ui:TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30">
+            <Run Language="ru-ru" Text="Мероприятия"/>
+        </ui:TextBlock>
+        <ui:ListView x:Name="ListEvent" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="38,55,480,391" Visibility="Visible">
+            <ui:ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_event}" Width="150" Header="Номер меропирятия"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding name_event}" Width="150" Header="Название мероприятия"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding description}" Width="725" Header="Описание мероприятия"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding id_cell}" Width="125" Header="Номер вольера"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding date}" Width="220" Header="Дата мероприятия"/>
+                </GridView>
+            </ui:ListView.View>
+        </ui:ListView>
+        <ui:Button Content="Изменения" Height="40" Margin="38,789,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" Click="Button_Editions" />
+        <Rectangle HorizontalAlignment="Left" Height="252" Margin="598,0,0,0" VerticalAlignment="Center" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect" Visibility="Visible"/>
+        <StackPanel HorizontalAlignment="Left" Height="253" Margin="748,0,0,0" VerticalAlignment="Center" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel" Visibility="Visible" >
+            <TextBox TextWrapping="Wrap" Text="ID меропирятия" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idevent" Visibility="Visible" />
+            <TextBox TextWrapping="Wrap" Text="Название" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_nazvanie" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Описание" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_desc" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Номер вольера" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idcell" Visibility="Visible"/>
+            <TextBox TextWrapping="Wrap" Text="Дата мероприятия" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_dataevent" Visibility="Visible"/>
+                    </StackPanel>
+        <ui:Button Content="Добавить" Height="42" Margin="622,473,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonAdd" Click="Button_Add" Visibility="Visible" />
+        <ui:Button Content="Изменить" Height="40" Margin="622,539,0,0" Width="112" BorderBrush="#FF479E3B" VerticalAlignment="Top" x:Name="ButtonEdit" Click="Button_Edit" Visibility="Visible"/>
+        <ui:Button Content="Удалить" Height="40" Margin="622,599,0,0" Width="112" VerticalAlignment="Top" BorderBrush="#FF479E3B" x:Name="ButtonDelete" Click="Button_Delete" Visibility="Visible"/>
+        <Button Content="✕" Margin="622,430,0,0" VerticalAlignment="Top" Width="36" Height="32" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose" Visibility="Visible" Click="Button_Click_Close" FontSize="7">
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                    <LinearGradientBrush.RelativeTransform>
+                        <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#29000000" Offset="0"/>
+                    <GradientStop Color="#FF479E3B" Offset="0"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+        </Button>
+    </Grid>
+</Page>

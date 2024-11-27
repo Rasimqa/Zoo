@@ -95,6 +95,10 @@ namespace Zoo
             {
                 MainFrame.NavigationService.Navigate(new FeedPage(this));
             }
+            else if (a == 6)
+            {
+                MainFrame.NavigationService.Navigate(new EventPage(this));
+            }
         }
 
         private void Button_Click_Closes(object sender, RoutedEventArgs e)
@@ -108,6 +112,12 @@ namespace Zoo
             MainFrame.NavigationService.Navigate(new RegPage(this));
             User user = new User();
             user.id_user = 0; 
+        }
+
+        private void Button_Event(object sender, RoutedEventArgs e)
+        {
+            a = 6;
+            MainFrame.NavigationService.Navigate(new EventPage(this));
         }
     }
 }

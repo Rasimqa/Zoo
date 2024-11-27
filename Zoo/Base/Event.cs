@@ -25,6 +25,7 @@ namespace Zoo.Base
         public string name_event { get; set; }
         public string description { get; set; }
         public Nullable<int> id_cell { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     
         public virtual Cell Cell { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

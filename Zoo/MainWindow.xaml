@@ -69,7 +69,7 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Мероприятия" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать3">
+            <ui:Button Content="Мероприятия" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonEvent" Click="Button_Event">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>
