@@ -107,7 +107,7 @@ namespace Zoo
             a = 5;
             MainFrame.NavigationService.Navigate(new RegPage(this));
             User user = new User();
-            user.id_user = 0;
+            user.id_user = 0; 
         }
     }
 }
