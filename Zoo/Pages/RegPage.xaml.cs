@@ -20,7 +20,7 @@ namespace Zoo.Pages
             InitializeComponent();
         }
 
-        private async static void UpUser(User user)
+        private static void UpUser(User user)
         {
             if (user == null)
             {
@@ -30,18 +30,19 @@ namespace Zoo.Pages
             { 
                int usid = user.id_user;
                int Count = Convert.ToInt32(user.count_visit);
-               Count = Count + 1;
+               int Count2;
+               Count2 = Count + 1;
                 var iuser = new User
                 {
                     id_user = user.id_user,
                     name = user.name,
                     login = user.login, 
                     id_role = user.id_role,
-                    count_visit = Count
+                    count_visit = Count2
 
                 };
                connect.db.User.AddOrUpdate(iuser);
-               await connect.db.SaveChangesAsync();
+               connect.db.SaveChanges();
             }
                        
         }
@@ -89,14 +90,9 @@ namespace Zoo.Pages
                     var newLogin = new Login { login1 = login_user, password = password };
                     connect.db.Login.Add(newLogin);
                     await connect.db.SaveChangesAsync();
-
-                    var counT = connect.user.count_visit;
-                    counT = counT + 1;
-
-                    var newUser = new User { name = userName, login = login_user, id_role = 2, count_visit = counT };
-                    connect.db.User.Add(newUser);
-                    await connect.db.SaveChangesAsync();
-
+                    var newUser = new User { name = userName, login = login_user, id_role = 2, count_visit = 0 };
+                    RegPage.UpUser(newUser);
+                    
                     // Получаем ID пользователя после сохранения
                     newUser = connect.db.User.FirstOrDefault(u => u.login == login_user);
                     if (newUser != null)

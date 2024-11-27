@@ -11,7 +11,7 @@
 
         <Frame x:Name="MainFrame" Margin="10,0,-1,0"/>
 
-        <Rectangle HorizontalAlignment="Left" Height="67" Margin="1741,0,0,0" VerticalAlignment="Top" Width="180" Fill="#FF3D6338" x:Name="Rest" Visibility="Hidden"/>
+        <Rectangle HorizontalAlignment="Left" Height="67" Margin="1741,0,0,0" VerticalAlignment="Top" Width="180" Fill="#FF3D6338" x:Name="Rest" Visibility="Visible"/>
 
         <Button Content="☰" Margin="1861,10,0,0" VerticalAlignment="Top" Height="36" Foreground="#E4FF0000" Background="White" x:Name="HambButton" Click="HamButton" >
             <Button.BorderBrush>
@@ -24,7 +24,7 @@
                 </LinearGradientBrush>
             </Button.BorderBrush>
         </Button>
-        <StackPanel HorizontalAlignment="Left" Height="1018" Margin="1741,58,0,0" VerticalAlignment="Top" Width="180" Background="#FF3D6338" x:Name="Hamburger" Visibility="Hidden">
+        <StackPanel HorizontalAlignment="Left" Height="1018" Margin="1741,58,0,0" VerticalAlignment="Top" Width="180" Background="#FF3D6338" x:Name="Hamburger" Visibility="Visible">
             <ui:Button Content="Профиль" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile" Click="Button_Profile">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
@@ -102,7 +102,7 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать8">
+            <ui:Button Content="Выйти" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonExit" Click="Button_Exit">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>

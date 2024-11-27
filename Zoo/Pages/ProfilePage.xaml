@@ -11,6 +11,7 @@
 
     <Grid>
         <Image x:Name="QrCodeImage" Margin="556,94,1094,716"/>
+        <ui:Button Content="Регистрация" Height="40" Margin="122,340,0,0" VerticalAlignment="Top" Width="179" x:Name="ButtonRegZoo" BorderBrush="#FF479E3B" Click="Button_Reg_Zoo" />
         <ui:TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Профиль" VerticalAlignment="Top" FontSize="30"/>
         <ui:Button Content="Редактировать" Height="40" Margin="122,430,0,0" VerticalAlignment="Top" Width="139" BorderBrush="#FF479E3B" x:Name="ButtonReg" Click="Button_Reg"/>
         <ui:TextBlock HorizontalAlignment="Left" Margin="122,77,0,0" TextWrapping="Wrap" Text="Личные данные" VerticalAlignment="Top" Height="33" Width="179" FontSize="24"/>
@@ -19,5 +20,27 @@
         <TextBlock x:Name="txtPosition" HorizontalAlignment="Left" Margin="122,242,0,0" TextWrapping="Wrap" Text="Должность" VerticalAlignment="Top" MaxHeight="42" MaxWidth="345" FontSize="18" MinWidth="345" MinHeight="42" Height="42" Width="345"  />
         <TextBlock x:Name="txtRole" HorizontalAlignment="Left" Height="28" Margin="122,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116"><Run Language="ru-ru" Text="Текущая роль"/></TextBlock>
         <oxy:PlotView x:Name="PLV" Model="{Binding PlotModel}" Margin="74,420,1198,274" />
+        <Rectangle HorizontalAlignment="Left" Height="221" Margin="903,454,0,0" VerticalAlignment="Top" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect_Edit_Oth" Visibility="Hidden"/>
+        <StackPanel HorizontalAlignment="Left" Height="221" Margin="1062,454,0,0" VerticalAlignment="Top" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel_Oth" Visibility="Hidden" >
+            <TextBox TextWrapping="Wrap" Text="Полное имя (ФИО)" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_1" Visibility="Hidden" />
+            <TextBox TextWrapping="Wrap" Text="Номер телефона" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_2" Visibility="Hidden"/>
+            <TextBox TextWrapping="Wrap" Text="Дата рождения" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_6" Visibility="Hidden"/>
+            <TextBox TextWrapping="Wrap" Text="Должность" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_7" Visibility="Hidden"/>
+            <TextBox TextWrapping="Wrap" Text="Код друга" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_5" Visibility="Hidden"/>
+            <CheckBox Content="Постоялец?" Height="16" Width="178" Foreground="#E4FFFFFF" Background="White" BorderBrush="Red" x:Name="Check_Post" HorizontalAlignment="Center" Visibility="Hidden"/>
+        </StackPanel>
+        <Button Content="✕" Margin="914,462,0,0" VerticalAlignment="Top" Width="36" Height="32" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose_Oth" Visibility="Hidden" Click="Button_Click_Close_Oth" FontSize="7" Background="#B3FFFFFF">
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                    <LinearGradientBrush.RelativeTransform>
+                        <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#29000000" Offset="0.33"/>
+                    <GradientStop Color="#0F3FED27" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+        </Button>
+        <ui:Button Content="Добавить" Height="42" Margin="932,499,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonAdd_Oth" Click="Button_Add_Oth" Visibility="Hidden" />
+        <ui:Button Content="Изменить" Height="40" Margin="932,557,0,0" Width="112" BorderBrush="#FF479E3B" VerticalAlignment="Top" x:Name="ButtonEdit_Oth" Click="Button_Edit_Oth" Visibility="Hidden"/>
     </Grid>
 </Page>

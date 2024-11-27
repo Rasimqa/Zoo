@@ -27,8 +27,8 @@ namespace Zoo
         public MainWindow()
         {
             InitializeComponent();
-            //WindowState = WindowState.Maximized;
-            //WindowStyle = WindowStyle.None;
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.None;
             MainFrame.NavigationService.Navigate(new RegPage(this));
         }
         int a = 0;
@@ -100,6 +100,14 @@ namespace Zoo
         private void Button_Click_Closes(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void Button_Exit(object sender, RoutedEventArgs e)
+        {
+            a = 5;
+            MainFrame.NavigationService.Navigate(new RegPage(this));
+            User user = new User();
+            user.id_user = 0;
         }
     }
 }

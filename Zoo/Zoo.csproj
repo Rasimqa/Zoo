@@ -178,9 +178,6 @@
     <Compile Include="Base\Service.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Base\sysdiagrams.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Base\Ticket.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -266,8 +263,8 @@
   <ItemGroup>
     <Content Include="Base\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
     </Content>
     <Content Include="Base\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

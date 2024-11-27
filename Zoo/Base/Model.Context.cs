@@ -13,10 +13,10 @@ namespace Zoo.Base
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Zoo_322Entities : DbContext
+    public partial class Zoo_Pr6Entities : DbContext
     {
-        public Zoo_322Entities()
-            : base("name=Zoo_322Entities")
+        public Zoo_Pr6Entities()
+            : base("name=Zoo_Pr6Entities")
         {
         }
     
@@ -42,7 +42,6 @@ namespace Zoo.Base
         public virtual DbSet<Report_Finance> Report_Finance { get; set; }
         public virtual DbSet<role> role { get; set; }
         public virtual DbSet<Service> Service { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Ticket> Ticket { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Visitor> Visitor { get; set; }
