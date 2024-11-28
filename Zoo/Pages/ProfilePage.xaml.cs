@@ -93,25 +93,25 @@ namespace Zoo.Pages
         Visitor newVisitor;
         int idrole;
         int user_reg;
+        int newUser;
 
-        public ProfilePage(MainWindow mainWindow, User user)
+        public ProfilePage(MainWindow mainWindow, User newUser)
         {
-            _mainWindow = mainWindow;
+            _mainWindow = mainWindow;            
             InitializeComponent();
-
-            if (user == null)
+            if (newUser == null)
             {
                 MessageBox.Show("Вы не зарегестрированы!");
             }
             else
             {
-                idrole = Convert.ToInt16(user.id_role);
-                user_reg = user.id_user;
+                idrole = Convert.ToInt16(newUser.id_role);
+                user_reg = newUser.id_user;
             }
             QrCodeImage.Source = GenerateQrCodeBitmapImage($"Profile: {idrole}");
 
 
-            if (user != null)
+            if (newUser != null)
             {
                 //if (user.id_user == newVisitor.id_visitor)
                 //{
@@ -120,12 +120,13 @@ namespace Zoo.Pages
                 //}
 
 
-                txtRole.Text = $"Роль: {user.id_role}"; // Используем user.id_role напрямую
+                txtRole.Text = $"Роль: {newUser.id_role}"; // Используем user.id_role напрямую
 
 
-                if (user.id_role == 2)
+                if (newUser.id_role == 2)
                 {
                     txtPosition.Visibility = Visibility.Hidden;
+                    PLV.Visibility = Visibility.Hidden;
                 }
             }
             else
@@ -194,20 +195,8 @@ namespace Zoo.Pages
 
             // Привязка модели к PlotView
             PLV.Model = plotModel;
-        
 
-
-
-
-
-
-
-
-
-
-
-
-
+            
 
     }
 
@@ -234,50 +223,43 @@ namespace Zoo.Pages
         }
 
 
-        private void Button_Reg(object sender, RoutedEventArgs e)
-        {
-
-            int idvis = newVisitor.id_visitor;
-
-            var newVis = new Visitor
-            {
-                id_visitor = idvis, // Получаем id_user из текущего пользователя
-                full_name = txtFullName.Text,
-                number_phone = Convert.ToString(txtPhone.Text)
-            };
-
-            connect.db.Visitor.AddOrUpdate(newVis); // Используем Add вместо AddOrUpdate
-            connect.db.SaveChanges();
-
-        }
+       
 
         private void Button_Reg_Zoo(object sender, RoutedEventArgs e)
         {
-            if (idrole == 2)
+            if (newUser == null)
             {
-                Rect_Edit_Oth.Visibility = Visibility.Visible;
-                Redakt_Panel_Oth.Visibility = Visibility.Visible;
-                ButtonAdd_Oth.Visibility = Visibility.Visible;
-                ButtonEdit_Oth.Visibility = Visibility.Visible;
-                ButtonClose_Oth.Visibility = Visibility.Visible;
-                txt_1.Visibility = Visibility.Visible;
-                txt_2.Visibility = Visibility.Visible;
-                txt_5.Visibility = Visibility.Visible;
-                Check_Post.Visibility = Visibility.Visible;
+                MessageBox.Show("Вы не зарегестрированы!");
+            }
+            else
+            {
+                if (idrole == 2)
+                {
+                    Rect_Edit_Oth.Visibility = Visibility.Visible;
+                    Redakt_Panel_Oth.Visibility = Visibility.Visible;
+                    ButtonAdd_Oth.Visibility = Visibility.Visible;
+                    ButtonEdit_Oth.Visibility = Visibility.Visible;
+                    ButtonClose_Oth.Visibility = Visibility.Visible;
+                    txt_1.Visibility = Visibility.Visible;
+                    txt_2.Visibility = Visibility.Visible;
+                    txt_5.Visibility = Visibility.Visible;
+                    Check_Post.Visibility = Visibility.Visible;
 
+                }
+                else if (idrole == 3 || idrole == 1)
+                {
+                    Rect_Edit_Oth.Visibility = Visibility.Visible;
+                    Redakt_Panel_Oth.Visibility = Visibility.Visible;
+                    ButtonAdd_Oth.Visibility = Visibility.Visible;
+                    ButtonEdit_Oth.Visibility = Visibility.Visible;
+                    ButtonClose_Oth.Visibility = Visibility.Visible;
+                    txt_1.Visibility = Visibility.Visible;
+                    txt_2.Visibility = Visibility.Visible;
+                    txt_6.Visibility = Visibility.Visible;
+                    txt_7.Visibility = Visibility.Visible;
+                }
             }
-            else if (idrole == 3 || idrole == 1)
-            {
-                Rect_Edit_Oth.Visibility = Visibility.Visible;
-                Redakt_Panel_Oth.Visibility = Visibility.Visible;
-                ButtonAdd_Oth.Visibility = Visibility.Visible;
-                ButtonEdit_Oth.Visibility = Visibility.Visible;
-                ButtonClose_Oth.Visibility = Visibility.Visible;
-                txt_1.Visibility = Visibility.Visible;
-                txt_2.Visibility = Visibility.Visible;
-                txt_6.Visibility = Visibility.Visible;
-                txt_7.Visibility = Visibility.Visible;
-            }
+           
         }
         
 
@@ -298,125 +280,139 @@ namespace Zoo.Pages
 
         private void Button_Add_Oth(object sender, RoutedEventArgs e)
         {
-            if (idrole == 2)
+            try
             {
-                var idvis = user_reg;
-                string full_name = txt_1.Text;
-                var number_phone = txt_2.Text;
-                var check_bool = (bool)Check_Post.IsChecked;
-                var kd_fr = Convert.ToInt32(txt_5.Text);
-
-                //var Visit = connect.db.Visitor.FirstOrDefault(
-                //    id => id. == id_rod &&
-                //    id.name_family_tree == name_rod &&
-                //    id.count_animal == count_rod &&
-                //    id.date_start_family == date
-                //    );
-
-                var Visitor = new Visitor()
+                if (idrole == 2)
                 {
-                    id_visitor = idvis,
-                    full_name = full_name,
-                    number_phone = number_phone,
-                    Regular_Customer = check_bool
-                };
+                    var idvis = user_reg;
+                    string full_name = txt_1.Text;
+                    var number_phone = txt_2.Text;
+                    var check_bool = (bool)Check_Post.IsChecked;
+                    var kd_fr = Convert.ToInt32(txt_5.Text);
 
-                connect.db.Visitor.Add(Visitor);
-                connect.db.SaveChanges();
-                MessageBox.Show("Вы успешно зарегестрировались в Зоопарке!");
-                return;
+                    //var Visit = connect.db.Visitor.FirstOrDefault(
+                    //    id => id. == id_rod &&
+                    //    id.name_family_tree == name_rod &&
+                    //    id.count_animal == count_rod &&
+                    //    id.date_start_family == date
+                    //    );
+
+                    var Visitor = new Visitor()
+                    {
+                        id_visitor = idvis,
+                        full_name = full_name,
+                        number_phone = number_phone,
+                        Regular_Customer = check_bool
+                    };
+
+                    connect.db.Visitor.Add(Visitor);
+                    connect.db.SaveChanges();
+                    MessageBox.Show("Вы успешно зарегестрировались в Зоопарке!");
+                    return;
+                }
+                else if (idrole == 3 || idrole == 1)
+                {
+
+                    var idemp = user_reg;
+                    string full_name = txt_1.Text;
+                    var number_phone = txt_2.Text;
+                    DateTime date_birth = Convert.ToDateTime(txt_6.Text);
+                    string mpos = txt_7.Text;
+
+                    //var Visit = connect.db.Visitor.FirstOrDefault(
+                    //    id => id. == id_rod &&
+                    //    id.name_family_tree == name_rod &&
+                    //    id.count_animal == count_rod &&
+                    //    id.date_start_family == date
+                    //    );
+
+                    var Employee = new Employee()
+                    {
+                        id_employee = idemp,
+                        full_name = full_name,
+                        number_phone = number_phone,
+                        date_birth = date_birth,
+                        position = mpos
+                    };
+
+                    connect.db.Employee.Add(Employee);
+                    connect.db.SaveChanges();
+                    MessageBox.Show("Вы успешно зарегестрировались в Зоопарке!");
+                    return;
+                }
             }
-            else if (idrole == 3 || idrole == 1)
+            catch (Exception ex)
             {
-
-                var idemp = user_reg;
-                string full_name = txt_1.Text;
-                var number_phone = txt_2.Text;
-                DateTime date_birth = Convert.ToDateTime(txt_6.Text);
-                string mpos = txt_7.Text;
-
-                //var Visit = connect.db.Visitor.FirstOrDefault(
-                //    id => id. == id_rod &&
-                //    id.name_family_tree == name_rod &&
-                //    id.count_animal == count_rod &&
-                //    id.date_start_family == date
-                //    );
-
-                var Employee = new Employee()
-                {
-                    id_employee = idemp,
-                    full_name = full_name,
-                    number_phone = number_phone,
-                    date_birth = date_birth,
-                    position = mpos
-                };
-
-                connect.db.Employee.Add(Employee);
-                connect.db.SaveChanges();
-                MessageBox.Show("Вы успешно зарегестрировались в Зоопарке!");
-                return;
+                MessageBox.Show("Вы не ввели все данные!");
             }
         }
 
         private void Button_Edit_Oth(object sender, RoutedEventArgs e)
         {
-            if (idrole == 2)
+            try
             {
-                var idvis = user_reg;
-                string full_name = txt_1.Text;
-                var number_phone = txt_2.Text;
-                var check_bool = (bool)Check_Post.IsChecked;
-                var kd_fr = Convert.ToInt32(txt_5.Text);
-
-                //var Visit = connect.db.Visitor.FirstOrDefault(
-                //    id => id. == id_rod &&
-                //    id.name_family_tree == name_rod &&
-                //    id.count_animal == count_rod &&
-                //    id.date_start_family == date
-                //    );
-
-                var Visitor = new Visitor()
+                if (idrole == 2)
                 {
-                    id_visitor = idvis,
-                    full_name = full_name,
-                    number_phone = number_phone,
-                    Regular_Customer = check_bool
-                };
+                    var idvis = user_reg;
+                    string full_name = txt_1.Text;
+                    var number_phone = txt_2.Text;
+                    var check_bool = (bool)Check_Post.IsChecked;
+                    var kd_fr = Convert.ToInt32(txt_5.Text);
 
-                connect.db.Visitor.AddOrUpdate(Visitor);
-                connect.db.SaveChanges();
-                MessageBox.Show("Вы изменили данные о себе!");
-                return;
+                    //var Visit = connect.db.Visitor.FirstOrDefault(
+                    //    id => id. == id_rod &&
+                    //    id.name_family_tree == name_rod &&
+                    //    id.count_animal == count_rod &&
+                    //    id.date_start_family == date
+                    //    );
+
+                    var Visitor = new Visitor()
+                    {
+                        id_visitor = idvis,
+                        full_name = full_name,
+                        number_phone = number_phone,
+                        Regular_Customer = check_bool
+                    };
+
+                    connect.db.Visitor.AddOrUpdate(Visitor);
+                    connect.db.SaveChanges();
+                    MessageBox.Show("Вы изменили данные о себе!");
+                    return;
+                }
+                else if (idrole == 3 || idrole == 1)
+                {
+
+                    var idemp = user_reg;
+                    string full_name = txt_1.Text;
+                    var number_phone = txt_2.Text;
+                    DateTime date_birth = Convert.ToDateTime(txt_6.Text);
+                    string mpos = txt_7.Text;
+
+                    //var Visit = connect.db.Visitor.FirstOrDefault(
+                    //    id => id. == id_rod &&
+                    //    id.name_family_tree == name_rod &&
+                    //    id.count_animal == count_rod &&
+                    //    id.date_start_family == date
+                    //    );
+
+                    var Employee = new Employee()
+                    {
+                        id_employee = idemp,
+                        full_name = full_name,
+                        number_phone = number_phone,
+                        date_birth = date_birth,
+                        position = mpos
+                    };
+
+                    connect.db.Employee.AddOrUpdate(Employee);
+                    connect.db.SaveChanges();
+                    MessageBox.Show("Вы изменили данные о себе сотруднике!");
+                    return;
+                }
             }
-            else if (idrole == 3 || idrole == 1)
+            catch (Exception ex)
             {
-
-                var idemp = user_reg;
-                string full_name = txt_1.Text;
-                var number_phone = txt_2.Text;
-                DateTime date_birth = Convert.ToDateTime(txt_6.Text);
-                string mpos = txt_7.Text;
-
-                //var Visit = connect.db.Visitor.FirstOrDefault(
-                //    id => id. == id_rod &&
-                //    id.name_family_tree == name_rod &&
-                //    id.count_animal == count_rod &&
-                //    id.date_start_family == date
-                //    );
-
-                var Employee = new Employee()
-                {
-                    id_employee = idemp,
-                    full_name = full_name,
-                    number_phone = number_phone,
-                    date_birth = date_birth,
-                    position = mpos
-                };
-
-                connect.db.Employee.AddOrUpdate(Employee);
-                connect.db.SaveChanges();
-                MessageBox.Show("Вы изменили данные о себе сотруднике!");
-                return;
+                MessageBox.Show("Вы не ввели все данные!");
             }
         }
     }

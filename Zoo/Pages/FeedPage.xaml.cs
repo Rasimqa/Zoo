@@ -19,6 +19,7 @@ using System.IO;
 using Zoo.Pages;
 using System.Xml.Linq;
 using Wpf.Ui.Controls;
+using MessageBox = System.Windows.MessageBox;
 
 namespace Zoo.Pages
 {
@@ -39,20 +40,27 @@ namespace Zoo.Pages
 
         private void Button_Send(object sender, RoutedEventArgs e)
         {
-            Feedback newFeed;
-            string description = txtFend.Text;
-            string fname = txtUserName.Text;
-            int score = Convert.ToInt16(Score.Value);
-            var dates = DateTime.Today;
-            newFeed = new Feedback()
+            try
             {
-                description = description,
-                id_visitor = null,
-                score = score,
-                date_feed = dates,
-            };
-            connect.db.Feedback.Add(newFeed);
-            connect.db.SaveChanges();
+                Feedback newFeed;
+                string description = txtFend.Text;
+                string fname = txtUserName.Text;
+                int score = Convert.ToInt16(Score.Value);
+                var dates = DateTime.Today;
+                newFeed = new Feedback()
+                {
+                    description = description,
+                    id_visitor = null,
+                    score = score,
+                    date_feed = dates,
+                };
+                connect.db.Feedback.Add(newFeed);
+                connect.db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Вы не ввели все данные!");
+            }
         }
     }
 }

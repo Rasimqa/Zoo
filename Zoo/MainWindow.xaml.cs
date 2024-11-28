@@ -24,6 +24,9 @@ namespace Zoo
     /// </summary>
     public partial class MainWindow : Window
     {
+        int a = 0;
+        User newUser;        
+        int iduser;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,36 +34,36 @@ namespace Zoo
             WindowStyle = WindowStyle.None;
             MainFrame.NavigationService.Navigate(new RegPage(this));
         }
-        int a = 0;
-        User newUser; 
         private void HamButton(object sender, RoutedEventArgs e)
         {
-            if (Hamburger.Visibility == Visibility.Visible)
-            {
-                HambButton.Content = "☰";
-                Hamburger.Visibility = Visibility.Hidden;
-                Rest.Visibility = Visibility.Hidden;
-                Button_Refresh.Visibility = Visibility.Hidden;
-                Button_Closes.Visibility = Visibility.Hidden;
-                HambButton.Margin = new Thickness(1861, 10, 0, 0);
-                Button_Closes.Margin = new Thickness(1758, 10, 0, 0);
-            }
-            else
-            {
-                HambButton.Content = ">";
-                Hamburger.Visibility = Visibility.Visible;
-                Rest.Visibility = Visibility.Visible;
-                Button_Refresh.Visibility = Visibility.Visible;
-                Button_Closes.Visibility = Visibility.Visible;
-                HambButton.Margin = new Thickness(1758, 10, 0, 0);
-                Button_Closes.Margin = new Thickness(1861, 10, 0, 0);
-            }
+
+                if (Hamburger.Visibility == Visibility.Visible)
+                {
+                    HambButton.Content = "☰";
+                    Hamburger.Visibility = Visibility.Hidden;
+                    Rest.Visibility = Visibility.Hidden;
+                    Button_Refresh.Visibility = Visibility.Hidden;
+                    Button_Closes.Visibility = Visibility.Hidden;
+                    HambButton.Margin = new Thickness(1861, 10, 0, 0);
+                    Button_Closes.Margin = new Thickness(1758, 10, 0, 0);
+                }
+                else
+                {
+                    HambButton.Content = ">";
+                    Hamburger.Visibility = Visibility.Visible;
+                    Rest.Visibility = Visibility.Visible;
+                    Button_Refresh.Visibility = Visibility.Visible;
+                    Button_Closes.Visibility = Visibility.Visible;
+                    HambButton.Margin = new Thickness(1758, 10, 0, 0);
+                    Button_Closes.Margin = new Thickness(1861, 10, 0, 0);
+                }
+            
+            
         }
 
         private void Button_Profile(object sender, RoutedEventArgs e)
         {
-            connect.user = newUser;
-          
+            newUser = new User();
             MainFrame.NavigationService.Navigate(new ProfilePage(this, newUser));
             a = 2;
         }
@@ -84,7 +87,7 @@ namespace Zoo
             }
             else if (a == 2)
             {
-                connect.user = newUser;
+                newUser = new User();
                 MainFrame.NavigationService.Navigate(new ProfilePage(this, newUser));
             }
             else if (a == 3)

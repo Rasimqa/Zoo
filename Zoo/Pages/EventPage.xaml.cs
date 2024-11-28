@@ -30,8 +30,6 @@ namespace Zoo.Pages
             ListEvent.ItemsSource = connect.db.Event.ToList();
         }
 
-
-
         private void Button_Click_Close(object sender, RoutedEventArgs e)
         {
             Redakt_Panel.Visibility = Visibility.Hidden;
@@ -44,65 +42,86 @@ namespace Zoo.Pages
 
         private void Button_Add(object sender, RoutedEventArgs e)
         {
-            var idev = Convert.ToInt32(txt_idevent.Text);
-            string nazv = txt_nazvanie.Text;
-            var desc = txt_desc.Text;
-            int ceell = Convert.ToInt32(txt_idcell.Text);
-            DateTime dataVent = Convert.ToDateTime(txt_dataevent.Text);
-            
-
-            var Events = new Event()
+            try
             {
-                id_event = idev,
-                name_event = nazv,
-                description = desc,
-                id_cell = ceell,
-                date = dataVent
-            };
+                var idev = Convert.ToInt32(txt_idevent.Text);
+                string nazv = txt_nazvanie.Text;
+                var desc = txt_desc.Text;
+                int ceell = Convert.ToInt32(txt_idcell.Text);
+                DateTime dataVent = Convert.ToDateTime(txt_dataevent.Text);
 
-            connect.db.Event.Add(Events);
-            connect.db.SaveChanges();
-            MessageBox.Show("Мероприятие было успешно добавлено");
-            return;
+
+                var Events = new Event()
+                {
+                    id_event = idev,
+                    name_event = nazv,
+                    description = desc,
+                    id_cell = ceell,
+                    date = dataVent
+                };
+
+                connect.db.Event.Add(Events);
+                connect.db.SaveChanges();
+                MessageBox.Show("Мероприятие было успешно добавлено");
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Вы не ввели все данные!");
+            }
         }
         private void Button_Edit(object sender, RoutedEventArgs e)
         {
-            var idev = Convert.ToInt32(txt_idevent.Text);
-            string nazv = txt_nazvanie.Text;
-            var desc = txt_desc.Text;
-            int ceell = Convert.ToInt32(txt_idcell.Text);
-            DateTime dataVent = Convert.ToDateTime(txt_dataevent.Text);
-
-
-            var Events = new Event()
+            try
             {
-                id_event = idev,
-                name_event = nazv,
-                description = desc,
-                id_cell = ceell,
-                date = dataVent
-            };
+                var idev = Convert.ToInt32(txt_idevent.Text);
+                string nazv = txt_nazvanie.Text;
+                var desc = txt_desc.Text;
+                int ceell = Convert.ToInt32(txt_idcell.Text);
+                DateTime dataVent = Convert.ToDateTime(txt_dataevent.Text);
 
-            connect.db.Event.AddOrUpdate(Events);
-            connect.db.SaveChanges();
-            MessageBox.Show("Мероприятие было успешно отредактированно");
-            return;
+
+                var Events = new Event()
+                {
+                    id_event = idev,
+                    name_event = nazv,
+                    description = desc,
+                    id_cell = ceell,
+                    date = dataVent
+                };
+
+                connect.db.Event.AddOrUpdate(Events);
+                connect.db.SaveChanges();
+                MessageBox.Show("Мероприятие было успешно отредактированно");
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Вы не ввели все данные!");
+            }
         }
 
         private void Button_Delete(object sender, RoutedEventArgs e)
         {
-            var id_event = Convert.ToInt32(txt_idevent.Text);
-            if (id_event != null)
+            try
             {
-                Event even = (from r in connect.db.Event where r.id_event == id_event select r).SingleOrDefault();
-                connect.db.Event.Remove(even);
-                connect.db.SaveChanges();
-                ListEvent.ItemsSource = connect.db.Event.ToList();
-                MessageBox.Show("Информация о мероприятии удалена");
+                var id_event = Convert.ToInt32(txt_idevent.Text);
+                if (id_event != null)
+                {
+                    Event even = (from r in connect.db.Event where r.id_event == id_event select r).SingleOrDefault();
+                    connect.db.Event.Remove(even);
+                    connect.db.SaveChanges();
+                    ListEvent.ItemsSource = connect.db.Event.ToList();
+                    MessageBox.Show("Информация о мероприятии удалена");
+                }
+                else
+                {
+                    MessageBox.Show("Для удаления впишите ID животного");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Для удаления впишите ID животного");
+                MessageBox.Show("Вы не ввели все данные!");
             }
         }
 

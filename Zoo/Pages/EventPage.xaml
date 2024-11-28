@@ -26,18 +26,18 @@
             </ui:ListView.View>
         </ui:ListView>
         <ui:Button Content="Изменения" Height="40" Margin="38,789,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" Click="Button_Editions" />
-        <Rectangle HorizontalAlignment="Left" Height="252" Margin="598,0,0,0" VerticalAlignment="Center" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect" Visibility="Visible"/>
-        <StackPanel HorizontalAlignment="Left" Height="253" Margin="748,0,0,0" VerticalAlignment="Center" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel" Visibility="Visible" >
+        <Rectangle HorizontalAlignment="Left" Height="252" Margin="598,0,0,0" VerticalAlignment="Center" Width="337" Stroke="#FF3D6338" Fill="White" x:Name="Rect" Visibility="Hidden"/>
+        <StackPanel HorizontalAlignment="Left" Height="253" Margin="748,0,0,0" VerticalAlignment="Center" Width="178" Background="#FF3D6338" x:Name="Redakt_Panel" Visibility="Hidden" >
             <TextBox TextWrapping="Wrap" Text="ID меропирятия" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idevent" Visibility="Visible" />
             <TextBox TextWrapping="Wrap" Text="Название" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_nazvanie" Visibility="Visible"/>
             <TextBox TextWrapping="Wrap" Text="Описание" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_desc" Visibility="Visible"/>
             <TextBox TextWrapping="Wrap" Text="Номер вольера" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_idcell" Visibility="Visible"/>
             <TextBox TextWrapping="Wrap" Text="Дата мероприятия" Width="164" Background="White" BorderBrush="#FF479E3B" x:Name="txt_dataevent" Visibility="Visible"/>
-                    </StackPanel>
-        <ui:Button Content="Добавить" Height="42" Margin="622,473,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonAdd" Click="Button_Add" Visibility="Visible" />
-        <ui:Button Content="Изменить" Height="40" Margin="622,539,0,0" Width="112" BorderBrush="#FF479E3B" VerticalAlignment="Top" x:Name="ButtonEdit" Click="Button_Edit" Visibility="Visible"/>
-        <ui:Button Content="Удалить" Height="40" Margin="622,599,0,0" Width="112" VerticalAlignment="Top" BorderBrush="#FF479E3B" x:Name="ButtonDelete" Click="Button_Delete" Visibility="Visible"/>
-        <Button Content="✕" Margin="622,430,0,0" VerticalAlignment="Top" Width="36" Height="32" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose" Visibility="Visible" Click="Button_Click_Close" FontSize="7">
+        </StackPanel>
+        <ui:Button Content="Добавить" Height="42" Margin="622,473,0,0" VerticalAlignment="Top" Width="112" BorderBrush="#FF479E3B" x:Name="ButtonAdd" Click="Button_Add" Visibility="Hidden" />
+        <ui:Button Content="Изменить" Height="40" Margin="622,539,0,0" Width="112" BorderBrush="#FF479E3B" VerticalAlignment="Top" x:Name="ButtonEdit" Click="Button_Edit" Visibility="Hidden"/>
+        <ui:Button Content="Удалить" Height="40" Margin="622,599,0,0" Width="112" VerticalAlignment="Top" BorderBrush="#FF479E3B" x:Name="ButtonDelete" Click="Button_Delete" Visibility="Hidden"/>
+        <Button Content="✕" Margin="622,430,0,0" VerticalAlignment="Top" Width="36" Height="32" RenderTransformOrigin="1.58,0.34" x:Name="ButtonClose" Visibility="Hidden" Click="Button_Click_Close" FontSize="7">
             <Button.BorderBrush>
                 <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                     <LinearGradientBrush.RelativeTransform>
