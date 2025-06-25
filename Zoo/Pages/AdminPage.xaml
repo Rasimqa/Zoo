@@ -1,0 +1,24 @@
+﻿<Page x:Class="Zoo.Pages.AdminPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Zoo.Pages"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d" 
+      Background="White"
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="Управление пользователями">
+
+    <Grid>
+        <TextBlock HorizontalAlignment="Center" Margin="0,112,0,0" TextWrapping="Wrap" Text="Админ Панель" VerticalAlignment="Top" Height="79" Width="440" FontSize="64"/>
+        <ui:Button Width="896" Height="130" Margin="508,258,0,0" VerticalAlignment="Top" Click="Button_Click" Background="#B3F1F1F1">
+            <ui:TextBlock Text="Управление пользователями" FontSize="56" />
+        </ui:Button>
+        <ui:Button Width="896" Height="130" Margin="508,428,0,0" VerticalAlignment="Top" Click="Button_Click_1" Background="#B3F1F1F1">
+            <ui:TextBlock Text="Управление пользователями" FontSize="56" />
+        </ui:Button>
+
+
+    </Grid>
+</Page>

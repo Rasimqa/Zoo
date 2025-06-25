@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:Zoo"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" x:Class="Zoo.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1920" Height="1080">
+        Title="MainWindow" Width="1920" Height="1080"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        MouseLeftButtonUp="Window_MouseLeftButtonUp"
+        MouseMove="Window_MouseMove"
+        MinWidth="1920" MinHeight="1080"
+        ResizeMode="CanResize"
+        SizeToContent="Manual"
+        WindowStartupLocation="CenterScreen">
+
     <Grid>
 
         <Frame x:Name="MainFrame" Margin="10,0,-1,0"/>
@@ -24,7 +32,7 @@
                 </LinearGradientBrush>
             </Button.BorderBrush>
         </Button>
-        <StackPanel HorizontalAlignment="Left" Height="1018" Margin="1741,58,0,0" VerticalAlignment="Top" Width="180" Background="#FF3D6338" x:Name="Hamburger" Visibility="Hidden">
+        <StackPanel HorizontalAlignment="Left" Height="1018" Margin="1741,58,0,0" VerticalAlignment="Top" Width="180" Background="#FF3D6338" x:Name="Hamburger">
             <ui:Button Content="Профиль" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile" Click="Button_Profile">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
@@ -36,7 +44,62 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Животные" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonPet" Click="ButtonAnimal_Click">
+            <ui:Button Content="История Рода (П)" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonUHistoryTree" Click="Button_UHistoryTree">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <d:LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </d:LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="Мед.Карты (П)" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonUMedCardPage" Click="Button_UMedCardPage">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <d:LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </d:LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="Мед.Процедуры (П)" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonUMedProcedure" Click="Button_UMedProcedure">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="Животные (П)" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonUAnimalPage" Click="Button_UAnimalPage">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="Мед.История (П)" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonUMedHistory" Click="Button_UMedHistory">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="Мероприятия (П)" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonUEventPage" Click="Button_UEventPage">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
                         <d:LinearGradientBrush.RelativeTransform>
@@ -58,50 +121,6 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
-            <ui:Button Content="Заказ билетов" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать2">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Мероприятия" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonEvent" Click="Button_Event">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Отчет" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать4">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
-            <ui:Button Content="Админ панель" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать7">
-                <ui:Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
-                        <d:LinearGradientBrush.RelativeTransform>
-                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
-                        </d:LinearGradientBrush.RelativeTransform>
-                        <GradientStop Color="#29000000" Offset="0.33"/>
-                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
-                    </LinearGradientBrush>
-                </ui:Button.BorderBrush>
-            </ui:Button>
             <ui:Button Content="Выйти" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonExit" Click="Button_Exit">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
@@ -113,6 +132,74 @@
                     </LinearGradientBrush>
                 </ui:Button.BorderBrush>
             </ui:Button>
+            <ui:Button Content="Животные" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonPet" Click="ButtonAnimal_Click" Visibility="Hidden">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <d:LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </d:LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="Мед.История" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonMedHist" Click="Button_MedHist" Visibility="Hidden">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <d:LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </d:LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="Мед.Процедуры" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonMedProcedure" Click="Button_MedProcedure" Visibility="Hidden">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <d:LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </d:LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="История Рода" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonHistoryTree" Click="Button_HistoryTree" Visibility="Hidden">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <d:LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </d:LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="Мероприятия" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonEvent" Click="Button_Event" Visibility="Hidden">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <d:LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </d:LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+            <ui:Button Content="Управление пользователями" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать7" Click="ButtonProfile_Копировать7_Click" Visibility="Hidden">
+                <ui:Button.BorderBrush>
+                    <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
+                        <d:LinearGradientBrush.RelativeTransform>
+                            <ScaleTransform CenterY="0.5" ScaleY="-1"/>
+                        </d:LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#29000000" Offset="0.33"/>
+                        <GradientStop Color="#0FFFFFFF" Offset="1"/>
+                    </LinearGradientBrush>
+                </ui:Button.BorderBrush>
+            </ui:Button>
+
+
             <ui:Button Content="Profile" Width="180" Background="{x:Null}" Foreground="White" FontSize="16" FontWeight="Bold" x:Name="ButtonProfile_Копировать5" Visibility="Hidden">
                 <ui:Button.BorderBrush>
                     <LinearGradientBrush EndPoint="0,3" MappingMode="Absolute">
@@ -145,6 +232,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
+
 
     </Grid>
 

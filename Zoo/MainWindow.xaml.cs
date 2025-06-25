@@ -27,12 +27,42 @@ namespace Zoo
         int a = 0;
         User newUser;        
         int iduser;
+        private bool isDragging = false;
+        private Point lastMousePosition;
         public MainWindow()
         {
             InitializeComponent();
-            WindowState = WindowState.Maximized;
-            WindowStyle = WindowStyle.None;
+            //WindowState = WindowState.Maximized;
+            //WindowStyle = WindowStyle.None;
+            this.WindowStyle = WindowStyle.None;
+            this.ResizeMode = ResizeMode.CanResize; // или CanResizeWithGrip
             MainFrame.NavigationService.Navigate(new RegPage(this));
+        }
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = true;
+            lastMousePosition = e.GetPosition(this);
+            CaptureMouse();
+        }
+
+        private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            isDragging = false;
+            ReleaseMouseCapture();
+        }
+
+        private void Window_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging && this.IsMouseCaptured)
+            {
+                var currentPos = e.GetPosition(this);
+                var delta = currentPos - lastMousePosition;
+
+                this.Left += delta.X;
+                this.Top += delta.Y;
+
+                lastMousePosition = currentPos;
+            }
         }
         private void HamButton(object sender, RoutedEventArgs e)
         {
@@ -122,5 +152,88 @@ namespace Zoo
             a = 6;
             MainFrame.NavigationService.Navigate(new EventPage(this));
         }
+
+        private void ButtonProfile_Копировать7_Click(object sender, RoutedEventArgs e)
+        {
+
+            MainFrame.NavigationService.Navigate(new UserManagement(this));
+        }
+
+        public void UpdateUIForUserRole(User user)
+        {
+            if (user != null && user.id_role == 1) // Предположим, роль админа = 1
+            {
+                ButtonProfile_Копировать7.Visibility = Visibility.Visible;
+                ButtonPet.Visibility = Visibility.Visible;
+                ButtonMedHist.Visibility = Visibility.Visible;
+                ButtonMedProcedure.Visibility = Visibility.Visible;
+                ButtonHistoryTree.Visibility = Visibility.Visible;
+                ButtonEvent.Visibility = Visibility.Visible;
+            }
+            else if(user != null && user.id_role == 3)
+            {
+                ButtonPet.Visibility = Visibility.Visible;
+                ButtonMedHist.Visibility = Visibility.Visible;
+                ButtonMedProcedure.Visibility = Visibility.Visible;
+                ButtonHistoryTree.Visibility = Visibility.Visible;
+                ButtonEvent.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                ButtonProfile_Копировать7.Visibility = Visibility.Hidden;
+                ButtonPet.Visibility = Visibility.Hidden;
+                ButtonMedHist.Visibility = Visibility.Hidden;
+                ButtonMedProcedure.Visibility = Visibility.Hidden;
+                ButtonHistoryTree.Visibility = Visibility.Hidden;
+                ButtonEvent.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void Button_MedHist(object sender, RoutedEventArgs e)
+        {
+
+            MainFrame.NavigationService.Navigate(new MedHistory(this));
+        }
+
+        private void Button_MedProcedure(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new MedProcedure(this));
+        }
+
+        private void Button_HistoryTree(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new HistoryTree(this));
+        }
+
+        private void Button_UHistoryTree(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new UHistoryTree(this));
+        }
+
+        private void Button_UMedCardPage(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new UMedCardPage(this));
+        }
+
+        private void Button_UMedProcedure(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new UMedProcedure(this));
+        }
+
+        private void Button_UAnimalPage(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new UAnimalPage(this));
+        }
+
+        private void Button_UMedHistory(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new UMedHistory(this));
+        }
+
+        private void Button_UEventPage(object sender, RoutedEventArgs e)
+        {
+            MainFrame.NavigationService.Navigate(new UEventPage(this));
+        }
+
     }
 }

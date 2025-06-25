@@ -1,0 +1,34 @@
+<Page x:Class="Zoo.Pages.UMedProcedure"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Zoo.Pages"
+      mc:Ignorable="d" 
+      Background="White"
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="UMedProcedure">
+
+    <Grid>
+        <!-- Заголовок -->
+        <TextBlock HorizontalAlignment="Center" Margin="0,82,0,0" TextWrapping="Wrap" Text="Мед.Процедуры" VerticalAlignment="Top" Height="79" Width="496" FontSize="64"/>
+
+        <!-- Поля для поиска и фильтрации -->
+        <StackPanel Orientation="Vertical" Margin="1162,222,506,525">
+            <TextBlock Text="Поиск по названию:" Margin="0,0,0,5"/>
+            <TextBox x:Name="txt_search_name" Width="239" Margin="0,0,0,10" TextChanged="Txt_Search_Name_TextChanged"/>
+            <TextBlock Text="Фильтр по типу процедуры:" Margin="0,0,0,5"/>
+            <TextBox x:Name="txt_filter_type" Width="239" TextChanged="Txt_Filter_Type_TextChanged" Margin="0,0,0,10"/>
+        </StackPanel>
+
+        <!-- Список медицинских процедур -->
+        <ListView x:Name="MedProcedureListView" Margin="487,221,770,170">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название процедуры" DisplayMemberBinding="{Binding name_procedure}" Width="200"/>
+                    <GridViewColumn Header="Тип процедуры" DisplayMemberBinding="{Binding type_procedure}" Width="200"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Page> 

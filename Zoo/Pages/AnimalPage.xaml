@@ -11,7 +11,7 @@
 
     <Grid>
         <Frame x:Name="AnimalFrame" Visibility="Hidden" ></Frame>
-        <ui:ListView x:Name="ListAnimal" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="0,0,429,82">
+        <ui:ListView x:Name="ListAnimal" Foreground="#FF3D633A" BorderBrush="#FF3D6338" Background="#FF5BB74F" Margin="0,0,533,176" FontSize="36">
             <ui:ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Path=id_animal}" Width="100">ID Животного</GridViewColumn>

@@ -1,0 +1,37 @@
+﻿<Page x:Class="Zoo.Pages.MedCardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Zoo.Pages"
+      mc:Ignorable="d" 
+      Background="White"
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="MedCard">
+
+    <Grid>
+        <DataGrid x:Name="MedCardGrid" AutoGenerateColumns="False" CanUserAddRows="False" SelectionMode="Single" Margin="407,272,824,290">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID Мед.Карты" Binding="{Binding id_medcard}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="ID Животного" Binding="{Binding id_animal}"/>
+                <DataGridTextColumn Header="Дата регистрации" Binding="{Binding date_start_account, StringFormat=yyyy-MM-dd}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Поля редактирования -->
+        <StackPanel Orientation="Vertical" Margin="1116,273,503,610" >
+            <TextBox x:Name="txt_id_medcard" Text="ID Мед.Карты" IsEnabled="False"/>
+            <TextBox x:Name="txt_id_animal" Text="ID Животного"/>
+            <TextBlock Text="Дата регистрации (ГГГГ-ММ-ДД)"/>
+            <DatePicker x:Name="txt_date_start_account"/>
+
+            <!-- Кнопки управления -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button Content="Добавить" Width="100" Click="AddMedCard_Click" Background="#4CAF50" Foreground="White"/>
+                <Button Content="Сохранить" Width="100" Click="SaveMedCard_Click" Background="#2196F3" Foreground="White"/>
+                <Button Content="Удалить" Width="100" Click="DeleteMedCard_Click" Background="#F44336" Foreground="White"/>
+            </StackPanel>
+        </StackPanel>
+        <TextBlock HorizontalAlignment="Center" Margin="0,82,0,0" TextWrapping="Wrap" Text="Мед.Карта" VerticalAlignment="Top" Height="79" Width="379" FontSize="64"/>
+    </Grid>
+</Page>

@@ -94,7 +94,7 @@ namespace Zoo.Pages
         int idrole;
         int user_reg;
         int newUser;
-
+        public static User use;
         public ProfilePage(MainWindow mainWindow, User newUser)
         {
             _mainWindow = mainWindow;            
@@ -107,6 +107,9 @@ namespace Zoo.Pages
             {
                 idrole = Convert.ToInt16(newUser.id_role);
                 user_reg = newUser.id_user;
+                use = newUser;
+                // Обновляем интерфейс главного окна
+                UpdateMainWindowUserRole();
             }
             QrCodeImage.Source = GenerateQrCodeBitmapImage($"Profile: {idrole}");
 
@@ -413,6 +416,14 @@ namespace Zoo.Pages
             catch (Exception ex)
             {
                 MessageBox.Show("Вы не ввели все данные!");
+            }
+        }
+
+        private void UpdateMainWindowUserRole()
+        {
+            if (_mainWindow != null && use != null)
+            {
+                _mainWindow.UpdateUIForUserRole(use); // 'use' — это статическое поле с пользователем
             }
         }
     }
