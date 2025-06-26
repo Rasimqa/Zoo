@@ -27,14 +27,6 @@
           <Property Name="square_m" Type="int" />
           <Property Name="max_count_animal" Type="int" />
         </EntityType>
-        <EntityType Name="Custom_Services">
-          <Key>
-            <PropertyRef Name="id_custom" />
-          </Key>
-          <Property Name="id_custom" Type="int" Nullable="false" />
-          <Property Name="id_service" Type="int" />
-          <Property Name="id_ticket" Type="int" />
-        </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="id_employee" />
@@ -73,15 +65,6 @@
           <Property Name="name_family_tree" Type="nvarchar" MaxLength="50" />
           <Property Name="count_animal" Type="int" />
           <Property Name="date_start_family" Type="date" />
-        </EntityType>
-        <EntityType Name="History_Traffic">
-          <Key>
-            <PropertyRef Name="id_history_traffic" />
-          </Key>
-          <Property Name="id_history_traffic" Type="int" Nullable="false" />
-          <Property Name="date_traffic" Type="date" />
-          <Property Name="count_visitor" Type="int" />
-          <Property Name="id_event" Type="int" />
         </EntityType>
         <EntityType Name="List_Family_Tree">
           <Key>
@@ -137,14 +120,6 @@
           <Property Name="id_animal" Type="int" />
           <Property Name="date_start_account" Type="date" />
         </EntityType>
-        <EntityType Name="Report_Finance">
-          <Key>
-            <PropertyRef Name="id_report_finance" />
-          </Key>
-          <Property Name="id_report_finance" Type="int" Nullable="false" />
-          <Property Name="id_history_traffic" Type="int" />
-          <Property Name="profit" Type="nchar" MaxLength="10" />
-        </EntityType>
         <EntityType Name="role">
           <Key>
             <PropertyRef Name="id_role" />
@@ -152,22 +127,15 @@
           <Property Name="id_role" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Service">
+        <EntityType Name="sysdiagrams">
           <Key>
-            <PropertyRef Name="id_service" />
+            <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="id_service" Type="int" Nullable="false" />
-          <Property Name="description_service" Type="nvarchar" MaxLength="50" />
-          <Property Name="price" Type="int" />
-        </EntityType>
-        <EntityType Name="Ticket">
-          <Key>
-            <PropertyRef Name="id_ticket" />
-          </Key>
-          <Property Name="id_ticket" Type="int" Nullable="false" />
-          <Property Name="id_visitor" Type="int" />
-          <Property Name="id_event" Type="int" />
-          <Property Name="price_ticket" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -203,30 +171,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Custom_Services_Service">
-          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
-          <End Role="Custom_Services" Type="Self.Custom_Services" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Service">
-              <PropertyRef Name="id_service" />
-            </Principal>
-            <Dependent Role="Custom_Services">
-              <PropertyRef Name="id_service" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Custom_Services_Ticket">
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="0..1" />
-          <End Role="Custom_Services" Type="Self.Custom_Services" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ticket">
-              <PropertyRef Name="id_ticket" />
-            </Principal>
-            <Dependent Role="Custom_Services">
-              <PropertyRef Name="id_ticket" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Event_Cell">
           <End Role="Cell" Type="Self.Cell" Multiplicity="0..1" />
           <End Role="Event" Type="Self.Event" Multiplicity="*" />
@@ -248,18 +192,6 @@
             </Principal>
             <Dependent Role="Feedback">
               <PropertyRef Name="id_visitor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_History_Traffic_Event">
-          <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
-          <End Role="History_Traffic" Type="Self.History_Traffic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Event">
-              <PropertyRef Name="id_event" />
-            </Principal>
-            <Dependent Role="History_Traffic">
-              <PropertyRef Name="id_event" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -359,42 +291,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Report_Finance_History_Traffic">
-          <End Role="History_Traffic" Type="Self.History_Traffic" Multiplicity="0..1" />
-          <End Role="Report_Finance" Type="Self.Report_Finance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="History_Traffic">
-              <PropertyRef Name="id_history_traffic" />
-            </Principal>
-            <Dependent Role="Report_Finance">
-              <PropertyRef Name="id_history_traffic" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ticket_Event">
-          <End Role="Event" Type="Self.Event" Multiplicity="0..1" />
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Event">
-              <PropertyRef Name="id_event" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="id_event" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ticket_Visitor">
-          <End Role="Visitor" Type="Self.Visitor" Multiplicity="0..1" />
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Visitor">
-              <PropertyRef Name="id_visitor" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="id_visitor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_User_Login">
           <End Role="Login" Type="Self.Login" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -434,35 +330,23 @@
         <EntityContainer Name="Хранилище Zoo_Pr6ModelContainer">
           <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cell" EntityType="Self.Cell" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Custom_Services" EntityType="Self.Custom_Services" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="History_Family_Tree" EntityType="Self.History_Family_Tree" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="History_Traffic" EntityType="Self.History_Traffic" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="List_Family_Tree" EntityType="Self.List_Family_Tree" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Loyalty_Program" EntityType="Self.Loyalty_Program" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Med_History" EntityType="Self.Med_History" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Med_Procedure" EntityType="Self.Med_Procedure" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MedCard" EntityType="Self.MedCard" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Report_Finance" EntityType="Self.Report_Finance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Visitor" EntityType="Self.Visitor" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Animal_Cell" Association="Self.FK_Animal_Cell">
             <End Role="Cell" EntitySet="Cell" />
             <End Role="Animal" EntitySet="Animal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Custom_Services_Service" Association="Self.FK_Custom_Services_Service">
-            <End Role="Service" EntitySet="Service" />
-            <End Role="Custom_Services" EntitySet="Custom_Services" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Custom_Services_Ticket" Association="Self.FK_Custom_Services_Ticket">
-            <End Role="Ticket" EntitySet="Ticket" />
-            <End Role="Custom_Services" EntitySet="Custom_Services" />
           </AssociationSet>
           <AssociationSet Name="FK_Event_Cell" Association="Self.FK_Event_Cell">
             <End Role="Cell" EntitySet="Cell" />
@@ -471,10 +355,6 @@
           <AssociationSet Name="FK_Feedback_Visitor" Association="Self.FK_Feedback_Visitor">
             <End Role="Visitor" EntitySet="Visitor" />
             <End Role="Feedback" EntitySet="Feedback" />
-          </AssociationSet>
-          <AssociationSet Name="FK_History_Traffic_Event" Association="Self.FK_History_Traffic_Event">
-            <End Role="Event" EntitySet="Event" />
-            <End Role="History_Traffic" EntitySet="History_Traffic" />
           </AssociationSet>
           <AssociationSet Name="FK_List_Family_Tree_Animal" Association="Self.FK_List_Family_Tree_Animal">
             <End Role="Animal" EntitySet="Animal" />
@@ -508,18 +388,6 @@
             <End Role="Animal" EntitySet="Animal" />
             <End Role="MedCard" EntitySet="MedCard" />
           </AssociationSet>
-          <AssociationSet Name="FK_Report_Finance_History_Traffic" Association="Self.FK_Report_Finance_History_Traffic">
-            <End Role="History_Traffic" EntitySet="History_Traffic" />
-            <End Role="Report_Finance" EntitySet="Report_Finance" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_Event" Association="Self.FK_Ticket_Event">
-            <End Role="Event" EntitySet="Event" />
-            <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_Visitor" Association="Self.FK_Ticket_Visitor">
-            <End Role="Visitor" EntitySet="Visitor" />
-            <End Role="Ticket" EntitySet="Ticket" />
-          </AssociationSet>
           <AssociationSet Name="FK_User_Login" Association="Self.FK_User_Login">
             <End Role="Login" EntitySet="Login" />
             <End Role="User" EntitySet="User" />
@@ -540,22 +408,18 @@
         <EntityContainer Name="Zoo_Pr6Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Animal" EntityType="Zoo_Pr6Model.Animal" />
           <EntitySet Name="Cell" EntityType="Zoo_Pr6Model.Cell" />
-          <EntitySet Name="Custom_Services" EntityType="Zoo_Pr6Model.Custom_Services" />
           <EntitySet Name="Employee" EntityType="Zoo_Pr6Model.Employee" />
           <EntitySet Name="Event" EntityType="Zoo_Pr6Model.Event" />
           <EntitySet Name="Feedback" EntityType="Zoo_Pr6Model.Feedback" />
           <EntitySet Name="History_Family_Tree" EntityType="Zoo_Pr6Model.History_Family_Tree" />
-          <EntitySet Name="History_Traffic" EntityType="Zoo_Pr6Model.History_Traffic" />
           <EntitySet Name="List_Family_Tree" EntityType="Zoo_Pr6Model.List_Family_Tree" />
           <EntitySet Name="Login" EntityType="Zoo_Pr6Model.Login" />
           <EntitySet Name="Loyalty_Program" EntityType="Zoo_Pr6Model.Loyalty_Program" />
           <EntitySet Name="Med_History" EntityType="Zoo_Pr6Model.Med_History" />
           <EntitySet Name="Med_Procedure" EntityType="Zoo_Pr6Model.Med_Procedure" />
           <EntitySet Name="MedCard" EntityType="Zoo_Pr6Model.MedCard" />
-          <EntitySet Name="Report_Finance" EntityType="Zoo_Pr6Model.Report_Finance" />
           <EntitySet Name="role" EntityType="Zoo_Pr6Model.role" />
-          <EntitySet Name="Service" EntityType="Zoo_Pr6Model.Service" />
-          <EntitySet Name="Ticket" EntityType="Zoo_Pr6Model.Ticket" />
+          <EntitySet Name="sysdiagrams" EntityType="Zoo_Pr6Model.sysdiagrams" />
           <EntitySet Name="User" EntityType="Zoo_Pr6Model.User" />
           <EntitySet Name="Visitor" EntityType="Zoo_Pr6Model.Visitor" />
           <AssociationSet Name="FK_Animal_Cell" Association="Zoo_Pr6Model.FK_Animal_Cell">
@@ -582,25 +446,9 @@
             <End Role="Cell" EntitySet="Cell" />
             <End Role="Event" EntitySet="Event" />
           </AssociationSet>
-          <AssociationSet Name="FK_Custom_Services_Service" Association="Zoo_Pr6Model.FK_Custom_Services_Service">
-            <End Role="Service" EntitySet="Service" />
-            <End Role="Custom_Services" EntitySet="Custom_Services" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Custom_Services_Ticket" Association="Zoo_Pr6Model.FK_Custom_Services_Ticket">
-            <End Role="Ticket" EntitySet="Ticket" />
-            <End Role="Custom_Services" EntitySet="Custom_Services" />
-          </AssociationSet>
           <AssociationSet Name="FK_Med_History_Employee" Association="Zoo_Pr6Model.FK_Med_History_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Med_History" EntitySet="Med_History" />
-          </AssociationSet>
-          <AssociationSet Name="FK_History_Traffic_Event" Association="Zoo_Pr6Model.FK_History_Traffic_Event">
-            <End Role="Event" EntitySet="Event" />
-            <End Role="History_Traffic" EntitySet="History_Traffic" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_Event" Association="Zoo_Pr6Model.FK_Ticket_Event">
-            <End Role="Event" EntitySet="Event" />
-            <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
           <AssociationSet Name="FK_Feedback_Visitor" Association="Zoo_Pr6Model.FK_Feedback_Visitor">
             <End Role="Visitor" EntitySet="Visitor" />
@@ -609,10 +457,6 @@
           <AssociationSet Name="FK_List_Family_Tree_History_Family_Tree" Association="Zoo_Pr6Model.FK_List_Family_Tree_History_Family_Tree">
             <End Role="History_Family_Tree" EntitySet="History_Family_Tree" />
             <End Role="List_Family_Tree" EntitySet="List_Family_Tree" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Report_Finance_History_Traffic" Association="Zoo_Pr6Model.FK_Report_Finance_History_Traffic">
-            <End Role="History_Traffic" EntitySet="History_Traffic" />
-            <End Role="Report_Finance" EntitySet="Report_Finance" />
           </AssociationSet>
           <AssociationSet Name="FK_User_Login" Association="Zoo_Pr6Model.FK_User_Login">
             <End Role="Login" EntitySet="Login" />
@@ -633,10 +477,6 @@
           <AssociationSet Name="FK_User_role" Association="Zoo_Pr6Model.FK_User_role">
             <End Role="role" EntitySet="role" />
             <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Ticket_Visitor" Association="Zoo_Pr6Model.FK_Ticket_Visitor">
-            <End Role="Visitor" EntitySet="Visitor" />
-            <End Role="Ticket" EntitySet="Ticket" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Animal">
@@ -668,16 +508,6 @@
           <NavigationProperty Name="Animal" Relationship="Zoo_Pr6Model.FK_Animal_Cell" FromRole="Cell" ToRole="Animal" />
           <NavigationProperty Name="Event" Relationship="Zoo_Pr6Model.FK_Event_Cell" FromRole="Cell" ToRole="Event" />
         </EntityType>
-        <EntityType Name="Custom_Services">
-          <Key>
-            <PropertyRef Name="id_custom" />
-          </Key>
-          <Property Name="id_custom" Type="Int32" Nullable="false" />
-          <Property Name="id_service" Type="Int32" />
-          <Property Name="id_ticket" Type="Int32" />
-          <NavigationProperty Name="Service" Relationship="Zoo_Pr6Model.FK_Custom_Services_Service" FromRole="Custom_Services" ToRole="Service" />
-          <NavigationProperty Name="Ticket" Relationship="Zoo_Pr6Model.FK_Custom_Services_Ticket" FromRole="Custom_Services" ToRole="Ticket" />
-        </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="id_employee" />
@@ -699,8 +529,6 @@
           <Property Name="id_cell" Type="Int32" />
           <Property Name="date" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Cell" Relationship="Zoo_Pr6Model.FK_Event_Cell" FromRole="Event" ToRole="Cell" />
-          <NavigationProperty Name="History_Traffic" Relationship="Zoo_Pr6Model.FK_History_Traffic_Event" FromRole="Event" ToRole="History_Traffic" />
-          <NavigationProperty Name="Ticket" Relationship="Zoo_Pr6Model.FK_Ticket_Event" FromRole="Event" ToRole="Ticket" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -722,17 +550,6 @@
           <Property Name="count_animal" Type="Int32" />
           <Property Name="date_start_family" Type="DateTime" Precision="0" />
           <NavigationProperty Name="List_Family_Tree" Relationship="Zoo_Pr6Model.FK_List_Family_Tree_History_Family_Tree" FromRole="History_Family_Tree" ToRole="List_Family_Tree" />
-        </EntityType>
-        <EntityType Name="History_Traffic">
-          <Key>
-            <PropertyRef Name="id_history_traffic" />
-          </Key>
-          <Property Name="id_history_traffic" Type="Int32" Nullable="false" />
-          <Property Name="date_traffic" Type="DateTime" Precision="0" />
-          <Property Name="count_visitor" Type="Int32" />
-          <Property Name="id_event" Type="Int32" />
-          <NavigationProperty Name="Event" Relationship="Zoo_Pr6Model.FK_History_Traffic_Event" FromRole="History_Traffic" ToRole="Event" />
-          <NavigationProperty Name="Report_Finance" Relationship="Zoo_Pr6Model.FK_Report_Finance_History_Traffic" FromRole="History_Traffic" ToRole="Report_Finance" />
         </EntityType>
         <EntityType Name="List_Family_Tree">
           <Key>
@@ -800,15 +617,6 @@
           <NavigationProperty Name="Animal" Relationship="Zoo_Pr6Model.FK_MedCard_Animal" FromRole="MedCard" ToRole="Animal" />
           <NavigationProperty Name="Med_History" Relationship="Zoo_Pr6Model.FK_Med_History_MedCard" FromRole="MedCard" ToRole="Med_History" />
         </EntityType>
-        <EntityType Name="Report_Finance">
-          <Key>
-            <PropertyRef Name="id_report_finance" />
-          </Key>
-          <Property Name="id_report_finance" Type="Int32" Nullable="false" />
-          <Property Name="id_history_traffic" Type="Int32" />
-          <Property Name="profit" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="History_Traffic" Relationship="Zoo_Pr6Model.FK_Report_Finance_History_Traffic" FromRole="Report_Finance" ToRole="History_Traffic" />
-        </EntityType>
         <EntityType Name="role">
           <Key>
             <PropertyRef Name="id_role" />
@@ -817,26 +625,15 @@
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="User" Relationship="Zoo_Pr6Model.FK_User_role" FromRole="role" ToRole="User" />
         </EntityType>
-        <EntityType Name="Service">
+        <EntityType Name="sysdiagrams">
           <Key>
-            <PropertyRef Name="id_service" />
+            <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="id_service" Type="Int32" Nullable="false" />
-          <Property Name="description_service" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="price" Type="Int32" />
-          <NavigationProperty Name="Custom_Services" Relationship="Zoo_Pr6Model.FK_Custom_Services_Service" FromRole="Service" ToRole="Custom_Services" />
-        </EntityType>
-        <EntityType Name="Ticket">
-          <Key>
-            <PropertyRef Name="id_ticket" />
-          </Key>
-          <Property Name="id_ticket" Type="Int32" Nullable="false" />
-          <Property Name="id_visitor" Type="Int32" />
-          <Property Name="id_event" Type="Int32" />
-          <Property Name="price_ticket" Type="Int32" />
-          <NavigationProperty Name="Custom_Services" Relationship="Zoo_Pr6Model.FK_Custom_Services_Ticket" FromRole="Ticket" ToRole="Custom_Services" />
-          <NavigationProperty Name="Event" Relationship="Zoo_Pr6Model.FK_Ticket_Event" FromRole="Ticket" ToRole="Event" />
-          <NavigationProperty Name="Visitor" Relationship="Zoo_Pr6Model.FK_Ticket_Visitor" FromRole="Ticket" ToRole="Visitor" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -863,7 +660,6 @@
           <Property Name="card_zoo" Type="Int32" />
           <NavigationProperty Name="Feedback" Relationship="Zoo_Pr6Model.FK_Feedback_Visitor" FromRole="Visitor" ToRole="Feedback" />
           <NavigationProperty Name="Loyalty_Program" Relationship="Zoo_Pr6Model.FK_Visitor_Loyalty_Program" FromRole="Visitor" ToRole="Loyalty_Program" />
-          <NavigationProperty Name="Ticket" Relationship="Zoo_Pr6Model.FK_Ticket_Visitor" FromRole="Visitor" ToRole="Ticket" />
         </EntityType>
         <Association Name="FK_Animal_Cell">
           <End Type="Zoo_Pr6Model.Cell" Role="Cell" Multiplicity="0..1" />
@@ -937,30 +733,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Custom_Services_Service">
-          <End Type="Zoo_Pr6Model.Service" Role="Service" Multiplicity="0..1" />
-          <End Type="Zoo_Pr6Model.Custom_Services" Role="Custom_Services" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Service">
-              <PropertyRef Name="id_service" />
-            </Principal>
-            <Dependent Role="Custom_Services">
-              <PropertyRef Name="id_service" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Custom_Services_Ticket">
-          <End Type="Zoo_Pr6Model.Ticket" Role="Ticket" Multiplicity="0..1" />
-          <End Type="Zoo_Pr6Model.Custom_Services" Role="Custom_Services" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ticket">
-              <PropertyRef Name="id_ticket" />
-            </Principal>
-            <Dependent Role="Custom_Services">
-              <PropertyRef Name="id_ticket" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Med_History_Employee">
           <End Type="Zoo_Pr6Model.Employee" Role="Employee" Multiplicity="0..1" />
           <End Type="Zoo_Pr6Model.Med_History" Role="Med_History" Multiplicity="*" />
@@ -970,30 +742,6 @@
             </Principal>
             <Dependent Role="Med_History">
               <PropertyRef Name="id_employee" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_History_Traffic_Event">
-          <End Type="Zoo_Pr6Model.Event" Role="Event" Multiplicity="0..1" />
-          <End Type="Zoo_Pr6Model.History_Traffic" Role="History_Traffic" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Event">
-              <PropertyRef Name="id_event" />
-            </Principal>
-            <Dependent Role="History_Traffic">
-              <PropertyRef Name="id_event" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Ticket_Event">
-          <End Type="Zoo_Pr6Model.Event" Role="Event" Multiplicity="0..1" />
-          <End Type="Zoo_Pr6Model.Ticket" Role="Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Event">
-              <PropertyRef Name="id_event" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="id_event" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1018,18 +766,6 @@
             </Principal>
             <Dependent Role="List_Family_Tree">
               <PropertyRef Name="id_history" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Report_Finance_History_Traffic">
-          <End Type="Zoo_Pr6Model.History_Traffic" Role="History_Traffic" Multiplicity="0..1" />
-          <End Type="Zoo_Pr6Model.Report_Finance" Role="Report_Finance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="History_Traffic">
-              <PropertyRef Name="id_history_traffic" />
-            </Principal>
-            <Dependent Role="Report_Finance">
-              <PropertyRef Name="id_history_traffic" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1093,19 +829,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Ticket_Visitor">
-          <End Type="Zoo_Pr6Model.Visitor" Role="Visitor" Multiplicity="0..1" />
-          <End Type="Zoo_Pr6Model.Ticket" Role="Ticket" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Visitor">
-              <PropertyRef Name="id_visitor" />
-            </Principal>
-            <Dependent Role="Ticket">
-              <PropertyRef Name="id_visitor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1132,15 +856,6 @@
                 <ScalarProperty Name="type_cell" ColumnName="type_cell" />
                 <ScalarProperty Name="name_cell" ColumnName="name_cell" />
                 <ScalarProperty Name="id_cell" ColumnName="id_cell" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Custom_Services">
-            <EntityTypeMapping TypeName="Zoo_Pr6Model.Custom_Services">
-              <MappingFragment StoreEntitySet="Custom_Services">
-                <ScalarProperty Name="id_ticket" ColumnName="id_ticket" />
-                <ScalarProperty Name="id_service" ColumnName="id_service" />
-                <ScalarProperty Name="id_custom" ColumnName="id_custom" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1184,16 +899,6 @@
                 <ScalarProperty Name="count_animal" ColumnName="count_animal" />
                 <ScalarProperty Name="name_family_tree" ColumnName="name_family_tree" />
                 <ScalarProperty Name="id_history" ColumnName="id_history" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="History_Traffic">
-            <EntityTypeMapping TypeName="Zoo_Pr6Model.History_Traffic">
-              <MappingFragment StoreEntitySet="History_Traffic">
-                <ScalarProperty Name="id_event" ColumnName="id_event" />
-                <ScalarProperty Name="count_visitor" ColumnName="count_visitor" />
-                <ScalarProperty Name="date_traffic" ColumnName="date_traffic" />
-                <ScalarProperty Name="id_history_traffic" ColumnName="id_history_traffic" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1257,15 +962,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Report_Finance">
-            <EntityTypeMapping TypeName="Zoo_Pr6Model.Report_Finance">
-              <MappingFragment StoreEntitySet="Report_Finance">
-                <ScalarProperty Name="profit" ColumnName="profit" />
-                <ScalarProperty Name="id_history_traffic" ColumnName="id_history_traffic" />
-                <ScalarProperty Name="id_report_finance" ColumnName="id_report_finance" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="role">
             <EntityTypeMapping TypeName="Zoo_Pr6Model.role">
               <MappingFragment StoreEntitySet="role">
@@ -1274,22 +970,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Service">
-            <EntityTypeMapping TypeName="Zoo_Pr6Model.Service">
-              <MappingFragment StoreEntitySet="Service">
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="description_service" ColumnName="description_service" />
-                <ScalarProperty Name="id_service" ColumnName="id_service" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ticket">
-            <EntityTypeMapping TypeName="Zoo_Pr6Model.Ticket">
-              <MappingFragment StoreEntitySet="Ticket">
-                <ScalarProperty Name="price_ticket" ColumnName="price_ticket" />
-                <ScalarProperty Name="id_event" ColumnName="id_event" />
-                <ScalarProperty Name="id_visitor" ColumnName="id_visitor" />
-                <ScalarProperty Name="id_ticket" ColumnName="id_ticket" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Zoo_Pr6Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

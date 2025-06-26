@@ -122,11 +122,22 @@ namespace Zoo.Pages
                 //    txtPhone.Text = newVisitor.number_phone;
                 //}
 
+                //if(newUser.id_role = 3)
+                txtFullName.Text = $"Имя: {newUser.name}"; 
+                txtPhone.Text = $"Логин: {newUser.login}";
+                //txtRole.Text = $"Роль: {newUser.id_role}"; // Используем user.id_role напрямую
 
-                txtRole.Text = $"Роль: {newUser.id_role}"; // Используем user.id_role напрямую
 
-
-                if (newUser.id_role == 2)
+                if (newUser.id_role == 3)
+                {
+                    txtPosition.Visibility = Visibility.Visible;
+                    PLV.Visibility = Visibility.Visible;
+                }
+                else if(newUser.id_role == 2) 
+                { 
+                    txtPosition.Visibility = Visibility.Visible; 
+                }
+                else
                 {
                     txtPosition.Visibility = Visibility.Hidden;
                     PLV.Visibility = Visibility.Hidden;
@@ -136,9 +147,6 @@ namespace Zoo.Pages
             {
                 MessageBox.Show("Ошибка: пользователь не найден.");
             }
-
-
-
 
 
             // Создание модели графика для статистики посещений

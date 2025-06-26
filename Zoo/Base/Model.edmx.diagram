@@ -5,46 +5,36 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="dcfbf824a5da42e1bb463410c7ee1441" Name="Diagram1" ZoomLevel="73">
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Animal" Width="1.5" PointX="3" PointY="4.5" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Cell" Width="1.5" PointX="0.75" PointY="6.625" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Custom_Services" Width="1.5" PointX="10.5" PointY="11.875" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Employee" Width="1.5" PointX="5.25" PointY="17.875" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Event" Width="1.5" PointX="3" PointY="11.5" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Feedback" Width="1.5" PointX="5.25" PointY="20.75" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.History_Family_Tree" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.History_Traffic" Width="1.5" PointX="5.25" PointY="14.875" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.List_Family_Tree" Width="1.5" PointX="5.25" PointY="4.75" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.Animal" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.Cell" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.Employee" Width="1.5" PointX="5.25" PointY="13.625" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.Event" Width="1.5" PointX="3" PointY="3" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.Feedback" Width="1.5" PointX="10.25" PointY="1.25" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.History_Family_Tree" Width="1.5" PointX="3" PointY="10.5" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.List_Family_Tree" Width="1.5" PointX="5.25" PointY="6.125" />
         <EntityTypeShape EntityType="Zoo_Pr6Model.Login" Width="1.5" PointX="7.75" PointY="5.375" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Loyalty_Program" Width="1.5" PointX="0.75" PointY="16" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Med_History" Width="1.5" PointX="7.5" PointY="8.125" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Med_Procedure" Width="1.5" PointX="5.25" PointY="1.25" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.MedCard" Width="1.5" PointX="5.25" PointY="8.625" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Report_Finance" Width="1.5" PointX="7.5" PointY="15" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.role" Width="1.5" PointX="7.75" PointY="1.375" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Service" Width="1.5" PointX="8.25" PointY="18" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Ticket" Width="1.5" PointX="5.25" PointY="11.625" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.User" Width="1.5" PointX="10" PointY="1" />
-        <EntityTypeShape EntityType="Zoo_Pr6Model.Visitor" Width="1.5" PointX="3" PointY="15.375" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.Loyalty_Program" Width="1.5" PointX="5.75" PointY="1.5" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.Med_History" Width="1.5" PointX="7.5" PointY="9.5" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.Med_Procedure" Width="1.5" PointX="5.25" PointY="16.625" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.MedCard" Width="1.5" PointX="5.25" PointY="10" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.role" Width="1.5" PointX="7.75" PointY="14.375" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.sysdiagrams" Width="1.5" PointX="9.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.User" Width="1.5" PointX="10" PointY="5" />
+        <EntityTypeShape EntityType="Zoo_Pr6Model.Visitor" Width="1.5" PointX="8" PointY="1" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_Animal_Cell" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_List_Family_Tree_Animal" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_List_Family_Tree_Animal1" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_List_Family_Tree_Animal2" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_MedCard_Animal" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_Event_Cell" />
-        <AssociationConnector Association="Zoo_Pr6Model.FK_Custom_Services_Service" />
-        <AssociationConnector Association="Zoo_Pr6Model.FK_Custom_Services_Ticket" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_Med_History_Employee" />
-        <AssociationConnector Association="Zoo_Pr6Model.FK_History_Traffic_Event" />
-        <AssociationConnector Association="Zoo_Pr6Model.FK_Ticket_Event" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_Feedback_Visitor" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_List_Family_Tree_History_Family_Tree" />
-        <AssociationConnector Association="Zoo_Pr6Model.FK_Report_Finance_History_Traffic" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_User_Login" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_Visitor_Loyalty_Program" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_Med_History_Med_Procedure" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_Med_History_MedCard" />
         <AssociationConnector Association="Zoo_Pr6Model.FK_User_role" />
-        <AssociationConnector Association="Zoo_Pr6Model.FK_Ticket_Visitor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

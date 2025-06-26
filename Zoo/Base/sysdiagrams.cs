@@ -12,13 +12,12 @@ namespace Zoo.Base
     using System;
     using System.Collections.Generic;
     
-    public partial class Custom_Services
+    public partial class sysdiagrams
     {
-        public int id_custom { get; set; }
-        public Nullable<int> id_service { get; set; }
-        public Nullable<int> id_ticket { get; set; }
-    
-        public virtual Service Service { get; set; }
-        public virtual Ticket Ticket { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
