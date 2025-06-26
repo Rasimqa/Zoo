@@ -149,9 +149,6 @@ namespace Zoo.Pages
             }
 
 
-
-
-
             // Создание модели графика для статистики посещений
             var plotModel = new PlotModel { Title = "Статистика посещений пользователей" };
 
