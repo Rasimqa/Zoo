@@ -24,7 +24,7 @@
 
         <StackPanel Orientation="Vertical" Margin="1162,222,452,525">
             <TextBox x:Name="txt_search_name" Text="Поиск по названию" Margin="0,0,0,10" TextChanged="Txt_Search_Name_TextChanged"/>
-            <!--<TextBox x:Name="txt_filter_count" Text="Фильтр по кол-ву животных (мин)" Margin="0,0,0,10" TextChanged="Txt_Filter_Count_TextChanged"/>-->
+            <TextBlock  Text="Фильтр по кол-ву животных (мин)" Margin="0,0,0,10" />
             <ui:NumberBox x:Name="txt_filter_count"
               HorizontalAlignment="Left"
               Height="37"

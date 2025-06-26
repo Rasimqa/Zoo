@@ -18,7 +18,6 @@ namespace Zoo.Base
         public Visitor()
         {
             this.Feedback = new HashSet<Feedback>();
-            this.Ticket = new HashSet<Ticket>();
         }
     
         public int id_visitor { get; set; }
@@ -32,7 +31,5 @@ namespace Zoo.Base
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feedback> Feedback { get; set; }
         public virtual Loyalty_Program Loyalty_Program { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Ticket { get; set; }
     }
 }

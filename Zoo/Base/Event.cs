@@ -14,13 +14,6 @@ namespace Zoo.Base
     
     public partial class Event
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Event()
-        {
-            this.History_Traffic = new HashSet<History_Traffic>();
-            this.Ticket = new HashSet<Ticket>();
-        }
-    
         public int id_event { get; set; }
         public string name_event { get; set; }
         public string description { get; set; }
@@ -28,9 +21,5 @@ namespace Zoo.Base
         public Nullable<System.DateTime> date { get; set; }
     
         public virtual Cell Cell { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<History_Traffic> History_Traffic { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Ticket { get; set; }
     }
 }
