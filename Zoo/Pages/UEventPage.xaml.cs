@@ -22,7 +22,7 @@ namespace Zoo.Pages
 
         private void LoadData()
         {
-            using (var db = new Zoo_Pr6Entities())
+            using (var db = new ZooEntities())
             {
                 EventListView.ItemsSource = db.Event.ToList();
                 EventCollectionView = CollectionViewSource.GetDefaultView(EventListView.ItemsSource);

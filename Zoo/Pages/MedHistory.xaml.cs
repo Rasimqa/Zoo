@@ -9,7 +9,7 @@ namespace Zoo.Pages
     public partial class MedHistory : Page
     {
         private MainWindow _mainWindow;
-        Zoo_Pr6Entities db = new Zoo_Pr6Entities();
+        ZooEntities db = new ZooEntities();
         public MedHistory(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -19,7 +19,7 @@ namespace Zoo.Pages
 
         private void LoadData()
         {
-            using (var db = new Zoo_Pr6Entities())
+            using (var db = new ZooEntities())
             {
                 MedHistoryGrid.ItemsSource = db.Med_History.ToList();
             }
@@ -41,7 +41,7 @@ namespace Zoo.Pages
                     id_employee = int.Parse(txt_id_employee.Text)
                 };
 
-                using (var db = new Zoo_Pr6Entities())
+                using (var db = new ZooEntities())
                 {
                     db.Med_History.Add(medHis);
                     db.SaveChanges();
@@ -62,7 +62,7 @@ namespace Zoo.Pages
             {
                 try
                 {
-                    using (var db = new Zoo_Pr6Entities())
+                    using (var db = new ZooEntities())
                     {
                         var historyInDb = db.Med_History.Find(selected.id_med_history);
 
@@ -101,7 +101,7 @@ namespace Zoo.Pages
             {
                 try
                 {
-                    using (var db = new Zoo_Pr6Entities())
+                    using (var db = new ZooEntities())
                     {
                         var itemToDelete = db.Med_History.Find(selected.id_med_history);
                         if (itemToDelete != null)

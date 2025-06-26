@@ -8,7 +8,7 @@ namespace Zoo.Pages
 {
     public partial class HistoryTree : Page
     {
-        Zoo_Pr6Entities db = new Zoo_Pr6Entities();
+        ZooEntities db = new ZooEntities();
         private MainWindow _mainWindow;
 
         public HistoryTree(MainWindow mainWindow)
@@ -20,7 +20,7 @@ namespace Zoo.Pages
 
         private void LoadData()
         {
-            using (var db = new Zoo_Pr6Entities())
+            using (var db = new ZooEntities())
             {
                 HistoryTreeGrid.ItemsSource = db.History_Family_Tree.ToList();
             }
@@ -39,7 +39,7 @@ namespace Zoo.Pages
                     date_start_family = DateTime.Parse(txt_date_start_family.Text)
                 };
 
-                using (var db = new Zoo_Pr6Entities())
+                using (var db = new ZooEntities())
                 {
                     db.History_Family_Tree.Add(historyTree);
                     db.SaveChanges();
@@ -60,7 +60,7 @@ namespace Zoo.Pages
             {
                 try
                 {
-                    using (var db = new Zoo_Pr6Entities())
+                    using (var db = new ZooEntities())
                     {
                         var treeInDb = db.History_Family_Tree.Find(selected.id_history);
 
@@ -94,7 +94,7 @@ namespace Zoo.Pages
             {
                 try
                 {
-                    using (var db = new Zoo_Pr6Entities())
+                    using (var db = new ZooEntities())
                     {
                         var itemToDelete = db.History_Family_Tree.Find(selected.id_history);
                         if (itemToDelete != null)

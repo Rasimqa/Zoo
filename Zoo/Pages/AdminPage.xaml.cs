@@ -18,7 +18,7 @@ namespace Zoo.Pages
 {
     public partial class AdminPage : Page
     {
-        private Zoo_Pr6Entities _context = new Zoo_Pr6Entities(); // Подключение к вашей БД через ADO.NET EF
+        private ZooEntities _context = new ZooEntities(); // Подключение к вашей БД через ADO.NET EF
         private List<User> _users;
         static MainWindow _mainWindow;
 

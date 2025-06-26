@@ -22,7 +22,7 @@ namespace Zoo.Pages
     /// </summary>
     public partial class UserManagement : Page
     {
-        private Zoo_Pr6Entities _context;
+        private ZooEntities _context;
         private List<User> _users;
         static MainWindow _mainWindow;
 
@@ -30,7 +30,7 @@ namespace Zoo.Pages
         {
             InitializeComponent();
             _mainWindow = mainWindow;
-            _context = new Zoo_Pr6Entities(); // Инициализация контекста
+            _context = new ZooEntities(); // Инициализация контекста
             LoadRoles(); // Загружаем роли
             LoadUsers();
             UsersDataGrid.SelectionChanged += UsersDataGrid_SelectionChanged; // Добавляем обработчик события SelectionChanged
@@ -38,7 +38,7 @@ namespace Zoo.Pages
 
         private void LoadUsers()
         {
-            _context = new Zoo_Pr6Entities(); // Пересоздаем контекст для обновления данных
+            _context = new ZooEntities(); // Пересоздаем контекст для обновления данных
             // Нетерпеливая загрузка связанных сущностей Login1 и role
             _users = _context.User.Include(u => u.Login1).Include(u => u.role).ToList();
             UsersDataGrid.ItemsSource = _users;

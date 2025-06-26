@@ -9,7 +9,7 @@ namespace Zoo.Pages
     public partial class MedProcedure : Page
     {
         private MainWindow _mainWindow;
-        Zoo_Pr6Entities db = new Zoo_Pr6Entities();
+        ZooEntities db = new ZooEntities();
 
         public MedProcedure(MainWindow mainWindow)
         {
@@ -20,7 +20,7 @@ namespace Zoo.Pages
 
         private void LoadData()
         {
-            using (var db = new Zoo_Pr6Entities())
+            using (var db = new ZooEntities())
             {
                 MedProcedureGrid.ItemsSource = db.Med_Procedure.ToList();
             }
@@ -38,7 +38,7 @@ namespace Zoo.Pages
                     type_procedure = txt_type_procedure.Text
                 };
 
-                using (var db = new Zoo_Pr6Entities())
+                using (var db = new ZooEntities())
                 {
                     db.Med_Procedure.Add(medProcedure);
                     db.SaveChanges();
@@ -59,7 +59,7 @@ namespace Zoo.Pages
             {
                 try
                 {
-                    using (var db = new Zoo_Pr6Entities())
+                    using (var db = new ZooEntities())
                     {
                         var procedureInDb = db.Med_Procedure.Find(selected.id_med_procedure);
 
@@ -92,7 +92,7 @@ namespace Zoo.Pages
             {
                 try
                 {
-                    using (var db = new Zoo_Pr6Entities())
+                    using (var db = new ZooEntities())
                     {
                         var itemToDelete = db.Med_Procedure.Find(selected.id_med_procedure);
                         if (itemToDelete != null)

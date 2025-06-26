@@ -118,9 +118,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\connect.cs" />
-    <Compile Include="Base\Custom_Services.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Base\Employee.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -131,9 +128,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\History_Family_Tree.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Base\History_Traffic.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\List_Family_Tree.cs">
@@ -169,16 +163,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Base\Report_Finance.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Base\role.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Base\Service.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Base\Ticket.cs">
+    <Compile Include="Base\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\User.cs">
@@ -354,8 +342,8 @@
   <ItemGroup>
     <Content Include="Base\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Base\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

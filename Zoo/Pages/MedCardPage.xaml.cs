@@ -9,7 +9,7 @@ namespace Zoo.Pages
     public partial class MedCardPage : Page
     {
         private MainWindow _mainWindow;
-        Zoo_Pr6Entities db = new Zoo_Pr6Entities();
+        ZooEntities db = new ZooEntities();
         public MedCardPage(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -19,7 +19,7 @@ namespace Zoo.Pages
 
         private void LoadData()
         {
-            using (var db = new Zoo_Pr6Entities())
+            using (var db = new ZooEntities())
             {
                 MedCardGrid.ItemsSource = db.MedCard.ToList();
             }
@@ -37,7 +37,7 @@ namespace Zoo.Pages
                     date_start_account = DateTime.Parse(txt_date_start_account.Text)
                 };
 
-                using (var db = new Zoo_Pr6Entities())
+                using (var db = new ZooEntities())
                 {
                     db.MedCard.Add(card);
                     db.SaveChanges();
@@ -58,7 +58,7 @@ namespace Zoo.Pages
             {
                 try
                 {
-                    using (var db = new Zoo_Pr6Entities())
+                    using (var db = new ZooEntities())
                     {
                         var cardInDb = db.MedCard.Find(selected.id_medcard);
                         if (cardInDb != null)
@@ -90,7 +90,7 @@ namespace Zoo.Pages
             {
                 try
                 {
-                    using (var db = new Zoo_Pr6Entities())
+                    using (var db = new ZooEntities())
                     {
                         var cardToDelete = db.MedCard.Find(selected.id_medcard);
                         if (cardToDelete != null)

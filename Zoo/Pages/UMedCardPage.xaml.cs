@@ -23,7 +23,7 @@ namespace Zoo.Pages
 
         private void LoadData()
         {
-            using (var db = new Zoo_Pr6Entities())
+            using (var db = new ZooEntities())
             {
                 MedCardListView.ItemsSource = db.MedCard.ToList();
                 MedCardCollectionView = CollectionViewSource.GetDefaultView(MedCardListView.ItemsSource);

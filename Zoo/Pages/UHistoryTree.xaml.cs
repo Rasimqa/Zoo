@@ -24,7 +24,7 @@ namespace Zoo.Pages
 
         private void LoadData()
         {
-            using (Zoo_Pr6Entities db = new Zoo_Pr6Entities())
+            using (ZooEntities db = new ZooEntities())
             {
                 HistoryTreeListView.ItemsSource = db.History_Family_Tree.ToList();
                 HistoryTreeCollectionView = CollectionViewSource.GetDefaultView(HistoryTreeListView.ItemsSource);
